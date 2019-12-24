@@ -13,6 +13,7 @@ import { IndelingComponent } from './indeling/indeling.component';
 import { KenmerkenComponent } from './kenmerken/kenmerken.component';
 import { OmschrijvingComponent } from './omschrijving/omschrijving.component';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     IndelingComponent,
     KenmerkenComponent,
     OmschrijvingComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
