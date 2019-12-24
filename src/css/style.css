@@ -415,7 +415,7 @@ main{
   background-size: cover;
    background-position: center;
    background-attachment: fixed;
-  background-image: url("../img/background.jpg");
+  background-image: url("../assets/img/background.jpg");
 
   margin-bottom: 30ex;
         }
