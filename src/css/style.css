@@ -1,0 +1,552 @@
+
+
+
+
+
+body {
+  line-height: 1.7;
+  color: gray;
+  font-weight: 300;
+  font-size: 1.1rem; }
+
+
+
+html {
+	font-family:arial, sans-serif;
+	overflow-x: hidden;
+}
+
+
+/*slide show*/
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+  z-index: 101;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+/*fade in*/
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.articlemiddle{
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+
+	  background-color:rgba(255,0,0,0.0);
+	  height:80%;
+
+	  box-shadow: 0px 0px 2px 2px red;
+	  border-radius: 10px;
+
+}
+
+/*style images*/
+
+.wallpaper1{
+	overflow: hidden;
+	width:100%;
+	min-height: 55ex;
+	/*vermindert page jump*/
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 20px;
+	padding:10px;
+	padding-right: 10px;
+}
+/*make a collapsible table*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.collapsible {
+  background-color: #111;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  width: 80%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 12px;
+	border-radius: 10px;
+}
+
+.active, .collapsible:hover {
+  background-color:  #1f1f1f;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+	  width: 70%;
+	  font-size: 12px;
+	margin: 1px 1px;
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* The navigation menu */
+
+.topBar:hover ~ main{
+filter:blur(1px);
+}
+body{
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.navbar {
+  overflow: hidden;
+
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 18px 20px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 18px 20px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #1f1f1f;
+}
+
+/*top piuctjures*/
+.huis{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px 10px;
+
+}
+
+.top{
+width: 97%;
+  padding-left: 6px;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(55,55,55, 0.9);
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
+/*second navabar in the header*/
+.vertical-menu {
+  width: 20%; /* Set a width if you like */
+float: left;
+margin-top: 18px;
+}
+
+
+.vertical-menu a {
+  color: pink; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+  background-color:  #1f1f1f; /* Dark grey background on mouse-over */
+}
+
+a#active {
+  background-color: red; /* Add a green color to the "active/current" link */
+  color: white;
+}
+/*back to top button*/
+#myBtn {
+	display: none;
+	position: fixed;
+	/* Fixed/sticky position */
+	bottom: 10px;
+	/* Place the button at the bottom of the page */
+	right: 20px;
+	/* Place the button 30px from the right */
+	z-index: 99;
+	/* Make sure it does not overlap */
+	border: none;
+	/* Remove borders */
+	outline: none;
+	/* Remove outline */
+	/* Set a background color */
+	color: white;
+	/* Text color */
+	cursor: pointer;
+	/* Add a mouse pointer on hover */
+	padding: 15px;
+	/* Some padding */
+	border-radius: 10px;
+	/* Rounded corners */
+	font-size: 18px;
+	/* Increase font size */
+}
+
+button#myBtn{
+
+	background: url("../img/arrow.png");
+font-size:0;
+width:50px;
+   height: 50px;
+   		background-color: transparent;
+   		-webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+}
+button:hover{-webkit-stroke-width: 5.3px;
+     -webkit-stroke-color: hotpink;
+     -webkit-fill-color: hotpink;
+     box-shadow: 1px 0px 20px hotpink;
+   }
+
+   @keyframes fadein {
+       from { opacity: 0; }
+       to   { opacity: 1; }
+   }
+
+   /* Firefox < 16 */
+   @-moz-keyframes fadein {
+       from { opacity: 0; }
+       to   { opacity: 1; }
+   }
+
+
+   /* Safari, Chrome and Opera > 12.1 */
+   @-webkit-keyframes fadein {
+       from { opacity: 0; }
+       to   { opacity: 1; }
+   }
+
+   /* Internet Explorer */
+   @-ms-keyframes fadein {
+       from { opacity: 0; }
+       to   { opacity: 1; }
+   }
+
+   /* Opera < 12.1 */
+   @-o-keyframes fadein {
+       from { opacity: 0; }
+       to   { opacity: 1; }
+   }
+
+.top{
+        	/*vermindert page jump*/
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+  -ms-animation: fadein 2s; /* Internet Explorer */
+  -o-animation: fadein 2s; /* Opera < 12.1 */
+  animation: fadein 2s;
+  text-align: right;
+        }
+main{
+  padding-top: 5ex;
+        }
+
+.foto{
+  overflow: hidden;
+  width:80%;
+  /*vermindert page jump*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  padding:10px;
+  padding-right: 10px;
+        }
+
+
+
+.f{
+  background-size: cover;
+   background-position: center;
+   background-attachment: fixed;
+  background-image: url("../img/background.jpg");
+
+  margin-bottom: 30ex;
+        }
+
+  /*geef scrol bar een kleurtje*/
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+        }
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px olivedrab;
+  border-radius: 10px;
+        }
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: white;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        }
+
+        /*laat je article opvallen*/
+
+.articleleft {
+
+  max-width: 1000px;
+  background-color:rgba(255,0,0,0.0);
+  height:80%;
+  width: 70%;
+  box-shadow: 0px 0px 2px 2px red;
+  border-radius: 10px;
+   float: left;
+}
+.articleright{
+
+  max-width: 1000px;
+  background-color:rgba(255,0,0,0.0);
+  height:80%;
+  width: 25%;
+  box-shadow: 0px 0px 2px 2px red;
+  border-radius: 10px;
+  float: right;
+}
+
+footer{
+position: relative;
+width: 100%;
+box-shadow: 0px 0px 2px 2px red;
+  background-color: rgba(17, 17, 17, 0.9);
+clear: both;
+overflow: auto;
+margin-top: 10ex;
+color: #fff;
+border-radius: 2ex;
+}
+
+li{
+  font-size: 13px;
+  font-weight: thin;
+}
+
+
+
+
+a, a:hover{
+  color: hotpink;
+   text-decoration: none;
+}
+
+
+.f2{
+  float:right;
+  color:pink;
+  width: 25%;
+  margin-right: 5ex
+
+}
+
+.topBar{
+  background-color: rgba(17, 17, 17, 0.9);
+
+}
+
+.logo{
+    float:left;
+  width: 8ex;
+  margin: 4px;
+  margin-right: 3ex;
+}
+
+h3, h2 {
+  background-color: rgba(115, 138, 219, 0.9);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.articleleft, footer, .articleright, .articlemiddle{
+padding-top: 20px;
+padding-right: 30px;
+padding-bottom: 60px;
+padding-left: 30px;
+margin-bottom: 5ex;
+}
+
+
+/*maak je site responsive*/
+@media (max-width:1300px){
+  .huis{
+    display: none;
+  }
+
+  .articleright{
+    display:none;
+  }
+  main, body, article, .articleleft, .articlemiddle, footer {
+		-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+    width: 100%;
+		margin: 0;
+    border-radius: 0px;
+
+  }
+
+}
+@media (max-width:800px){
+.vertical-menu{
+	display: none;
+}
+
+.f2{
+	display: none;
+}
+}
