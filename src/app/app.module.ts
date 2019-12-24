@@ -14,6 +14,7 @@ import { KenmerkenComponent } from './kenmerken/kenmerken.component';
 import { OmschrijvingComponent } from './omschrijving/omschrijving.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { HuisComponent } from './huis/huis.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     KenmerkenComponent,
     OmschrijvingComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    HuisComponent
   ],
   imports: [
     BrowserModule,
