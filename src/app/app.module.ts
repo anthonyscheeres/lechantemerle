@@ -15,6 +15,7 @@ import { OmschrijvingComponent } from './omschrijving/omschrijving.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HuisComponent } from './huis/huis.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HuisComponent } from './huis/huis.component';
     OmschrijvingComponent,
     HomeComponent,
     FooterComponent,
-    HuisComponent
+    HuisComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

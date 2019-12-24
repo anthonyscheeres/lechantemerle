@@ -5,10 +5,9 @@
 
 window.onload = function() {
 var n = 1;
-addheader();
-addfooter();
+
 collapsetraits();
-//addslides()
+
 
 
 
@@ -51,18 +50,8 @@ function showSlides() {
     slides[slideIndex - 1] = "block";
 }
 
-function addheader() {
 
-    var code ="<h1>Le Chantemerle</h1>";
-    document.getElementById("header").innerHTML = code;
 
-}
-
-function addfooter(){
-  var code =  "<div class='f2'><h3>Contact</h3><h6>Neem gerust contact op.</h6><p>Telefoon: 0172 6056 24</p><p>Mail: info@chantemerle.nl -- <a href='#'>Meer..</a></p></div>  <div class='f2'><h3>Hallo, welcome</h3><p>Wij hebben deze site gebouwd, omdat wij meer wilde vertellen over ons huis.</p><p>Groet! Anthony</p></div>" ;
-  document.getElementById("info").innerHTML = code;
-
-}
 
 
 
@@ -107,10 +96,3 @@ function make_slide_code(value){
 }
 
 
-//add hmtl code
-function addslides() {
-  code="<h1>UwU</h1>";
-  code = make_slide_code(29);
-  document.getElementById("slideshow").innerHTML = code;
-
-}
