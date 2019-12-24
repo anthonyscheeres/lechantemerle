@@ -87,7 +87,7 @@ function topFunction() {
 function make_slide_code(value){
   code = "";
   for (i = 1; i < value; i++) {
-    code=code +"<img src='../img/" +i+".jpg' style='width:100%'></div>";
+    code=code +"<img src='../../assets/img/" +i+".jpg' style='width:100%'></div>";
 
   }
 
