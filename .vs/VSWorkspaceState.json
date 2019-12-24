@@ -3,9 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\home",
-    "\\src\\app\\indeling"
+    "\\src\\app\\background",
+    "\\src\\app\\footer",
+    "\\src\\app\\foto",
+    "\\src\\app\\navbar",
+    "\\src\\css",
+    "\\src\\js"
   ],
-  "SelectedNode": "\\src\\app\\home\\home.component.html",
+  "SelectedNode": "\\src\\app\\navbar\\navbar.component.html",
   "PreviewInSolutionExplorer": false
 }

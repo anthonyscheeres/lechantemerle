@@ -2,12 +2,12 @@
 
 
 
-
 body {
   line-height: 1.7;
   color: gray;
   font-weight: 300;
-  font-size: 1.1rem; }
+  font-size: 1.1rem;
+}
 
 
 
@@ -74,19 +74,22 @@ html {
 
 /* Fading animation */
 .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
+
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 100000000000000000s;
 }
-/*fade in*/
-@-webkit-keyframes fade {
-  from {opacity: .4}
+
+.fade {
+  opacity: 1
+}
+  /*fade in*/
+  @-webkit-keyframes fade {
+    from {opacity: 1}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4}
+  from {opacity: 1}
   to {opacity: 1}
 }
 

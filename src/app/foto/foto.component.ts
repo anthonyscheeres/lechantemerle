@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FotoComponent implements OnInit {
 
-  numbers = Array(5).fill().map((x, i) => i); // [0,1,2,3,4]
        slideIndex = 1;
 //showSlides(slideIndex);
 
