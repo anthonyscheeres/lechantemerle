@@ -8,7 +8,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ContactComponent } from './contact/contact.component';
 import { FotoComponent } from './foto/foto.component';
 import { VideoComponent } from './video/video.component';
-import { GooglemapsComponent } from './googlemaps/googlemaps.component';
 import { IndelingComponent } from './indeling/indeling.component';
 import { KenmerkenComponent } from './kenmerken/kenmerken.component';
 import { OmschrijvingComponent } from './omschrijving/omschrijving.component';
@@ -16,6 +15,11 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HuisComponent } from './huis/huis.component';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
+import { GooglemapsComponent } from './googlemaps/googlemaps.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,20 +28,28 @@ import { HeaderComponent } from './header/header.component';
     ContactComponent,
     FotoComponent,
     VideoComponent,
-    GooglemapsComponent,
     IndelingComponent,
     KenmerkenComponent,
     OmschrijvingComponent,
     HomeComponent,
     FooterComponent,
     HuisComponent,
-    HeaderComponent
+    HeaderComponent,
+    GooglemapsComponent,
+    LoginFormComponent,
+    LoginComponent,
+   
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(
       [
+        {
+          path: 'maps',
+          component: GooglemapsComponent
+        },
         {
           path: '',
           component: HomeComponent
@@ -54,9 +66,6 @@ import { HeaderComponent } from './header/header.component';
           path: 'video',
           component: VideoComponent
         }, {
-          path: 'register',
-          component: GooglemapsComponent
-        }, {
           path: 'indeling',
           component: IndelingComponent
         }, {
@@ -69,7 +78,12 @@ import { HeaderComponent } from './header/header.component';
           path: 'home',
           component: HomeComponent
         },
-
+        {
+          path: 'login',
+          component: LoginComponent
+        },
+       
+       
         // otherwise redirect to home
         { path: '**', redirectTo: '' }
       ]

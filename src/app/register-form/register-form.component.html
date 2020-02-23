@@ -1,0 +1,21 @@
+<form (submit)="registerUser($event)">
+  <div class="form-group">
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+
+  </div>
+
+  <div class="form-group">
+    <input class="form-control" type="text" placeholder="Username" id="username">
+  </div>
+
+  <div class="form-group">
+    <input type="password" class="form-control" id="password" placeholder="Password">
+  </div>
+
+
+  <input *ngIf="myRecaptcha" class="btn btn-lg btn-outline-primary" id="button" type="submit" value="Register">
+  <span> {{this1}} </span>
+</form>
+<recaptcha *ngIf="!myRecaptcha" [(ngModel)]="myRecaptcha"
+           (scriptLoad)="onScriptLoad()"
+           (scriptError)="onScriptError()"></recaptcha>
