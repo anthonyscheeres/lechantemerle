@@ -16,7 +16,6 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HuisComponent } from './huis/huis.component';
 import { HeaderComponent } from './header/header.component';
-import { BackgroundComponent } from './background/background.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +31,18 @@ import { BackgroundComponent } from './background/background.component';
     HomeComponent,
     FooterComponent,
     HuisComponent,
-    HeaderComponent,
-    BackgroundComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(
       [
+        {
+          path: '',
+          component: HomeComponent
+        },
+
         {
           path: 'contact',
           component: ContactComponent
