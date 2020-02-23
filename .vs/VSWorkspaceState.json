@@ -3,13 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\background",
     "\\src\\app\\footer",
-    "\\src\\app\\foto",
-    "\\src\\app\\navbar",
-    "\\src\\css",
-    "\\src\\js"
+    "\\src\\app\\googlemaps",
+    "\\src\\app\\login",
+    "\\src\\app\\login-form",
+    "\\src\\app\\register",
+    "\\src\\app\\register-form",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\navbar\\navbar.component.html",
+  "SelectedNode": "\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }

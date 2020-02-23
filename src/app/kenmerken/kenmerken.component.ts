@@ -10,6 +10,9 @@ export class KenmerkenComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+   // this.refresh()
   }
-
+  refresh(): void {
+    window.location.reload();
+  }
 }
