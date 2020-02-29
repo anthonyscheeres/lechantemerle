@@ -18,7 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -27,7 +27,6 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/css/style.css"
-
             ],
             "scripts": [
               "src/js/javascript.js"
@@ -46,7 +45,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -125,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Le-Chantemerle"
+    }
+  },
+  "defaultProject": "Le-Chantemerle",
+  "cli": {
+    "analytics": false
+  }
 }

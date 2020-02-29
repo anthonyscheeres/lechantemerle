@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { register } from '../services/user';
-import { responseR } from '../models/ResponseRequest';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.css']
+  selector: 'app-reg-form',
+  templateUrl: './reg-form.component.html',
+  styleUrls: ['./reg-form.component.css']
 })
-export class RegisterFormComponent implements OnInit {
-  this1:string = ""
+export class RegFormComponent implements OnInit {
+this1:string = ""
   constructor(private _router: Router) { }
   ngOnInit() {
   }

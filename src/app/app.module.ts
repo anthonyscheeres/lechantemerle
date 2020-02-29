@@ -18,8 +18,8 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { GooglemapsComponent } from './googlemaps/googlemaps.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
 import { RegisterComponent } from './register/register.component';
+import { RegFormComponent } from './reg-form/reg-form.component';
 
 
 
@@ -42,8 +42,9 @@ import { RegisterComponent } from './register/register.component';
     GooglemapsComponent,
     LoginFormComponent,
     LoginComponent,
-  /*  RegisterFormComponent,
-    RegisterFormComponent*/
+    RegisterComponent,
+    RegFormComponent,
+
    
 
   ],
@@ -52,6 +53,13 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     RouterModule.forRoot(
       [
+
+        
+
+          {
+          path: 'register',
+          component: RegisterComponent
+        },
         {
           path: 'maps',
           component: GooglemapsComponent

@@ -3,14 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\login",
-    "\\src\\app\\login-form",
-    "\\src\\app\\navbar",
-    "\\src\\app\\register",
-    "\\src\\app\\register-form",
-    "\\src\\app\\services",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\register",
   "PreviewInSolutionExplorer": false
 }
