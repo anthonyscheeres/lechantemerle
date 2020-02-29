@@ -1,7 +1,7 @@
 
 import { ServerModel } from '../models/ServerModel';
 import { responseR } from '../models/ResponseRequest';
-import { fetchJsonPost, fetchJsonGet } from './http.';
+import { fetchJsonPost, fetchJsonGet } from './http';
 import {UserModel} from "../models/UserModel";
 
 import { ProtocolR } from '../models/Protocol';

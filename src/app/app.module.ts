@@ -21,6 +21,10 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { RegisterComponent } from './register/register.component';
 
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +42,8 @@ import { RegisterComponent } from './register/register.component';
     GooglemapsComponent,
     LoginFormComponent,
     LoginComponent,
+  /*  RegisterFormComponent,
+    RegisterFormComponent*/
    
 
   ],
@@ -55,6 +61,10 @@ import { RegisterComponent } from './register/register.component';
           component: HomeComponent
         },
 
+     /*   {
+          path: 'register',
+          component: RegisterComponent
+        },*/
         {
           path: 'contact',
           component: ContactComponent
