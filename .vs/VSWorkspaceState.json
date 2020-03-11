@@ -3,8 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\login-form",
+    "\\src\\app\\models",
+    "\\src\\app\\reg-form",
+    "\\src\\app\\register",
+    "\\src\\app\\services",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\register",
+  "SelectedNode": "\\src\\app\\models\\ResponseRequest.ts",
   "PreviewInSolutionExplorer": false
 }

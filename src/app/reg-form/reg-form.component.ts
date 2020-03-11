@@ -24,8 +24,8 @@ this1:string = ""
     const password = target.querySelector('#password').value
     const email = target.querySelector('#email').value
     await register(username, password, email).then(response => {
-
-      if (response != responseR.fail) {
+     console.log(response);
+      if (response == '"success"') {
         this._router.navigate(['/login']);
 
       } else this.this1 = "Oops heb je een juist email adress gegeven, anders probeer een andere gebruikersnaam"

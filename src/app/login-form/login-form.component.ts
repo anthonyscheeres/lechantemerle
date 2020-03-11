@@ -3,6 +3,7 @@ import { login } from '../services/user';
 import { responseR } from '../models/ResponseRequest';
 import { Router } from '@angular/router';
 import { DataModel } from '../models/DataModel';
+import { PermissionModel } from '../models/PermissionModel';
 
 @Component({
   selector: 'app-login-form',
@@ -37,11 +38,17 @@ export class LoginFormComponent implements OnInit {
 
 
     await login(username, password).then(response => {
-
-      if (response != responseR.fail) {
-        DataModel.account.token = response
+      console.log(response);
+      if (response != '"fail"') {
+        DataModel.account;
+        var jsonObject = JSON.parse(response);
         localStorage.setItem("token", response)
-      
+
+        console.log(jsonObject);
+
+        DataModel.account = jsonObject;
+
+        console.log(DataModel.account[2]);
         this._router.navigate(['/']);
       }
       else this.this1 = "Oops think you entered invalid credentials, maybe you haven't verified your email yet?!"

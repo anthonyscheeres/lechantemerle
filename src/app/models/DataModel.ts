@@ -1,6 +1,7 @@
-import { AccountModel } from './AccountModel';
+
+import { PermissionModel } from './PermissionModel';
 
 
 export class DataModel {
-  static account: AccountModel = new AccountModel()
+  static account: any;
 }

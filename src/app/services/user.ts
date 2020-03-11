@@ -7,25 +7,20 @@ import {UserModel} from "../models/UserModel";
 import { ProtocolR } from '../models/Protocol';
 import { DataModel } from '../models/DataModel';
 
-export function loadUsers() {
-  var host = ServerModel.host;
-  var port = ServerModel.port;
-  var token = DataModel.account.token;
-  var url = "http://" + host + ":" + port + "/user/"+ token + "/showAllUsers";
-  return url
-}
+
 
 export function login(username, password) {
   var host = ServerModel.host;
   var port = ServerModel.port;
-  var url = "http://" + host + ":" + port + "/user/login";
+  var url = "https://" + host + ":" + port + "/api/User/login";
 
   var data = JSON.stringify({
+    "user_id": 0,
     "username": username,
     "password": password,
-    "id": null,
-    "permission": null,
-    "email": null
+    "email": null,
+    "is_super_user": false,
+    "token": null
   });
 
   // @ts-ignore
@@ -38,14 +33,15 @@ export function register(username, password, email) {
 
   var host = ServerModel.host;
   var port = ServerModel.port;
-  var urlToServer = "http://" + host + ":" + port + "/user/createUser";
+  var urlToServer = "https://" + host + ":" + port + "/api/User/register";
 
   var data = JSON.stringify({
+    "user_id": 0,
     "username": username,
     "password": password,
-    "id": null,
-    "permission": null,
-    "email": email
+    "email": email,
+    "is_super_user": false,
+    "token": null
   });
 
 

@@ -6,7 +6,8 @@
 */
 export class ServerModel {
  static host: String = "localhost";
-  static port: String = "8080";
+ // static host: String = "92.65.83.65";
+  static port: String = "44314";
 
   constructor() {
 
