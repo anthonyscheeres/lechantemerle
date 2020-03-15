@@ -20,6 +20,7 @@ import { GooglemapsComponent } from './googlemaps/googlemaps.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterComponent } from './register/register.component';
 import { RegFormComponent } from './reg-form/reg-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -50,6 +51,7 @@ import { RegFormComponent } from './reg-form/reg-form.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot(
       [

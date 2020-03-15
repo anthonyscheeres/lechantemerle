@@ -1,13 +1,18 @@
 <app-huis></app-huis>
-<article class="articlemiddle">
-  <h3>Wat te melden</h3>
-  <h4>Le Chantemerle</h4>
-  <p>Plaats: Alphen Aan den Rijn</p>
-  <p>Address: Burgemeester Visserpark 16</p>
-  <p>Postcode: 2405 CP</p>
-  <br>
-  <h4>Family Scheeres</h4>
-  <p>Mail: info@chantemerle.nl</p>
-  <p>Telefoon: 0172 6056 24</p>
 
-</article>
+
+<div *ngFor="let value of contactInfoDataFromServer">
+  <article class="articlemiddle">
+    <h3>Wat te melden</h3>
+    <h4>{{value.house_nickname}}</h4>
+    <p>Plaats: {{value.place}}</p>
+    <p>Address: {{value.adress}}</p>
+    <p>Postcode: {{value.postal_code}}</p>
+    <br>
+    <h4>{{value.family_name}}</h4>
+    <p>Mail: {{value.mail}}</p>
+    <p>Telefoon: {{value.telephone}}</p>
+  </article>
+</div>
+
+
