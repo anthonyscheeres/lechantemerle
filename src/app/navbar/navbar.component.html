@@ -21,10 +21,10 @@
         <a routerLink="/video">Video's</a>
 
         <a routerLink="/maps">Maps</a>
-        <a routerLink="/login">Login</a>
-        <a routerLink="/register">Register</a>
+        <a class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
+        <a class="glyphicon glyphicon-user" routerLink="/register"> Register</a>
         <a style="float:right" routerLink="/contact">Contact</a>
-
+        <a *ngIf = "isLoggedIn" (click)="logOut()"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
       </nav>
 
   </nav>

@@ -39,20 +39,25 @@ export class LoginFormComponent implements OnInit {
 
     await login(username, password).then(response => {
       console.log(response);
-      if (response != '"fail"') {
+
+      if (response == '"fail"') {
+        this.this1 = "Oops think you entered invalid credentials, maybe you haven't verified your email yet?!"
+
+      }
+
+      else  {
         DataModel.account;
         var jsonObject = JSON.parse(response);
-        localStorage.setItem("token", response)
+        localStorage.setItem("token", jsonObject)
 
-        console.log(jsonObject);
+      //  console.log(jsonObject);
 
         DataModel.account = jsonObject;
 
-        console.log(DataModel.account[2]);
+       // console.log(DataModel.account[2]);
         this._router.navigate(['/']);
       }
-      else this.this1 = "Oops think you entered invalid credentials, maybe you haven't verified your email yet?!"
-
+      
     })
     ;
 

@@ -3,5 +3,5 @@ import { PermissionModel } from './PermissionModel';
 
 
 export class DataModel {
-  static account: any;
+  static account: any = localStorage.getItem("token");
 }
