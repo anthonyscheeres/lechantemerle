@@ -71,10 +71,7 @@ import { HttpClientModule } from '@angular/common/http';
           component: HomeComponent
         },
 
-     /*   {
-          path: 'register',
-          component: RegisterComponent
-        },*/
+ 
         {
           path: 'contact',
           component: ContactComponent

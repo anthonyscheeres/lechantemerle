@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\contact",
-    "\\src\\app\\models",
+    "\\src\\app\\home",
+    "\\src\\app\\login",
+    "\\src\\app\\login-form",
     "\\src\\app\\navbar",
-    "\\src\\app\\reg-form",
     "\\src\\app\\register",
     "\\src\\app\\services",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\contact\\contact.component.ts",
+  "SelectedNode": "\\src\\app\\home\\home.component.spec.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -41,7 +41,7 @@ export class LoginFormComponent implements OnInit {
       console.log(response);
 
       if (response == '"fail"') {
-        this.this1 = "Oops think you entered invalid credentials, maybe you haven't verified your email yet?!"
+        this.this1 = "Oops denk dat je de verkeerde gegvens heb ingevuld! Heb je, je email al gevalideert?!"
 
       }
 
