@@ -22,6 +22,7 @@ export class LoginFormComponent implements OnInit {
   }
 
 
+
   /**
   *
   * @author Anthony Scheeres
@@ -34,33 +35,25 @@ export class LoginFormComponent implements OnInit {
 
     const username = target.querySelector('#username').value
     const password = target.querySelector('#password').value
-   
 
 
-    await login(username, password).then(response => {
-      console.log(response);
-
-      if (response == '"fail"') {
-        this.this1 = "Oops denk dat je de verkeerde gegvens heb ingevuld! Heb je, je email al gevalideert?!"
-
-      }
-
-      else  {
+    try {
+      await login(username, password).then(response => {
         DataModel.account;
         var jsonObject = JSON.parse(response);
         localStorage.setItem("token", jsonObject)
 
-      //  console.log(jsonObject);
-
         DataModel.account = jsonObject;
 
-       // console.log(DataModel.account[2]);
         this._router.navigate(['/']);
-      }
-      
-    })
-    ;
 
+
+      })
+        ;
+    }
+    catch (Error) {
+      this.this1 = "Oops denk dat je de verkeerde gegvens heb ingevuld! Heb je, je email al gevalideert?!"
+    }
 
 
 
