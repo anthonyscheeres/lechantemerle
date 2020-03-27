@@ -21,6 +21,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterComponent } from './register/register.component';
 import { RegFormComponent } from './reg-form/reg-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 
@@ -106,7 +107,9 @@ import { HttpClientModule } from '@angular/common/http';
       ]
     ),
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy, useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
