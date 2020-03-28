@@ -1,0 +1,18 @@
+
+
+<!-- 2. datepicker in the popup -->
+<input type="text"
+           placeholder= {{arrival}}
+           class="form-control"
+           [datesDisabled]="isDisabled"
+           bsDatepicker (dateSelect)="onDateSelect($event)" id="arrival"/>
+
+
+
+<!-- 2. datepicker in the popup -->
+<input type="text"
+           placeholder={{departure}}
+           class="form-control"
+           [datesDisabled]="isDisabled"
+           bsDatepicker (dateSelect)="onDateSelect2($event)" id="departure"/>
+

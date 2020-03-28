@@ -22,6 +22,8 @@ import { RegisterComponent } from './register/register.component';
 import { RegFormComponent } from './reg-form/reg-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ReservationComponent } from './reservation/reservation.component';
+import { RoomsComponent } from './rooms/rooms.component';
 
 
 
@@ -46,6 +48,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     LoginComponent,
     RegisterComponent,
     RegFormComponent,
+    ReservationComponent,
+    RoomsComponent,
 
    
 
