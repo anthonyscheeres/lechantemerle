@@ -23,7 +23,7 @@ export class ReservationComponent implements OnInit {
   reservationDataFromServer
   millisecondPerDay = 24 * 60 * 60 * 1000;
   disabledDates = [];
-  enabledDates = []
+ 
 
   constructor(private http: HttpClient) {
    
@@ -36,13 +36,32 @@ export class ReservationComponent implements OnInit {
     reservationDataFromServer.foreach(r => { constructisEnabledFrom2.push(r.time_from); constructisEnabledtill2.push(r.time_till) });
 
 
-    this.isEnabledTill = constructisEnabledtill2
-    this.isEnabledFrom = constructisEnabledFrom2
+    this.setIsEnabledTill(constructisEnabledtill2) 
+    this.setisEnabledFrom(constructisEnabledFrom2)
   }
- 
+
+  setIsEnabledTill(constructisEnabledtill2) {
+    this.isEnabledTill = constructisEnabledtill2
+    this.GetDisabledDates2(constructisEnabledtill2)
+  }
+
+  setisEnabledFrom(constructisEnabledFrom2) {
+    this.isEnabledFrom = constructisEnabledFrom2
+    this.GetDisabledDates(constructisEnabledFrom2)
+  }
+
+
 
   ngOnInit() {
-    this.GetDisabledDates(this.enabledDates);
+  
+      let enabledDates = []
+      this.GetDisabledDates(enabledDates)
+      this.GetDisabledDates2(enabledDates)
+
+
+      this.showAvailableDates()
+
+  
   }
 
   GetDisabledDates(excludeDates: Array<Date>) {
@@ -51,7 +70,7 @@ export class ReservationComponent implements OnInit {
     var endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2));//change as per your need
     console.log(startDate);
     console.log(endDate);
-    this.disabledDates = [];
+    this.isDisabledFrom = [];
     do {
       var found = false;
       for (var i = 0; i < excludeDates.length; i++) {
@@ -61,11 +80,11 @@ export class ReservationComponent implements OnInit {
         }
       }
       if (!found) {
-        this.disabledDates.push(startDate);
+        this.isDisabledFrom.push(startDate);
       }
       startDate = new Date((startDate.getTime() + this.millisecondPerDay));
     } while (startDate <= endDate)
-    console.log("Calculated: " + this.disabledDates.length);
+    console.log("Calculated: " + this.isDisabledFrom.length);
     //console.log("Calculated: "+this.disabledDates);
   }
 
@@ -75,7 +94,7 @@ export class ReservationComponent implements OnInit {
     var endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2));//change as per your need
     console.log(startDate);
     console.log(endDate);
-    this.disabledDates = [];
+    this.isDisabledTill = [];
     do {
       var found = false;
       for (var i = 0; i < excludeDates.length; i++) {
@@ -85,11 +104,11 @@ export class ReservationComponent implements OnInit {
         }
       }
       if (!found) {
-        this.disabledDates.push(startDate);
+        this.isDisabledTill.push(startDate);
       }
       startDate = new Date((startDate.getTime() + this.millisecondPerDay));
     } while (startDate <= endDate)
-    console.log("Calculated: " + this.disabledDates.length);
+    console.log("Calculated: " + this.isDisabledTill.length);
     //console.log("Calculated: "+this.disabledDates);
   }
 
@@ -135,7 +154,7 @@ export class ReservationComponent implements OnInit {
       .subscribe(
         responseData => {
           this.reservationDataFromServer = responseData;
-           this.GetDisabledDates(this.enabledDates);
+          this.defineIsDisbaled(responseData)
         }
       );
   }
