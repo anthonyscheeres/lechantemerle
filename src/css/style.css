@@ -1,7 +1,5 @@
 
 
-
-
 body {
   line-height: 1.7;
   color: black;
@@ -42,7 +40,7 @@ html {
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prev, .nex {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -58,14 +56,14 @@ html {
 }
 
 /* Position the "next button" to the right */
-.next {
+.nex {
   right: 0;
   border-radius: 3px 0 0 3px;
   z-index: 101;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
+.prev:hover, .nex:hover {
   background-color: rgba(0,0,0,0.8);
 }
 

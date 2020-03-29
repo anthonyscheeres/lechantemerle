@@ -1,18 +1,22 @@
 
+  <div class="inline-inputs">
 
-<!-- 2. datepicker in the popup -->
-<input type="text"
-           placeholder= {{arrival}}
-           class="form-control"
-           [datesDisabled]="isDisabledFrom"
+    <!-- 2. datepicker in the popup -->
+    <input type="text"
+           placeholder={{arrival}}
+           class="input-mini dates"
+           [datesDisabled]="disabledDates"
            (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
 
 
+    <div class="input-group date" data-provide="datepicker">
+      <!-- 2. datepicker in the popup -->
+      <input type="text"
+             placeholder={{departure}}
+             class="input-mini dates"
+             [datesDisabled]="disabledDates"
+             (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
 
-<!-- 2. datepicker in the popup -->
-<input type="text"
-           placeholder={{departure}}
-           class="form-control"
-           [datesDisabled]="isDisabledTill"
-           (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
+
+    </div>
 

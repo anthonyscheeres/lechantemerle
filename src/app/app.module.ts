@@ -27,7 +27,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -51,11 +51,13 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     RegFormComponent,
     ReservationComponent,
     RoomsComponent,
-    PopUpComponent
+    PopUpComponent,
+
    
 
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     NgbModule,
