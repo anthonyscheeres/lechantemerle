@@ -5,7 +5,32 @@
   <div>
     <h1>{{product.name}}</h1>
     <img src="{{product.img}}" class="img-fluid">
-    <app-reservation></app-reservation>
-</div>
 
-</div>
+
+
+    <div class="inline-inputs">
+
+      <!-- 2. datepicker in the popup -->
+      <input type="text"
+             placeholder={{arrival}}
+             class="input-mini dates"
+             [datesDisabled]="isDisabledFrom"
+             (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
+
+
+      <div class="input-group date" data-provide="datepicker">
+        <!-- 2. datepicker in the popup -->
+        <input type="text"
+               placeholder={{departure}}
+               class="input-mini dates"
+               [datesDisabled]=" isDisabledTill"
+               (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
+
+
+      </div>
+
+
+
+    </div>
+
+  </div>
