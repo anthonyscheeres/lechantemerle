@@ -80,7 +80,7 @@ export class ContactComponent implements OnInit {
     var host = ServerModel.host;
     var port = ServerModel.port;
     var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "https://" + host + ":" + port + "/api/ContactInfo/ChangeContactInfo?token="+token;
+    var url = "http://" + host + ":" + port + "/api/ContactInfo/ChangeContactInfo?token="+token;
     return url;
   }
 
@@ -89,7 +89,7 @@ export class ContactComponent implements OnInit {
   ConstructGetContactInfoUrl() {
     var host = ServerModel.host;
     var port = ServerModel.port;
-    var url = "https://" + host + ":" + port + "/api/ContactInfo/getContactInfo";
+    var url = "http://" + host + ":" + port + "/api/ContactInfo/getContactInfo";
     return url;
   }
 

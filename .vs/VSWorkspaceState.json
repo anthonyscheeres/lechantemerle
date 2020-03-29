@@ -8,8 +8,9 @@
     "\\src\\app\\reg-form",
     "\\src\\app\\reservation",
     "\\src\\app\\rooms",
+    "\\src\\app\\services",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\contact\\contact.component.ts",
+  "SelectedNode": "\\src\\app\\rooms\\rooms.component.ts",
   "PreviewInSolutionExplorer": false
 }

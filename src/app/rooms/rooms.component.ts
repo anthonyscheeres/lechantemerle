@@ -110,20 +110,29 @@ export class RoomsComponent implements OnInit {
 
     var house = target.querySelector('amount_of_beds').value
    
-    var data = JSON.stringify({ "amount_of_beds": house, "id" : value.name} )
+    var data = JSON.stringify({ "amountOfBeds": house, "id": value.name })
+    var host = ServerModel.host;
+    var port = ServerModel.port;
+    var token = JSON.parse(DataModel.account)[0].token.toString();
+    var url = "http://" + host + ":" + port + "/api/Room/updatAmountOfBedsRoom?token="+token;
+
+
+
   }
 
   static changeImg(img, id) {
     var host = ServerModel.host;
     var port = ServerModel.port;
-    var token = DataModel.account.token;
-    var url = "http://" + host + ":" + port + "/product/" + token + "/changeImg ";
+    var token = JSON.parse(DataModel.account)[0].token.toString();
+    var url = "http://" + host + ":" + port + "/api/Room/updateImgRoom?token=" + token;
+ 
+
     var json = JSON.stringify({
       "id": id,
       "img": img
     });
 
-    //json)
+   
 
 
 

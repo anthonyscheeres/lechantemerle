@@ -12,7 +12,7 @@ import { DataModel } from '../models/DataModel';
 export function login(username, password) {
   var host = ServerModel.host;
   var port = ServerModel.port;
-  var url = "https://" + host + ":" + port + "/api/User/login";
+  var url = "http://" + host + ":" + port + "/api/User/login";
 
   var data = JSON.stringify({
     "user_id": 0,
@@ -33,7 +33,7 @@ export function register(username, password, email) {
 
   var host = ServerModel.host;
   var port = ServerModel.port;
-  var urlToServer = "https://" + host + ":" + port + "/api/User/register";
+  var urlToServer = "http://" + host + ":" + port + "/api/User/register";
 
   var data = JSON.stringify({
     "user_id": 0,
