@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ReservationModel } from '../models/ReservationModel';
 import { ServerModel } from '../models/ServerModel';
-import { DataModel } from '../models/DataModel';
+
 
 @Component({
   selector: 'app-reservation',

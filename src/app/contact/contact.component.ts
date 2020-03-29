@@ -53,6 +53,8 @@ export class ContactComponent implements OnInit {
     return isSuper==true;
   }
 
+
+
   async submitNewContactDetails(event) {
     event.preventDefault()
 
