@@ -13,9 +13,12 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
 })
 export class RoomsComponent implements OnInit {
   reservationDataFromServer
+  selected: any = null;
+
   constructor(private http: HttpClient, private _router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.showAvailableDates()
   }
 
 

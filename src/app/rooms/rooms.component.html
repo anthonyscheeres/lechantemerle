@@ -12,7 +12,6 @@
       <tbody>
 
         <tr class="row-12" *ngFor="let value of reservationDataFromServer"
-            (click)="setSelected(value)"
             [ngStyle]="{backgroundColor: selected == value ? '#F2F2F2': 'transparent'}">
           <td class="col-md-2" >
             <img class="rounded-circle"  (dblclick)="click(value)" src="{{value.img}}" />
@@ -21,7 +20,7 @@
             {{ value.name }}
           </td>
       
-          <td class="col-md-2"><button class="btn btn-lg btn-outline-primary" (click)="open(value)">add to cart</button></td>
+         
         </tr>
       </tbody>
     </table>

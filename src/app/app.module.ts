@@ -26,7 +26,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from './pop-up/pop-up.component';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 
@@ -60,6 +60,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     HttpClientModule,
     NgbModule,
     AppRoutingModule,
+    BsDatepickerModule.forRoot(),
     RouterModule.forRoot(
       [
 
@@ -106,7 +107,10 @@ import { PopUpComponent } from './pop-up/pop-up.component';
           path: 'login',
           component: LoginComponent
         },
-       
+        {
+          path: 'kamers',
+          component: RoomsComponent
+        },
        
         // otherwise redirect to home
         { path: '**', redirectTo: '' }

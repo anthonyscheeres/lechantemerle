@@ -4,8 +4,8 @@
 <input type="text"
            placeholder= {{arrival}}
            class="form-control"
-           [datesDisabled]="isDisabled"
-           bsDatepicker (dateSelect)="onDateSelect($event)" id="arrival"/>
+           [datesDisabled]="isDisabledFrom"
+           (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
 
 
 
@@ -13,6 +13,6 @@
 <input type="text"
            placeholder={{departure}}
            class="form-control"
-           [datesDisabled]="isDisabled"
-           bsDatepicker (dateSelect)="onDateSelect2($event)" id="departure"/>
+           [datesDisabled]="isDisabledTill"
+           (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
 
