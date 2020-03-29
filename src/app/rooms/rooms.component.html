@@ -1,54 +1,60 @@
 
-<div class="container container-fluid">
-  <h2>Reserveer!</h2>
-  <hr>
-  <div class="table-responsive table-striped">
-    <table class="table">
-      <thead>
-      <th class="col-4" scope="col">Image</th>
-      <th class="col-4" scope="col">Name</th>
+  <div class="container container-fluid">
+    <h2>Reserveer!</h2>
 
-      </thead>
-      <tbody>
-
-        <tr class="row-12" *ngFor="let value of reservationDataFromServer"
-            [ngStyle]="{backgroundColor: selected == value ? '#F2F2F2': 'transparent'}">
-
-          <div *ngIf="showInputFields ==false">
-
-            <td class="col-md-2">
-              <img class="rounded-circle" (dblclick)="click(value)" src="{{value.img}}" />
-            </td>
-            <td class="col-md-2" (dblclick)="click(value)">
-              {{ value.name }}
-            </td>
-          </div>
-
-          <div *ngIf="showInputFields">
-            
-            <td class="col-md-2">
-              <input class="form-group" type="text" placeholder={{value.amount_of_beds}} id="amount_of_beds">
-            </td>
-
-            <td class="col-md-2">
-              <img class="rounded-circle" (dblclick)="click(value)" src="{{value.img}}" />
-            </td>
-
-            <td class="col-md-2">
-              <input type="file" (change)="fileChange($event, value)" placeholder="Open" accept=".jpg, .png, .gif, .webp, .svg, .ico, .cur, .bmp, .jpeg, .jfif, .pjpeg, .pjp">
-
-            </td>
-            <td class="col-md-2"><button type="button" class="btn btn-success" (click)="openSubmit(value, $event)">Update room</button></td>
-            >
-            <td class="col-md-2"><button type="button" class="btn btn-danger" (click)="open(value)">Remove room</button></td>
-          </div>
+    <button *ngIf="showInputFields" type="button" class="btn btn-success btn-number" (click)="clickPopUp()">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>
 
 
-        </tr>
-      </tbody>
-    </table>
+    <hr>
+    <div class="table-responsive table-striped">
+      <table class="table">
+        <thead>
+        <th class="col-4" scope="col">Image</th>
+        <th class="col-4" scope="col">Name</th>
+
+        </thead>
+        <tbody>
+
+          <tr class="row-12" *ngFor="let value of reservationDataFromServer"
+              [ngStyle]="{backgroundColor: selected == value ? '#F2F2F2': 'transparent'}">
+
+            <div *ngIf="showInputFields ==false">
+
+              <td class="col-md-2">
+                <img class="rounded-circle" (dblclick)="click(value)" src="{{value.img}}" />
+              </td>
+              <td class="col-md-2" (dblclick)="click(value)">
+                {{ value.name }}
+              </td>
+            </div>
+
+            <div *ngIf="showInputFields">
+
+              <td class="col-md-2">
+                <input class="form-group" type="text" placeholder={{value.amount_of_beds}} id="amount_of_beds">
+              </td>
+
+              <td class="col-md-2">
+                <img class="rounded-circle" (dblclick)="click(value)" src="{{value.img}}" />
+              </td>
+
+              <td class="col-md-2">
+                <input type="file" (change)="fileChange($event, value)" placeholder="Open" accept=".jpg, .png, .gif, .webp, .svg, .ico, .cur, .bmp, .jpeg, .jfif, .pjpeg, .pjp">
+
+              </td>
+              <td class="col-md-2"><button type="button" class="btn btn-success" (click)="openSubmit(value, $event)">Update room</button></td>
+              >
+              <td class="col-md-2"><button type="button" class="btn btn-danger" (click)="open(value)">Remove room</button></td>
+            </div>
+
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
 <app-reservation></app-reservation>
 

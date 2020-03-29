@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { fetchJsonPost } from '../services/http';
 import { ProtocolR } from '../models/Protocol';
+import { AddPendingReservationComponent } from '../add-pending-reservation/add-pending-reservation.component';
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
@@ -108,7 +109,7 @@ export class RoomsComponent implements OnInit {
     var target = event.target
 
 
-    var house = target.querySelector('amount_of_beds').value
+    var house = target.querySelector('roomno').value
    
     var data = JSON.stringify({ "amountOfBeds": house, "id": value.name })
     var host = ServerModel.host;
@@ -139,7 +140,10 @@ export class RoomsComponent implements OnInit {
 
     return fetchJsonPost(url, json, ProtocolR.POST);
   }
-
+  clickPopUp() {
+    const modalRef = this.modalService.open(AddPendingReservationComponent, { windowClass: "myCustomModalClass" });
+    
+  }
 
 }
 

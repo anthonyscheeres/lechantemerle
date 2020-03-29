@@ -28,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddPendingReservationComponent } from './add-pending-reservation/add-pending-reservation.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReservationComponent,
     RoomsComponent,
     PopUpComponent,
+    AddPendingReservationComponent,
 
    
 

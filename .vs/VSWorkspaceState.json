@@ -3,14 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\contact",
-    "\\src\\app\\pop-up",
-    "\\src\\app\\reg-form",
-    "\\src\\app\\reservation",
-    "\\src\\app\\rooms",
-    "\\src\\app\\services",
-    "\\src\\css"
+    "\\src\\app\\navbar"
   ],
-  "SelectedNode": "\\src\\app\\rooms\\rooms.component.ts",
+  "SelectedNode": "\\src\\app\\navbar\\navbar.component.html",
   "PreviewInSolutionExplorer": false
 }
