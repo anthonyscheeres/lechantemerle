@@ -1,0 +1,51 @@
+.selected {
+  background-color: red;
+}
+
+.table-fixed thead {
+  width: 100%;
+}
+
+.myCustomModalClass .modal-dialog {
+  max-width: 70%;
+  max-height: 70%;
+}
+
+img {
+  width: 10ex;
+  height: 10ex;
+}
+
+
+.table-fixed tbody {
+  height: 50vh;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+
+.table-fixed th {
+  display: inline-block;
+}
+
+.table-fixed tbody td, .table-fixed thead > tr > th {
+  float: left;
+  border-bottom-width: 0;
+}
+
+.table-fixed table {
+  border-collapse: collapse;
+}
+
+.table-fixed thead {
+  background-color: #024D78;
+  color: white;
+}
+
+button {
+  background-color: #024D78;
+  color: white;
+}

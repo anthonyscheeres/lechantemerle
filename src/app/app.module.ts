@@ -24,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ReservationComponent } from './reservation/reservation.component';
 import { RoomsComponent } from './rooms/rooms.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 
 
@@ -50,13 +51,14 @@ import { RoomsComponent } from './rooms/rooms.component';
     RegFormComponent,
     ReservationComponent,
     RoomsComponent,
-
+    PopUpComponent
    
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgbModule,
     AppRoutingModule,
     RouterModule.forRoot(
       [
@@ -114,6 +116,7 @@ import { RoomsComponent } from './rooms/rooms.component';
   providers: [{
     provide: LocationStrategy, useClass: HashLocationStrategy
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PopUpComponent]
 })
 export class AppModule { }

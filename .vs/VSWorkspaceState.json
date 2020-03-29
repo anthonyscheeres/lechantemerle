@@ -3,10 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\reg-form",
-    "\\src\\app\\register",
+    "\\src\\app\\models",
+    "\\src\\app\\pop-up",
+    "\\src\\app\\reservation",
+    "\\src\\app\\rooms",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\reg-form\\reg-form.component.html",
+  "SelectedNode": "\\src\\app\\reservation\\reservation.component.ts",
   "PreviewInSolutionExplorer": false
 }
