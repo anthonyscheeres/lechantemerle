@@ -17,14 +17,18 @@ import { AddPendingReservationComponent } from '../add-pending-reservation/add-p
 export class RoomsComponent implements OnInit {
   reservationDataFromServer
   selected: any = null;
-  showInputFields
+  showInputFields = false
 
 
   constructor(private http: HttpClient, private _router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.doStuff()
+
     this.showAvailableDates()
+    try {
+      this.doStuff()
+    }
+    catch (Error) {}
   }
 
 
@@ -49,7 +53,7 @@ export class RoomsComponent implements OnInit {
     var host = ServerModel.host;
     var port = ServerModel.port;
     //var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Reservation/getPendingReservation";
+    var url = "http://" + host + ":" + port + "/api/Room/listAvailableRooms";
     return url;
   }
 

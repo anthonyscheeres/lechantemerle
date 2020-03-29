@@ -3,6 +3,8 @@ import { ServerModel } from '../models/ServerModel';
 import { DataModel } from '../models/DataModel';
 import { ProtocolR } from '../models/Protocol';
 import { fetchJsonPost } from '../services/http';
+import { HttpClient } from '@angular/common/http';
+import { ReservationModel } from '../models/ReservationModel';
 
 @Component({
   selector: 'app-add-pending-reservation',
@@ -12,8 +14,8 @@ import { fetchJsonPost } from '../services/http';
 export class AddPendingReservationComponent implements OnInit {
   current = new Date();
 
-  arrival: string = "arrival"
-  departure: string = "departure"
+  arrival: string = "Aankomst"
+  departure: string = "Vertrek"
 
   isDisabledFrom = [];
   isDisabledTill = [];
@@ -22,19 +24,46 @@ export class AddPendingReservationComponent implements OnInit {
   reservationDataFromServer
   millisecondPerDay = 24 * 60 * 60 * 1000;
   disabledDates = [];
+  selected = new ReservationModel();
 
-  constructor() { }
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.showAvailableDates()
   }
+
+
+  showAvailableDates() {
+    this.http.get<ReservationModel[]>(
+      this.ConstructGetAvailableReservationUrl())
+      .subscribe(
+        responseData => {
+          this.reservationDataFromServer = responseData;
+          console.log(responseData)
+
+        }
+      );
+  }
+
+
+  ConstructGetAvailableReservationUrl() {
+    var host = ServerModel.host;
+    var port = ServerModel.port;
+    //var token = JSON.parse(DataModel.account)[0].token.toString();
+    var url = "http://" + host + ":" + port + "/api/Room/listAvailableRooms";
+    return url;
+  }
+
+
   openSubmit(event) {
     event.preventDefault()
 
     var target = event.target
 
 
-    var roomno = target.querySelector('roomno').value
-    var price = target.querySelector('price').value
+    var roomno = this.selected
+    var price = target.querySelector('#price').value
     	
 
 

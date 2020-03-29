@@ -1,39 +1,52 @@
-<form class="login100-form validate-form" (submit)="openSubmit($event)">
-  <div class="form-group">
-    <input class="form-control" type="text" placeholder="Kamer nummer" id="roomno">
+<div class="column small-12 large-2">
+
+    <select [(ngModel)]="selected">
+      <option *ngFor="let title of reservationDataFromServer"
+              [value]="title.id"
+              [attr.selected]="selected.id==title.id ? true : null">
+        {{title.id}}
+      </option>
+    </select>
+    <div class="inline-inputs">
+
+      <!-- 2. datepicker in the popup -->
+      <input type="text"
+             placeholder={{arrival}}
+             class="input-mini dates"
+             [datesDisabled]="isDisabledFrom"
+             (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
+
+
+      <div class="input-group date" data-provide="datepicker">
+        <!-- 2. datepicker in the popup -->
+        <input type="text"
+               placeholder={{departure}}
+               class="input-mini dates"
+               [datesDisabled]=" isDisabledTill"
+               (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
+
+
+      </div>
+    </div>
+
+    <form (submit)="openSubmit($event)">
+
+
+
+
+
+
+      <div class="form-group">
+        <input type="text" class="form-control" id="price" placeholder="Prijs">
+      </div>
+
+
+
+      <input class="btn btn-lg btn-outline-primary" id='loginButton' type="submit" value="Opslaan">
+
+    </form>
+
+
+
+
   </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" id="password" placeholder="Prijs">
-  </div>
-
-
-
-  <input class="btn btn-lg btn-outline-primary" id='loginButton' type="submit" value="Login">
-
-</form>
-
-
-<div class="inline-inputs">
-
-  <!-- 2. datepicker in the popup -->
-  <input type="text"
-         placeholder={{arrival}}
-         class="input-mini dates"
-         [datesDisabled]="isDisabledFrom"
-         (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
-
-
-  <div class="input-group date" data-provide="datepicker">
-    <!-- 2. datepicker in the popup -->
-    <input type="text"
-           placeholder={{departure}}
-           class="input-mini dates"
-           [datesDisabled]=" isDisabledTill"
-           (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
-
-
-  </div>
-  </div>
-
-
