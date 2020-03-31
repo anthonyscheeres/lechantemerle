@@ -18,7 +18,7 @@ export class RoomsComponent implements OnInit {
   reservationDataFromServer
   selected: any = null;
   showInputFields = false
-
+  ms = 4000
 
   constructor(private http: HttpClient, private _router: Router, private modalService: NgbModal) { }
 
@@ -32,6 +32,8 @@ export class RoomsComponent implements OnInit {
   }
 
 
+
+
   showAvailableDates() {
     this.http.get<ReservationModel[]>(
       this.ConstructGetAvailableReservationUrl())
@@ -42,6 +44,12 @@ export class RoomsComponent implements OnInit {
         }
       );
   }
+
+ sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 
   click(value) {
     const modalRef = this.modalService.open(PopUpComponent, { windowClass: "myCustomModalClass" });
@@ -58,6 +66,25 @@ export class RoomsComponent implements OnInit {
   }
 
 
+  ConstructAddRoomUrl() {
+    var host = ServerModel.host;
+    var port = ServerModel.port;
+    var token = JSON.parse(DataModel.account)[0].token.toString();
+    var url = "http://" + host + ":" + port + "/api/Room/addRoom?token =" + token
+    return url;
+    }
+
+  addRoom() {
+
+    var data = JSON.stringify({ "amountOfBeds": 0})
+
+    var url = this.ConstructAddRoomUrl() 
+
+
+    return fetchJsonPost(url, data, ProtocolR.PUT);
+  }
+
+
   fileChange(event, product: ReservationModel) {
     var target = event.target
     let fileList: FileList = target.files;
@@ -65,7 +92,7 @@ export class RoomsComponent implements OnInit {
     if (fileList.length > 0) {
       let file: File = fileList[0];
       this.getBase64(file, product)
-
+      this.sleep(this.ms)
       this.showAvailableDates()
     }
 
@@ -100,13 +127,28 @@ export class RoomsComponent implements OnInit {
   }
 
   open(value) {
-    this.deleteReservationById(value);
-
+    this.deleteRoom(value);
+    this.sleep(this.ms)
     this.showAvailableDates()
   }
-  deleteReservationById(value) {
 
+  deleteRoom(value) {
+    var data = JSON.stringify({  "id": value.id })
+
+    var url = this.constructDeleteRoom()
+
+    return fetchJsonPost(url, data, ProtocolR.PUT);
   }
+
+  constructDeleteRoom() {
+    var host = ServerModel.host;
+    var port = ServerModel.port;
+    var token = JSON.parse(DataModel.account)[0].token.toString();
+    var url = "http://" + host + ":" + port + "api/Room/deleteRoom?token=" + token
+    return url;
+  }
+
+
   openSubmit(value, event) {
     event.preventDefault()
 
@@ -114,16 +156,27 @@ export class RoomsComponent implements OnInit {
 
 
     var house = target.querySelector('roomno').value
-   
-    var data = JSON.stringify({ "amountOfBeds": house, "id": value.name })
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Room/updatAmountOfBedsRoom?token="+token;
+    var data = JSON.stringify({ "amountOfBeds": house, "id": value.id })
 
+    var url = this.ConstuctUpdateAmountOfBeds() 
+
+    fetchJsonPost(url, data, ProtocolR.PUT);
+
+    this.sleep(this.ms)
+    this.showAvailableDates()
 
 
   }
+
+  ConstuctUpdateAmountOfBeds() {
+  
+    var host = ServerModel.host;
+    var port = ServerModel.port;
+    var token = JSON.parse(DataModel.account)[0].token.toString();
+    var url = "http://" + host + ":" + port + "/api/Room/updatAmountOfBedsRoom?token=" + token;
+    return url;
+  }
+
 
   static changeImg(img, id) {
     var host = ServerModel.host;

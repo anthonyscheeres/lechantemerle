@@ -4,6 +4,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReservationModel } from '../models/ReservationModel';
 import { ServerModel } from '../models/ServerModel';
 import { HttpClient } from '@angular/common/http';
+import { DataModel } from '../models/DataModel';
 
 @Component({
   selector: 'app-pop-up',
@@ -46,6 +47,15 @@ export class PopUpComponent implements OnInit {
     this.GetDisabledDates(constructisEnabledFrom2)
   }
 
+
+  ConstuctDeleteReservationById(id) {
+    var data = JSON.stringify({ "id": id })
+    var host = ServerModel.host;
+    var port = ServerModel.port;
+    var token = JSON.parse(DataModel.account)[0].token.toString();
+    var url = "http://" + host + ":" + port + "api/Reservation/deleteReservation?token=" + token;
+    return url
+  }
 
 
 

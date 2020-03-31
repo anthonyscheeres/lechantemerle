@@ -2,8 +2,12 @@
   <div class="container container-fluid">
     <h2>Reserveer!</h2>
 
+    <button *ngIf="showInputFields" type="button" class="btn btn-success btn-number" (click)="addRoom()">
+      <span class="glyphicon glyphicon-plus"> Kamer</span>
+    </button>
+
     <button *ngIf="showInputFields" type="button" class="btn btn-success btn-number" (click)="clickPopUp()">
-      <span class="glyphicon glyphicon-plus"></span>
+      <span class="glyphicon glyphicon-plus"> Reservering</span>
     </button>
 
 

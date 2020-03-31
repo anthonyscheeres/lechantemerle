@@ -81,10 +81,6 @@ export class AddPendingReservationComponent implements OnInit {
 
   }
 
-  clickPopUp() {
-
-  }
-
 
   onDateSelect2(event) {
     event.preventDefault()

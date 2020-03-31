@@ -70,9 +70,20 @@ export class ContactComponent implements OnInit {
     var telephone = target.querySelector('#telephone').value
     var url = this.ConstructPostContactInfoUrl();
     var data = JSON.stringify({ "house_nickname": house, "place": place, "address": address, "postal_code": postalCode, "family_name": familyName, "telephone": telephone, "mail": mail })
-    console.log("hi")
-
+ 
     fetchJsonPost(url, data.toString(), ProtocolR.PUT);
+
+    this.sleep(3000)
+
+
+    this.showcontactInfo()
+
+
+  }
+
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 

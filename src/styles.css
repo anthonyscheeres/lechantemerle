@@ -18,7 +18,15 @@ body, html {
 .myCustomModalClass .modal-dialog {
   max-width: 1000px;
 }
+.modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
 
+  .modal-backdrop.fade.in {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+  }
 h1 {
   text-align: center;
   margin-bottom: 2ex;
