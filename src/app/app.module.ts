@@ -30,6 +30,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPendingReservationComponent } from './add-pending-reservation/add-pending-reservation.component';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { FormsModule } from '@angular/forms';
     RoomsComponent,
     PopUpComponent,
     AddPendingReservationComponent,
+    ProfileComponent,
 
    
 
@@ -75,6 +77,11 @@ import { FormsModule } from '@angular/forms';
           path: 'register',
           component: RegisterComponent
         },
+        {
+          path: 'profile',
+          component: ProfileComponent
+        },
+
         {
           path: 'maps',
           component: GooglemapsComponent

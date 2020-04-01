@@ -2,13 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\add-pending-reservation",
-    "\\src\\app\\contact",
-    "\\src\\app\\pop-up",
-    "\\src\\app\\rooms",
-    "\\src\\app\\services"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\contact\\contact.component.ts",
+  "SelectedNode": "\\src\\app\\reservation",
   "PreviewInSolutionExplorer": false
 }
