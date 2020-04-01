@@ -2,8 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\contact",
+    "\\src\\app\\profile",
+    "\\src\\app\\reservation",
+    "\\src\\app\\rooms",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\reservation",
+  "SelectedNode": "\\src\\app\\services\\http.ts",
   "PreviewInSolutionExplorer": false
 }
