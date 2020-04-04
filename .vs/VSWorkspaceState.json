@@ -4,11 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\contact",
+    "\\src\\app\\navbar",
     "\\src\\app\\profile",
-    "\\src\\app\\reservation",
-    "\\src\\app\\rooms",
-    "\\src\\app\\services"
+    "\\src\\app\\rooms"
   ],
-  "SelectedNode": "\\src\\app\\services\\http.ts",
+  "SelectedNode": "\\src\\app\\contact\\contact.component.html",
   "PreviewInSolutionExplorer": false
 }

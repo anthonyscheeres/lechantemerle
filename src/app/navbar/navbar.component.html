@@ -20,8 +20,8 @@
         <a routerLink="/maps">Maps</a>
 
         <a routerLink="/kamers">Reserveer</a>
-        <a *ngIf="isLoggedIn"routerLink="/profile">Profile</a>
-        <a class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
+        <a *ngIf="isLoggedIn"routerLink="/profile">Profiel</a>
+        <a *ngIf="isLoggedIn==false"class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
         <a class="glyphicon glyphicon-user" routerLink="/register"> Register</a>
         <a style="float:right" routerLink="/contact">Contact</a>
         <a *ngIf="isLoggedIn" (click)="logOut()"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
