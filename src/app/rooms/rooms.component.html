@@ -25,10 +25,10 @@
               [ngStyle]="{backgroundColor: selected == value ? '#F2F2F2': 'transparent'}">
 
             <td class="col-md-2">
-              <img class="rounded-circle" (dblclick)="click(value)" src="{{value.img}}" />
+              <img (click)="click(value)" src="{{value.img}}" />
             </td>
 
-            <td class="col-md-2" (dblclick)="click(value)">
+            <td class="col-md-2" (click)="click(value)">
               {{ value.id }}
             </td>
 

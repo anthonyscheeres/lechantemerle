@@ -9,13 +9,14 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
 import { fetchJsonPost } from '../services/http';
 import { ProtocolR } from '../models/Protocol';
 import { AddPendingReservationComponent } from '../add-pending-reservation/add-pending-reservation.component';
+import { ConstructAddRoomUrl, ConstuctUpdateAmountOfBeds, ConstructGetAvailableReservationUrl, constructDeleteRoom } from '../services/rooms';
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
-  reservationDataFromServer
+  reservationDataFromServer = DataModel.rooms.RoomReservationData
   selected: any = null;
   showInputFields = false
   ms = 4000
@@ -36,7 +37,7 @@ export class RoomsComponent implements OnInit {
 
   showAvailableDates() {
     this.http.get<ReservationModel[]>(
-      this.ConstructGetAvailableReservationUrl())
+      ConstructGetAvailableReservationUrl())
       .subscribe(
         responseData => {
           this.reservationDataFromServer = responseData;
@@ -57,35 +58,36 @@ export class RoomsComponent implements OnInit {
   }
 
 
-  ConstructGetAvailableReservationUrl() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    //var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Room/listAvailableRooms";
-    return url;
-  }
-
-
-  ConstructAddRoomUrl() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Room/addRoom?token =" + token
-    return url;
-    }
 
   addRoom() {
+    this.addRoom2();
 
-    var data = JSON.stringify({ "amountOfBeds": 0})
+    this.sleep(this.ms)
+    this.showAvailableDates()
 
-    var url = this.ConstructAddRoomUrl() 
+ 
+  }
+
+  addRoom2() {
+    var data = JSON.stringify({ "amountOfBeds": 0 })
+
+    var url = ConstructAddRoomUrl()
 
 
-    return fetchJsonPost(url, data, ProtocolR.PUT);
+    return fetchJsonPost(url, data, ProtocolR.POST);
+  }
+
+  fileChange(event, product: ReservationModel) {
+    this.fileChange2(event, product);
+
+    this.sleep(this.ms)
+    this.showAvailableDates()
+
   }
 
 
-  fileChange(event, product: ReservationModel) {
+
+  fileChange2(event, product: ReservationModel) {
     var target = event.target
     let fileList: FileList = target.files;
     console.log(fileList)
@@ -135,18 +137,12 @@ export class RoomsComponent implements OnInit {
   deleteRoom(value) {
     var data = JSON.stringify({  "id": value.id })
 
-    var url = this.constructDeleteRoom()
+    var url = constructDeleteRoom()
 
-    return fetchJsonPost(url, data, ProtocolR.PUT);
+    return fetchJsonPost(url, data, ProtocolR.DELETE);
   }
 
-  constructDeleteRoom() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "api/Room/deleteRoom?token=" + token
-    return url;
-  }
+
 
 
   openSubmit(value, event) {
@@ -158,7 +154,7 @@ export class RoomsComponent implements OnInit {
     var house = target.querySelector('roomno').value
     var data = JSON.stringify({ "amountOfBeds": house, "id": value.id })
 
-    var url = this.ConstuctUpdateAmountOfBeds() 
+    var url = ConstuctUpdateAmountOfBeds() 
 
     fetchJsonPost(url, data, ProtocolR.PUT);
 
@@ -168,14 +164,6 @@ export class RoomsComponent implements OnInit {
 
   }
 
-  ConstuctUpdateAmountOfBeds() {
-  
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Room/updatAmountOfBedsRoom?token=" + token;
-    return url;
-  }
 
 
   static changeImg(img, id) {
