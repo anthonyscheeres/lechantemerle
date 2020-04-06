@@ -53,8 +53,10 @@ export class RoomsComponent implements OnInit {
 
 
   click(value) {
+   // console.log(value)
     const modalRef = this.modalService.open(PopUpComponent, { windowClass: "myCustomModalClass" });
     modalRef.componentInstance.product = value;
+    
   }
 
 

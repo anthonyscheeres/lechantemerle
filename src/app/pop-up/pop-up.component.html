@@ -4,7 +4,7 @@
     <div>
       <h1 class="text-center">{{product.id}}</h1>
       <hr>
-     
+
       <div class="row">
         <div class="col-12">
 
@@ -14,34 +14,45 @@
       <hr>
       <div class="inline-inputs">
 
-        <div class="col-4 mx-auto">
 
+        <div class="row">
 
-          <!-- 2. datepicker in the popup -->
-          <input type="text"
-                 placeholder={{arrival}}
-                 class="input-mini dates"
-                 [datesDisabled]="isDisabledFrom"
-                 (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
+          <div class="col-3 mx-auto">
+            <div class="card card-body mb-2">
 
-        </div>
-        <div class="col-4 mx-auto">
+              <!-- 2. datepicker in the popup -->
+              <input type="text"
+                     placeholder={{arrival}}
+                     class="input-mini dates"
+                     [datesDisabled]="isDisabledFrom"
+                     (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
 
-          <div class="input-group date" data-provide="datepicker">
-            <!-- 2. datepicker in the popup -->
-            <input type="text"
-                   placeholder={{departure}}
-                   class="input-mini dates"
-                   [datesDisabled]=" isDisabledTill"
-                   (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
+            </div>
+          </div>
+
+            <div class="col-3 mx-auto">
+              <div class="card card-body mb-2">
+
+                <div class="input-group date" data-provide="datepicker">
+                  <!-- 2. datepicker in the popup -->
+                  <input type="text"
+                         placeholder={{departure}}
+                         class="input-mini dates"
+                         [datesDisabled]=" isDisabledTill"
+                         (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
+
+                </div>
+              </div>
+            </div>
+
 
           </div>
+
+        <hr>
+
+          <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer(product, $event)">Reserveer</button>
+          <p>{{this1}}</p>
         </div>
 
-
-
       </div>
-      <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer(product, $event)">Reserveer</button>
-      <p>{{this1}}</p>
     </div>
-  </div>

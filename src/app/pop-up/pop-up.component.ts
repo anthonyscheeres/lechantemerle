@@ -6,6 +6,7 @@ import { ServerModel } from '../models/ServerModel';
 import { HttpClient } from '@angular/common/http';
 import { DataModel } from '../models/DataModel';
 import { Router } from '@angular/router';
+import { reserveerDezeKamer } from '../services/rooms';
 
 @Component({
   selector: 'app-pop-up',
@@ -52,7 +53,7 @@ export class PopUpComponent implements OnInit {
 
 
   ConstuctDeleteReservationById(id) {
-    var data = JSON.stringify({ "id": id })
+  
     var host = ServerModel.host;
     var port = ServerModel.port;
     var token = JSON.parse(DataModel.account)[0].token.toString();
@@ -64,7 +65,7 @@ export class PopUpComponent implements OnInit {
 
   ngOnInit() {
 
-
+   this.intialize()
 
   }
 
@@ -186,7 +187,6 @@ export class PopUpComponent implements OnInit {
   constructor(private http: HttpClient, private modalService: NgbModal, private _router: Router) {
 
 
-    this.intialize()
 
   }
 
@@ -197,7 +197,7 @@ export class PopUpComponent implements OnInit {
     var arrival = this.arrival 
    var depature =  this.departure
 
-    await this.reserveerDezeKamer(arrival, depature, product).then(response => {
+    await reserveerDezeKamer(arrival, depature, product).then(response => {
        console.log(response);
        if (response == '"success"') {
          this._router.navigate(['/reserveer']);
@@ -211,28 +211,6 @@ export class PopUpComponent implements OnInit {
 
   }
 
-  async reserveerDezeKamer(arrival, depature, product) {
-    var url = this.constructClaimResrvation();
-    var data = JSON.stringify({
-      "time_from": arrival,
-      "time_till": depature,
-      "roomno": product.id
-    });
-
-
-    // @ts-ignore
-    return fetchJsonPost(urlToServer, data.toString(), ProtocolR.PUT)
-  }
-
-
-
-  constructClaimResrvation() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Reservation/claimReservations?token=" + token
-    return url
-  }
 
 
   sleep(ms) {

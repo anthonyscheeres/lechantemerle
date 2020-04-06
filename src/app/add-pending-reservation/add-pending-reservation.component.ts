@@ -64,7 +64,7 @@ export class AddPendingReservationComponent implements OnInit {
 
     var roomno = this.selected
     var price = target.querySelector('#price').value
-    	
+    var checkbox = target.querySelector('#checkbox').value
 
 
 	

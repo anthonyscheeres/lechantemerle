@@ -3,13 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\contact",
-    "\\src\\app\\foto",
-    "\\src\\app\\models",
-    "\\src\\app\\rooms",
-    "\\src\\app\\services",
+    "\\src\\app\\add-pending-reservation",
+    "\\src\\app\\navbar",
+    "\\src\\app\\pop-up",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\services\\rooms.ts",
+  "SelectedNode": "\\src\\app\\navbar\\navbar.component.html",
   "PreviewInSolutionExplorer": false
 }
