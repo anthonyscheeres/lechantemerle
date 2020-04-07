@@ -27,6 +27,14 @@ export function constructDeleteRoom() {
   return url;
 }
 
+export function constructUrl() {
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+  var token = JSON.parse(DataModel.account)[0].token.toString();
+  var url = "http://" + host + ":" + port + "/api/Reservation/getUsersReservations?token=" + token
+  return url;
+}
+
 
 export function ConstuctUpdateAmountOfBeds() {
 

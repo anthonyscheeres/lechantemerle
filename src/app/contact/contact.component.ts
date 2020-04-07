@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerModel } from '../models/ServerModel';
 import { ContactInfoModel } from '../models/ContactInfoModel';
 import { HttpClient} from '@angular/common/http';
 import { interval } from 'rxjs';
 import { DataModel } from '../models/DataModel';
 import { fetchJsonPost } from '../services/http';
 import { ProtocolR } from '../models/Protocol';
+import { ConstructGetContactInfoUrl, ConstructPostContactInfoUrl } from '../services/contact';
 
 @Component({
   selector: 'app-contact',
@@ -13,27 +13,29 @@ import { ProtocolR } from '../models/Protocol';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  contactInfoDataFromServer: any;
+  contactInfoDataFromServer: any = DataModel.contact;
   showInputFields: boolean = false;
     mySubscription: any;
 
   constructor(private http: HttpClient) {
-    this.showcontactInfo();
 
-      this.doStuff();
  
   }
 
 
   ngOnInit() {
+    this.showcontactInfo();
+
+    this.doStuff();
   }
 
   showcontactInfo() {
     this.http.get<ContactInfoModel[]>(
-      this.ConstructGetContactInfoUrl() )
+      ConstructGetContactInfoUrl() )
       .subscribe(
         responseData => {
           this.contactInfoDataFromServer = responseData;
+          DataModel.contact = responseData;
         }
       );
   }
@@ -68,7 +70,7 @@ export class ContactComponent implements OnInit {
     var familyName = target.querySelector('#familyName').value
     var mail = target.querySelector('#mail').value
     var telephone = target.querySelector('#telephone').value
-    var url = this.ConstructPostContactInfoUrl();
+    var url = ConstructPostContactInfoUrl();
     var data = JSON.stringify({ "house_nickname": house, "place": place, "address": address, "postal_code": postalCode, "family_name": familyName, "telephone": telephone, "mail": mail })
  
     fetchJsonPost(url, data.toString(), ProtocolR.PUT);
@@ -87,22 +89,6 @@ export class ContactComponent implements OnInit {
   }
 
 
-  ConstructPostContactInfoUrl() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/ContactInfo/ChangeContactInfo?token="+token;
-    return url;
-  }
-
-
-
-  ConstructGetContactInfoUrl() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var url = "http://" + host + ":" + port + "/api/ContactInfo/getContactInfo";
-    return url;
-  }
 
 
 }

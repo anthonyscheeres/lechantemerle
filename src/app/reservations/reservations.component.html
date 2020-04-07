@@ -1,0 +1,61 @@
+
+<div class="container container-fluid">
+  <h2>Reserveringen!</h2>
+
+
+
+
+  <hr>
+  <div class="table-responsive table-striped">
+    <table class="table">
+      <thead>
+      <th class="col-4" scope="col">Aangevraagd op</th>
+      <th class="col-4" scope="col">Kamernummer</th>
+      <th class="col-4" scope="col">Aankomst</th>
+      <th class="col-4" scope="col">Vertrek</th>
+      <th class="col-4" scope="col">Prijs (Euro)</th>
+      <th class="col-4" scope="col">Geaccepteerd door eigenaar</th>
+      </thead>
+      <tbody>
+
+        <tr class="row-12" *ngFor="let value of reservationDataFromServer"
+            [ngStyle]="{backgroundColor: selected == value ? '#F2F2F2': 'transparent'}">
+
+          <td class="col-md-2">
+
+            {{value.created_at}}
+
+          </td>
+          <td class="col-md-2">
+            {{value.roomno}}
+          </td>
+          <td class="col-md-2">
+            {{value.time_from}}
+
+
+          </td>
+          <td class="col-md-2">
+            {{value.time_till}}
+
+
+          </td>
+          <td class="col-md-2">
+            {{value.price}}
+
+
+          </td>
+
+          <td class="col-md-2">
+            {{value.accepted_by_super_user}}
+
+
+          </td>
+
+
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -8,7 +8,7 @@
         <img class="logo" src="../assets/img/logo.png" alt="logo" />
       </a>
       <nav class="navbar">
-        <a class="glyphicon glyphicon-home"routerLink="/home"> Home</a>
+        <a class="glyphicon glyphicon-home" routerLink="/home"> Home</a>
         <a routerLink="/omschrijving">Omschrijving</a>
 
         <a routerLink="/indeling">Indeling</a>
@@ -20,9 +20,15 @@
         <a routerLink="/maps"> Maps</a>
 
         <a routerLink="/kamers">Reserveer</a>
-        <a *ngIf="isLoggedIn"routerLink="/profile">Profiel</a>
-        <a *ngIf="isLoggedIn==false"class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
-        <a *ngIf="isLoggedIn==false"class="glyphicon glyphicon-user" routerLink="/register"> Register</a>
+
+        
+
+
+        <a *ngIf="isReservationsEmty" routerLink="/reservations">Reserveringen</a>
+
+        <a *ngIf="isLoggedIn" routerLink="/profile">Profiel</a>
+        <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
+        <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-user" routerLink="/register"> Register</a>
         <a style="float:right" routerLink="/contact">Contact</a>
         <a *ngIf="isLoggedIn" (click)="logOut()"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
       </nav>

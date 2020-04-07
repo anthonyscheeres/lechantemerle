@@ -31,6 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPendingReservationComponent } from './add-pending-reservation/add-pending-reservation.component';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+import { ContactSubComponent } from './contact-sub/contact-sub.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,9 @@ import { ProfileComponent } from './profile/profile.component';
     PopUpComponent,
     AddPendingReservationComponent,
     ProfileComponent,
+    ReservationsComponent,
+    ContactSubComponent,
+
 
    
 
@@ -71,8 +76,11 @@ import { ProfileComponent } from './profile/profile.component';
     RouterModule.forRoot(
       [
 
-        
-
+       
+             {
+          path: 'reservations',
+          component: ReservationsComponent
+        },
           {
           path: 'register',
           component: RegisterComponent

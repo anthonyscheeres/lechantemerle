@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataModel } from '../models/DataModel';
 import { interval } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { constructUrl } from '../services/rooms';
+import { ReservationModel } from '../models/ReservationModel';
 
 @Component({
   selector: 'app-navbar',
@@ -10,23 +13,59 @@ import { interval } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
   mySubscription: any;
+  mySubscription2: any;
   isLoggedIn: boolean = false;
+  reservationDataFromServer
+  isReservationsEmty = false
 
-  constructor(private _router: Router) {
+
+  constructor(private http: HttpClient, private _router: Router) {
     this.update();
-
+    this.getUserReservations()
+    this.update2();
     
   }
 
+
+
+  getUserReservations() {
+    this.http.get<ReservationModel[]>(
+      constructUrl())
+      .subscribe(
+        responseData => {
+          this.reservationDataFromServer = responseData;
+
+          //console.log(responseData.length)
+
+          if (responseData.length ==0) {
+            this.isReservationsEmty = true;
+
+           
+          }
+        }
+      );
+  }
+
+  update2() {
+    
+    var time = 60000 //1 minute
+      this.mySubscription2 = interval(time).subscribe((x => {
+        this.getUserReservations()
+      })
+
+      );
+    }
+  
+
   update() {
-    {
+    
             var time = 500
       this.mySubscription = interval(time).subscribe((x => {
         this.doStuff();
       })
      
       );
-    }}
+    }
 
 
   doStuff() {

@@ -3,27 +3,6 @@
   <div class="container bg-faded py-3">
 
     <div class="row">
-      <div class="col-3 mx-auto">
-        <div class="card card-body mb-2">
-
-          <p>
-            Kamer nummer :
-            <select [(ngModel)]="selected">
-              <option *ngFor="let title of reservationDataFromServer"
-                      [value]="title.id"
-                      [attr.selected]="selected.id==title.id ? true : null">
-                {{title.id}}
-              </option>
-            </select>
-
-          </p>
-
-        </div>
-      </div>
-
-    </div>
-    <hr>
-    <div class="row">
 
       <div class="col-3 mx-auto">
         <div class="card card-body mb-2">
@@ -58,6 +37,28 @@
 
     </div>
     <hr>
+
+    <div class="row">
+      <div class="col-3 mx-auto">
+        <div class="card card-body mb-2">
+
+          <p>
+            Kamer nummer :
+            <select [(ngModel)]="selected">
+              <option *ngFor="let title of reservationDataFromServer"
+                      [value]="title.id"
+                      [attr.selected]="selected.id==title.id ? true : null">
+                {{title.id}}
+              </option>
+            </select>
+
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
 
     <div class="col-3 mx-auto">
       <div class="card card-body mb-2">
