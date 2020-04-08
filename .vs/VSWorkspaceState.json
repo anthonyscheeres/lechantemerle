@@ -3,11 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\add-pending-reservation",
     "\\src\\app\\navbar",
-    "\\src\\app\\pop-up",
-    "\\src\\css"
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\add-pending-reservation\\add-pending-reservation.component.html",
+  "SelectedNode": "\\src\\app\\navbar\\navbar.component.ts",
   "PreviewInSolutionExplorer": false
 }
