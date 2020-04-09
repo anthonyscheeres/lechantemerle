@@ -1,12 +1,15 @@
-<article class="articlemiddle">
-  <div *ngFor="let value of reservationDataFromServer">
-    <p>Gebruiker: {{value.username}}</p>
-    <p>Email: {{value.email}}</p>
-    <p>Since: {{value.created_at}}</p>
-    <p>Eigenaar {{value.is_super_user}}</p>
-    <p>Email vertrouwen: {{value.is_email_verified}}</p>
-  </div>
 
-  <button type="button" class="btn btn-success" (click)="sendMail()">Verstuur configuratie mail</button>
+
+  <article class="articlemiddle">
+    <h2>Profiel</h2>
+    <div *ngFor="let value of reservationDataFromServer">
+      <p>Gebruiker: {{value.username}}</p>
+      <p>Email: {{value.email}}</p>
+      <p>Since: {{value.created_at}}</p>
+      <p>Eigenaar {{value.is_super_user}}</p>
+      <p>Email vertrouwen: {{value.is_email_verified}}</p>
+    </div>
+
+    <button type="button" class="btn btn-success" (click)="sendMail()">Verstuur configuratie mail</button>
 
   </article>

@@ -3,9 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\navbar",
+    "\\src\\app\\profile",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\navbar\\navbar.component.ts",
+  "SelectedNode": "\\src\\app\\profile\\profile.component.html",
   "PreviewInSolutionExplorer": false
 }
