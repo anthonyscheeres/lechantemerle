@@ -22,12 +22,13 @@
 
               <!-- 2. datepicker in the popup -->
               <input type="text"
-                     placeholder={{arrival}}
+                     placeholder="Aankomst"
+                     [(ngModel)]="arrival"
                      class="input-mini dates"
                      [datesDisabled]="isDisabledFrom"
                      [minDate]="min"
                      [maxDate]="max"
-                     (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
+                     id="arrival" bsDatepicker>
 
             </div>
           </div>
@@ -38,13 +39,13 @@
                 <div class="input-group date" data-provide="datepicker">
                   <!-- 2. datepicker in the popup -->
                   <input type="text"
-                         placeholder={{departure}}
-
+                         placeholder="Vertrek"
+                         [(ngModel)]="departure"
                          class="input-mini dates"
                              [minDate]="min"
                      [maxDate]="max"
                          [datesDisabled]=" isDisabledTill"
-                         (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
+                        id="departure" bsDatepicker>
 
                 </div>
               </div>

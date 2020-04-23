@@ -9,10 +9,12 @@
 
           <!-- 2. datepicker in the popup -->
           <input type="text"
-                 placeholder={{arrival}}
+                 placeholder="Aankomst"
+                   [(ngModel)]="arrival"
+               
                  class="input-mini dates"
                  [datesDisabled]="isDisabledFrom"
-                 (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
+                 id="arrival" bsDatepicker>
 
         </div>
 
@@ -26,10 +28,11 @@
 
           <!-- 2. datepicker in the popup -->
           <input type="text"
-                 placeholder={{departure}}
+                 placeholder="Vertrek"
+       [(ngModel)]="departure"
                  class="input-mini dates"
                  [datesDisabled]=" isDisabledTill"
-                 (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
+                 id="departure" bsDatepicker>
 
 
         </div>
@@ -62,7 +65,7 @@
 
     <div class="col-3 mx-auto">
       <div class="card card-body mb-2">
-        <p>Elke maand : <input type="checkbox" id="checkbox"></p>
+        <p>Elke maand :<input type="checkbox" [(ngModel)]="theCheckbox" data-md-icheck (change)="toggleVisibility($event)" /></p>
       </div>
     </div>
 

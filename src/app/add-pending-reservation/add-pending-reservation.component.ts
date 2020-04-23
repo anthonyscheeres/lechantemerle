@@ -13,9 +13,10 @@ import { ReservationModel } from '../models/ReservationModel';
 })
 export class AddPendingReservationComponent implements OnInit {
   current = new Date();
-
-  arrival: string = "Aankomst"
-  departure: string = "Vertrek"
+  theCheckbox = false;
+  marked =false
+  arrival 
+  departure 
 
   isDisabledFrom = [];
   isDisabledTill = [];
@@ -34,14 +35,14 @@ export class AddPendingReservationComponent implements OnInit {
   }
 
 
+
   showAvailableDates() {
     this.http.get<ReservationModel[]>(
       this.ConstructGetAvailableReservationUrl())
       .subscribe(
         responseData => {
           this.reservationDataFromServer = responseData;
-          console.log(responseData)
-
+       
         }
       );
   }
@@ -62,40 +63,35 @@ export class AddPendingReservationComponent implements OnInit {
     var target = event.target
 
 
-    var roomno = this.selected
-    var price = target.querySelector('#price').value
-    var checkbox = target.querySelector('#checkbox').value
+    var roomno: number;
+
+    var roomNumber = this.selected.toString()
+    console.log(roomNumber)
+    roomno = parseInt(roomNumber)
+    
+    var price: number;
+
+    price = parseInt(target.querySelector('#price').value)
+    
+    var arrival = this.arrival
+    var departure = this.departure
+ 
 
 
-	
-
-
-    var data = JSON.stringify({ "amountOfBeds": roomno, "id": price, "time_till": this.departure, "time_from": this.arrival })
+    var data = JSON.stringify({ "roomno": roomno, "price": price, "time_till": departure, "time_from":arrival, "everyMonth": this.marked })
     var host = ServerModel.host;
     var port = ServerModel.port;
     var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Room/updatAmountOfBedsRoom?token=" + token;
-
+    var url = "http://" + host + ":" + port + "/api/Reservation/addPendingReservation?token=" + token;
+   
 
     return fetchJsonPost(url, data, ProtocolR.PUT);
 
   }
 
-
-  onDateSelect2(event) {
-    event.preventDefault()
-    const target = event.target
-    const arrival = target.querySelector('#arrival').value
-    this.arrival = arrival
-
+  toggleVisibility(e) {
+    this.marked = e.target.checked;
   }
-  onDateSelect(event) {
-    event.preventDefault()
-    const target = event.target
-    const departure = target.querySelector('#departure').value
-    this.departure = departure
 
-
-  }
 
 }

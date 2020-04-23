@@ -18,11 +18,11 @@ export class PopUpComponent implements OnInit {
   @Input() product: ReservationModel;
   current = new Date();
   private ms = 5000
-  this1 = "Registreer hier!";
+  this1 = "Reserveer hier!";
   min = new Date();
   max = new Date(new Date().setMonth(new Date().getMonth()+3))
-  arrival: string = "arrival"
-  departure: string = "departure"
+  arrival
+  departure
 
   isDisabledFrom = [];
   isDisabledTill = [];
@@ -72,14 +72,35 @@ export class PopUpComponent implements OnInit {
   }
 
 
+  getEnabledDates(resrvations) {
+    var enabledDates = [];
+    if (resrvations == null) { enabledDates = [] }
+    else {
+      resrvations.foreach(r => {
+        enabledDates.push(r.time_from)
+      });
+    }
+    return enabledDates;
+  }
+
+  getEnabledDates2(resrvations) {
+    var enabledDates = [];
+    if (resrvations == null) { enabledDates = [] }
+    else {
+      resrvations.foreach(r => {
+        enabledDates.push(r.time_till)
+      });
+    }
+    return enabledDates;
+  }
+
   intialize() {
-
-    let enabledDates = []
-    this.GetDisabledDates(enabledDates)
-    this.GetDisabledDates2(enabledDates)
-
-
     this.showAvailableDates()
+    var resrvations = this.reservationDataFromServer
+    var enabledDates = this.getEnabledDates(resrvations)
+    this.GetDisabledDates(enabledDates)
+    var enabledDates = this.getEnabledDates2(resrvations)
+    this.GetDisabledDates2(enabledDates)
   }
 
 
@@ -87,8 +108,7 @@ export class PopUpComponent implements OnInit {
     var now = new Date();
     var startDate: Date = new Date(now.setFullYear(now.getFullYear() - 1));
     var endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2));//change as per your need
-    console.log(startDate);
-    console.log(endDate);
+
     this.isDisabledFrom = [];
     do {
       var found = false;
@@ -103,16 +123,15 @@ export class PopUpComponent implements OnInit {
       }
       startDate = new Date((startDate.getTime() + this.millisecondPerDay));
     } while (startDate <= endDate)
-    console.log("Calculated: " + this.isDisabledFrom.length);
-    //console.log("Calculated: "+this.disabledDates);
+ 
   }
 
   GetDisabledDates2(excludeDates: Array<Date>) {
     var now = new Date();
+
     var startDate: Date = new Date(now.setFullYear(now.getFullYear() - 1));
     var endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2));//change as per your need
-    console.log(startDate);
-    console.log(endDate);
+
     this.isDisabledTill = [];
     do {
       var found = false;
@@ -127,8 +146,7 @@ export class PopUpComponent implements OnInit {
       }
       startDate = new Date((startDate.getTime() + this.millisecondPerDay));
     } while (startDate <= endDate)
-    console.log("Calculated: " + this.isDisabledTill.length);
-    //console.log("Calculated: "+this.disabledDates);
+   
   }
 
 
@@ -153,27 +171,6 @@ export class PopUpComponent implements OnInit {
   }
 
 
-
-  onDateSelect2(event) {
-    event.preventDefault()
-    const target = event.target
-    const arrival = target.querySelector('#arrival').value
-    this.arrival = arrival
-
-  }
-  onDateSelect(event) {
-    event.preventDefault()
-    const target = event.target
-    const departure = target.querySelector('#departure').value
-    this.departure = departure
-
-
-  }
-
-
-  //api/Reservation/getPendingReservation
-
-
   showAvailableDates() {
     this.http.get<ReservationModel[]>(
       this.ConstructGetAvailableReservationUrl())
@@ -186,24 +183,19 @@ export class PopUpComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient, private modalService: NgbModal, private _router: Router) {
-
-
-
-  }
+  constructor(private http: HttpClient, private modalService: NgbModal, private _router: Router) {}
 
 
   async reserveer(event) {
-  //  console.log ("resereer")
-    event.preventDefault()
-    const target = event.target
-    var arrival = this.arrival 
-   var depature =  this.departure
+
+
     var id 
     id = this.product.id
-    console.log(id)
+    const arrival = this.arrival
+    const depature = this.departure
+  
     await reserveerDezeKamer(arrival, depature,id ).then(response => {
-       console.log(response);
+    
        if (response == '"success"') {
          this._router.navigate(['/reserveer']);
 
