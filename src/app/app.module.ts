@@ -33,6 +33,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ContactSubComponent } from './contact-sub/contact-sub.component';
+import { AcceptReservationComponent } from './accept-reservation/accept-reservation.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ContactSubComponent } from './contact-sub/contact-sub.component';
     ProfileComponent,
     ReservationsComponent,
     ContactSubComponent,
+    AcceptReservationComponent,
 
 
    

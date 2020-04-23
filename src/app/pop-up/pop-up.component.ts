@@ -70,7 +70,15 @@ export class PopUpComponent implements OnInit {
    this.intialize()
 
   }
+  clearFilter() {
+    this.intialize()
+    this.reservationDataFromServer.foreach(r => { if (r.time_from == this.arrival) { this.departure = new Date(r.time_till); this.GetDisabledDates2(this.departure)} })
+  }
 
+  clearFilter2() {
+    this.intialize()
+    this.reservationDataFromServer.foreach(r => { if (r.time_till == this.departure) { this.arrival = new Date(r.time_from); this.GetDisabledDates2(this.arrival) } })
+  }
 
   getEnabledDates(resrvations) {
     var enabledDates = [];

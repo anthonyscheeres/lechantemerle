@@ -26,6 +26,7 @@
                      [(ngModel)]="arrival"
                      class="input-mini dates"
                      [datesDisabled]="isDisabledFrom"
+                     (ngModelChange)="clearFilter()"
                      [minDate]="min"
                      [maxDate]="max"
                      id="arrival" bsDatepicker>
@@ -41,6 +42,7 @@
                   <input type="text"
                          placeholder="Vertrek"
                          [(ngModel)]="departure"
+                           (ngModelChange)="clearFilter2()"
                          class="input-mini dates"
                              [minDate]="min"
                      [maxDate]="max"
