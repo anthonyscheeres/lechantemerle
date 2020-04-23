@@ -1,5 +1,7 @@
 import { ServerModel } from '../models/ServerModel';
 import { DataModel } from '../models/DataModel';
+import { fetchJsonPost } from './http';
+import { ProtocolR } from '../models/Protocol';
 
 export function ConstructGetAvailableReservationUrl() {
   var host = ServerModel.host;
@@ -71,17 +73,22 @@ export function ConstuctUpdateAmountOfBeds() {
 }
 
 
-export async function reserveerDezeKamer(arrival, depature, product) {
-  var urlToServer = this.constructClaimResrvation();
+export async function reserveerDezeKamer(arrival, depature, id) {
+
+  var urlToServer = constructClaimResrvation();
+  console.log("hi")
+
   var data = JSON.stringify({
     "time_from": arrival,
     "time_till": depature,
-    "roomno": product.id
+    "roomno": id
   });
+ 
 
+  var response = fetchJsonPost(urlToServer, data.toString(), ProtocolR.POST)
 
   // @ts-ignore
-  return fetchJsonPost(urlToServer, data.toString(), ProtocolR.PUT)
+  return response
 }
 
 

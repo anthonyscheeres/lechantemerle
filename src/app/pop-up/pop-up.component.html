@@ -25,6 +25,8 @@
                      placeholder={{arrival}}
                      class="input-mini dates"
                      [datesDisabled]="isDisabledFrom"
+                     [minDate]="min"
+                     [maxDate]="max"
                      (dateSelect)="onDateSelect($event)" id="arrival" bsDatepicker>
 
             </div>
@@ -37,7 +39,10 @@
                   <!-- 2. datepicker in the popup -->
                   <input type="text"
                          placeholder={{departure}}
+
                          class="input-mini dates"
+                             [minDate]="min"
+                     [maxDate]="max"
                          [datesDisabled]=" isDisabledTill"
                          (dateSelect)="onDateSelect2($event)" id="departure" bsDatepicker>
 
@@ -50,7 +55,7 @@
 
         <hr>
 
-          <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer(product, $event)">Reserveer</button>
+          <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer($event)">Reserveer</button>
           <p>{{this1}}</p>
         </div>
 

@@ -19,7 +19,8 @@ export class PopUpComponent implements OnInit {
   current = new Date();
   private ms = 5000
   this1 = "Registreer hier!";
-
+  min = new Date();
+  max = new Date(new Date().setMonth(new Date().getMonth()+3))
   arrival: string = "arrival"
   departure: string = "departure"
 
@@ -64,6 +65,7 @@ export class PopUpComponent implements OnInit {
 
 
   ngOnInit() {
+
 
    this.intialize()
 
@@ -191,13 +193,16 @@ export class PopUpComponent implements OnInit {
   }
 
 
-  async reserveer(product, event) {
+  async reserveer(event) {
+  //  console.log ("resereer")
     event.preventDefault()
     const target = event.target
     var arrival = this.arrival 
    var depature =  this.departure
-
-    await reserveerDezeKamer(arrival, depature, product).then(response => {
+    var id 
+    id = this.product.id
+    console.log(id)
+    await reserveerDezeKamer(arrival, depature,id ).then(response => {
        console.log(response);
        if (response == '"success"') {
          this._router.navigate(['/reserveer']);

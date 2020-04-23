@@ -4,8 +4,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\profile",
-    "\\src\\app\\services"
+    "\\src\\app\\services",
+    "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\profile\\profile.component.html",
+  "SelectedNode": "\\src\\css\\style.css",
   "PreviewInSolutionExplorer": false
 }
