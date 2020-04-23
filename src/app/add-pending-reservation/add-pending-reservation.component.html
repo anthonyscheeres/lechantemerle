@@ -11,10 +11,12 @@
           <input type="text"
                  placeholder="Aankomst"
                    [(ngModel)]="arrival"
-               
+                [datesDisabled]="isDisabledFrom"
                  class="input-mini dates"
-                 [datesDisabled]="isDisabledFrom"
+                   (ngModelChange)="clearFilter()"
+               
                  id="arrival" bsDatepicker>
+
 
         </div>
 
@@ -29,6 +31,7 @@
           <!-- 2. datepicker in the popup -->
           <input type="text"
                  placeholder="Vertrek"
+                
        [(ngModel)]="departure"
                  class="input-mini dates"
                  [datesDisabled]=" isDisabledTill"

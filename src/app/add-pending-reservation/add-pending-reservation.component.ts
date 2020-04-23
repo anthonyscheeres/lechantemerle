@@ -20,8 +20,7 @@ export class AddPendingReservationComponent implements OnInit {
 
   isDisabledFrom = [];
   isDisabledTill = [];
-  isEnabledFrom = [];
-  isEnabledTill = [];
+
   reservationDataFromServer
   millisecondPerDay = 24 * 60 * 60 * 1000;
   disabledDates = [];
@@ -32,9 +31,39 @@ export class AddPendingReservationComponent implements OnInit {
 
   ngOnInit(): void {
     this.showAvailableDates()
+   var resrvations= this.reservationDataFromServer
+    this.isDisabledFrom = this.getEnabledDates(resrvations)
+    this.isDisabledTill=this.getEnabledDates2(resrvations)
   }
 
 
+  clearFilter() {
+    var newDateDeparture = new Date(this.arrival)
+    newDateDeparture.setDate(newDateDeparture.getDate() + 1)
+    this.departure = newDateDeparture
+  }
+
+  getEnabledDates(resrvations) {
+    var enabledDates = [];
+    if (resrvations == null) { enabledDates = [] }
+    else {
+      resrvations.foreach(r => {
+        enabledDates.push(r.time_from)
+      });
+    }
+    return enabledDates;
+  }
+
+  getEnabledDates2(resrvations) {
+    var enabledDates = [];
+    if (resrvations == null) { enabledDates = [] }
+    else {
+      resrvations.foreach(r => {
+        enabledDates.push(r.time_till)
+      });
+    }
+    return enabledDates;
+  }
 
   showAvailableDates() {
     this.http.get<ReservationModel[]>(
