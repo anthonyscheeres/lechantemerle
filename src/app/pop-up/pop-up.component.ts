@@ -23,7 +23,8 @@ export class PopUpComponent implements OnInit {
   max = new Date(new Date().setMonth(new Date().getMonth()+3))
   arrival
   departure
-
+  price = "Onbekend aantal"
+  loggedIn = false
   isDisabledFrom = [];
   isDisabledTill = [];
   isEnabledFrom = [];
@@ -72,13 +73,13 @@ export class PopUpComponent implements OnInit {
   }
   clearFilter() {
    // this.intialize()
-    this.reservationDataFromServer.foreach(r => { if (r.time_from == this.arrival) { this.departure = new Date(r.time_till); this.GetDisabledDates2(this.departure) } })
+    this.reservationDataFromServer.foreach(r => { if (r.time_from == this.arrival) { this.departure = new Date(r.time_till); this.price = r.price; this.GetDisabledDates2(this.departure) } })
 
   }
 
   clearFilter2() {
    //this.intialize()
-    this.reservationDataFromServer.foreach(r => { if (r.time_till == this.departure) { this.arrival = new Date(r.time_from); this.GetDisabledDates2(this.arrival) } })
+    this.reservationDataFromServer.foreach(r => { if (r.time_till == this.departure) { this.arrival = new Date(r.time_from); this.price = r.price; this.GetDisabledDates2(this.arrival) } })
 
   }
 
@@ -104,7 +105,29 @@ export class PopUpComponent implements OnInit {
     return enabledDates;
   }
 
+  checkIfUserIsLoggedIn() {
+    var loggedIn = false;
+
+    try {
+      var obj = JSON.parse(DataModel.account)[0];
+
+
+      loggedIn = obj.token != null
+      //  console.log(loggedIn);
+
+    }
+    catch{
+
+    }
+
+    return loggedIn;
+  }
   intialize() {
+
+    var isLoggedIn = false;
+    isLoggedIn = this.checkIfUserIsLoggedIn();
+    this.loggedIn = isLoggedIn;
+
     this.showAvailableDates()
     var resrvations = this.reservationDataFromServer
     var enabledDates = this.getEnabledDates(resrvations)

@@ -12,7 +12,15 @@
         </div>
       </div>
       <hr>
-      <div class="inline-inputs">
+      <div *ngIf="loggedIn==false">
+      <span class="txt1">
+        Login om te reserveeren!
+      </span>
+      <a routerLink="/login">
+        Login
+      </a>
+        </div>
+      <div *ngIf="loggedIn" class="inline-inputs">
 
 
         <div class="row">
@@ -34,33 +42,33 @@
             </div>
           </div>
 
-            <div class="col-3 mx-auto">
-              <div class="card card-body mb-2">
+          <div class="col-3 mx-auto">
+            <div class="card card-body mb-2">
 
-                <div class="input-group date" data-provide="datepicker">
-                  <!-- 2. datepicker in the popup -->
-                  <input type="text"
-                         placeholder="Vertrek"
-                         [(ngModel)]="departure"
-                           (ngModelChange)="clearFilter2()"
-                         class="input-mini dates"
-                             [minDate]="min"
-                     [maxDate]="max"
-                         [datesDisabled]=" isDisabledTill"
-                        id="departure" bsDatepicker>
+              <div class="input-group date" data-provide="datepicker">
+                <!-- 2. datepicker in the popup -->
+                <input type="text"
+                       placeholder="Vertrek"
+                       [(ngModel)]="departure"
+                       (ngModelChange)="clearFilter2()"
+                       class="input-mini dates"
+                       [minDate]="min"
+                       [maxDate]="max"
+                       [datesDisabled]=" isDisabledTill"
+                       id="departure" bsDatepicker>
 
-                </div>
               </div>
             </div>
-
-
           </div>
+
+
+        </div>
 
         <hr>
 
-          <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer($event)">Reserveer</button>
-          <p>{{this1}}</p>
-        </div>
-
+        <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer($event)">Reserveer</button>
+        <p>{{this1}} Prijs {{price}} Euro</p>
       </div>
+
+    </div>
     </div>

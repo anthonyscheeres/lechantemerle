@@ -23,9 +23,9 @@
 
         <a *ngIf="showInputFields"routerLink="/admin">Admin</a>
 
-
+        <div *ngIf="isLoggedIn">
         <a *ngIf="showInputFields==false" routerLink="/reservations">Reserveringen</a>
-
+          </div>
         <a *ngIf="isLoggedIn" routerLink="/profile">Profiel</a>
         <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
         <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-user" routerLink="/register"> Register</a>
