@@ -27,6 +27,17 @@ export function ConstructAddRoomUrl() {
   return url;
 }
 
+export function ConstuctDeleteReservationById(id) {
+
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+  var token = JSON.parse(DataModel.account)[0].token.toString();
+  var url = "http://" + host + ":" + port + "api/Reservation/deleteReservation?token=" + token;
+  return url
+}
+
+
+
 
 export function constructDeleteRoom() {
   var host = ServerModel.host;
@@ -76,12 +87,10 @@ export function ConstuctUpdateAmountOfBeds() {
 export async function reserveerDezeKamer(arrival, depature, id) {
 
   var urlToServer = constructClaimResrvation();
-  console.log("hi")
+
 
   var data = JSON.stringify({
-    "time_from": arrival,
-    "time_till": depature,
-    "roomno": id
+      "id": id
   });
  
 
@@ -90,6 +99,9 @@ export async function reserveerDezeKamer(arrival, depature, id) {
   // @ts-ignore
   return response
 }
+
+
+
 export function cinstructurlacceptresrvation() {
   var host = ServerModel.host;
   var port = ServerModel.port;
