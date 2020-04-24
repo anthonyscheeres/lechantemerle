@@ -13,7 +13,7 @@ import { ReservationModel } from '../models/ReservationModel';
 })
 export class NavbarComponent implements OnInit {
   mySubscription: any;
-
+  showInputFields = false
   isLoggedIn: boolean = false;
   reservationDataFromServer
 
@@ -45,8 +45,22 @@ export class NavbarComponent implements OnInit {
     var isLoggedIn = false;
     isLoggedIn = this.checkIfUserIsLoggedIn();
     this.isLoggedIn = isLoggedIn;
-
+    try {
+      this.showInputFields = this.checkIfSuperUser();
+    }
+    catch (Error) { this.showInputFields =false }
+   
   }
+
+  checkIfSuperUser() {
+    var obj = JSON.parse(DataModel.account);
+    //  console.log(obj[0].is_super_user);
+    var isSuper = obj[0].is_super_user;
+
+
+    return isSuper == true;
+  }
+
 
   checkIfUserIsLoggedIn() {
     var loggedIn = false;

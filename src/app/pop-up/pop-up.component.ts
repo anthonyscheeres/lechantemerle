@@ -71,13 +71,15 @@ export class PopUpComponent implements OnInit {
 
   }
   clearFilter() {
-    this.intialize()
-    this.reservationDataFromServer.foreach(r => { if (r.time_from == this.arrival) { this.departure = new Date(r.time_till); this.GetDisabledDates2(this.departure)} })
+   // this.intialize()
+    this.reservationDataFromServer.foreach(r => { if (r.time_from == this.arrival) { this.departure = new Date(r.time_till); this.GetDisabledDates2(this.departure) } })
+
   }
 
   clearFilter2() {
-    this.intialize()
+   //this.intialize()
     this.reservationDataFromServer.foreach(r => { if (r.time_till == this.departure) { this.arrival = new Date(r.time_from); this.GetDisabledDates2(this.arrival) } })
+
   }
 
   getEnabledDates(resrvations) {
@@ -106,9 +108,10 @@ export class PopUpComponent implements OnInit {
     this.showAvailableDates()
     var resrvations = this.reservationDataFromServer
     var enabledDates = this.getEnabledDates(resrvations)
+    enabledDates = []
     this.GetDisabledDates(enabledDates)
-    var enabledDates = this.getEnabledDates2(resrvations)
-    this.GetDisabledDates2(enabledDates)
+    var enabledDate = this.getEnabledDates2(resrvations)
+    this.GetDisabledDates2(enabledDate)
   }
 
 

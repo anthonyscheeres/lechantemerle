@@ -1,1 +1,67 @@
-<p>accept-reservation works!</p>
+
+<div class="container container-fluid">
+  <h2>Reserveringen!</h2>
+
+
+
+
+  <hr>
+  <div class="table-responsive table-striped">
+    <table class="table">
+      <thead>
+
+      <th class="col-4" scope="col">Kamernummer</th>
+      <th class="col-4" scope="col">Aankomst</th>
+      <th class="col-4" scope="col">Vertrek</th>
+      <th class="col-4" scope="col">Prijs (Euro)</th>
+      <th class="col-4" scope="col">Gebruikernaam</th>
+      <th class="col-4" scope="col">E-mail</th>
+      <th class="col-4" scope="col">Geaccepteerd door eigenaar</th>
+      </thead>
+      <tbody>
+
+        <tr class="row-12" *ngFor="let value of reservationDataFromServer">
+
+
+          <td class="col-md-2">
+            {{value.roomno}}
+          </td>
+          <td class="col-md-2">
+            {{value.time_from}}
+
+
+          </td>
+          <td class="col-md-2">
+            {{value.time_till}}
+
+
+          </td>
+          <td class="col-md-2">
+            {{value.price}}
+
+
+          </td>
+
+          <td class="col-md-2">
+            {{value.username}}
+
+
+          </td>
+
+          <td class="col-md-2">
+            {{value.email}}
+
+
+          </td>
+
+
+
+          <td class="col-md-2">
+            <input type="checkbox" [checked]="value.accepted_by_super_user" data-md-icheck (change)="acpt(value)" />
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

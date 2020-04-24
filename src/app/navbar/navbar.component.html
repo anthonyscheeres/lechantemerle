@@ -21,10 +21,10 @@
 
         <a routerLink="/kamers">Reserveer</a>
 
-        
+        <a *ngIf="showInputFields"routerLink="/admin">Admin</a>
 
 
-        <a routerLink="/reservations">Reserveringen</a>
+        <a *ngIf="showInputFields==false" routerLink="/reservations">Reserveringen</a>
 
         <a *ngIf="isLoggedIn" routerLink="/profile">Profiel</a>
         <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>

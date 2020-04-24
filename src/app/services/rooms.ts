@@ -90,7 +90,34 @@ export async function reserveerDezeKamer(arrival, depature, id) {
   // @ts-ignore
   return response
 }
+export function cinstructurlacceptresrvation() {
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+  var token = ""
+  try {
+    token = JSON.parse(DataModel.account)[0].token.toString();
+  } catch (Error) {
 
+  }
+
+  var url = "http://" + host + ":" + port + "/api/Reservation/getPendingResrvationsAdmin?token=" + token;
+
+  return url;
+}
+
+export function acceptRResrvation() {
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+  var token = ""
+  try {
+    token = JSON.parse(DataModel.account)[0].token.toString();
+  } catch (Error) {
+
+  }
+
+  var url = "http://" + host + ":" + port + "/api/Reservation/updateAcceptResevation?token=" + token;
+  return url;
+}
 
 
 export function constructClaimResrvation() {

@@ -19,17 +19,16 @@ export class RoomsComponent implements OnInit {
   reservationDataFromServer = DataModel.rooms.RoomReservationData
   selected: any = null;
   showInputFields = false
-  ms = 4000
+  ms = 2 * 1000 // 2 * 1000ms = 2 seconden
 
   constructor(private http: HttpClient, private _router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
 
     this.showAvailableDates()
-    try {
+
       this.doStuff()
-    }
-    catch (Error) {}
+
   }
 
 
@@ -106,7 +105,11 @@ export class RoomsComponent implements OnInit {
 
 
   doStuff() {
-    this.showInputFields = this.checkIfSuperUser();
+    try {
+      this.showInputFields = this.checkIfSuperUser();
+    }
+    catch (Error) { this.showInputFields = false}
+   
   }
 
   checkIfSuperUser() {

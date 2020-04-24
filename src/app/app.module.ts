@@ -77,8 +77,11 @@ import { AcceptReservationComponent } from './accept-reservation/accept-reservat
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(
       [
-
-       
+        
+            {
+          path: 'admin',
+          component: AcceptReservationComponent
+        },
              {
           path: 'reservations',
           component: ReservationsComponent
