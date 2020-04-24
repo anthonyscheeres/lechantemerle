@@ -21,22 +21,22 @@ export class PopUpComponent implements OnInit {
   this1 = "Reserveer hier!";
   min = new Date();
   max = new Date(new Date().setMonth(new Date().getMonth()+3))
-  arrival
-  departure
+  arrival: Date
+  departure: Date
   price = "Onbekend aantal"
   loggedIn = false
   isDisabledFrom = [];
   isDisabledTill = [];
   isEnabledFrom = [];
   isEnabledTill = [];
-  reservationDataFromServer
+  reservationDataFromServer: ReservationModel[];
   millisecondPerDay = 24 * 60 * 60 * 1000;
   disabledDates = [];
 
   defineIsDisbaled(reservationDataFromServer) {
     let constructisEnabledFrom2 = []
     let constructisEnabledtill2 = []
-    reservationDataFromServer.foreach(r => { constructisEnabledFrom2.push(r.time_from); constructisEnabledtill2.push(r.time_till) });
+    reservationDataFromServer.forEach(r => { constructisEnabledFrom2.push(r.time_from); constructisEnabledtill2.push(r.time_till) });
 
 
     this.setIsEnabledTill(constructisEnabledtill2)
@@ -72,23 +72,65 @@ export class PopUpComponent implements OnInit {
 
   }
   clearFilter() {
-   // this.intialize()
-    this.reservationDataFromServer.foreach(r => { if (r.time_from == this.arrival) { this.departure = new Date(r.time_till); this.price = r.price; this.GetDisabledDates2(this.departure) } })
+
+    var a = this.convert(this.arrival.toString())
+    
+    // this.intialize()
+    this.reservationDataFromServer.forEach(r => {
+      var b = r.time_from.split("T")[0];
+      if (a == b) {
+      
+        this.departure = new Date(r.time_till);
+   
+        this.price = r.price;
+      }
+    })
 
   }
 
   clearFilter2() {
-   //this.intialize()
-    this.reservationDataFromServer.foreach(r => { if (r.time_till == this.departure) { this.arrival = new Date(r.time_from); this.price = r.price; this.GetDisabledDates2(this.arrival) } })
+    //this.intialize()
+    var a = this.convert(this.departure.toString())
+    this.reservationDataFromServer.forEach(
+      r => {
+        var b = r.time_till.split("T")[0];
+    
+        if (a == b) {
+       
+          this.arrival = new Date(r.time_from);
+          this.price = r.price;
+        }
+      })
 
   }
 
-  getEnabledDates(resrvations) {
-    var enabledDates = [];
+
+  convert(str: string) {
+  var mnths = {
+    Jan: "01",
+    Feb: "02",
+    Mar: "03",
+    Apr: "04",
+    May: "05",
+    Jun: "06",
+    Jul: "07",
+    Aug: "08",
+    Sep: "09",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12"
+  },
+    date = str.split(" ");
+
+  return [date[3], mnths[date[1]], date[2]].join("-");
+}
+
+  getEnabledDates(resrvations: ReservationModel[]) {
+    var enabledDates =[];
     if (resrvations == null) { enabledDates = [] }
     else {
-      resrvations.foreach(r => {
-        enabledDates.push(r.time_from)
+      resrvations.forEach(r => {
+        enabledDates.push(new Date(r.time_from))
       });
     }
     return enabledDates;
@@ -99,7 +141,7 @@ export class PopUpComponent implements OnInit {
     if (resrvations == null) { enabledDates = [] }
     else {
       resrvations.foreach(r => {
-        enabledDates.push(r.time_till)
+        enabledDates.push(new Date(r.time_till))
       });
     }
     return enabledDates;
@@ -130,8 +172,10 @@ export class PopUpComponent implements OnInit {
 
     this.showAvailableDates()
     var resrvations = this.reservationDataFromServer
-    var enabledDates = this.getEnabledDates(resrvations)
-    enabledDates = []
+    var enabledDates = []
+    enabledDates = this.getEnabledDates(resrvations)
+    console.log(enabledDates)
+   
     this.GetDisabledDates(enabledDates)
     var enabledDate = this.getEnabledDates2(resrvations)
     this.GetDisabledDates2(enabledDate)
@@ -186,12 +230,10 @@ export class PopUpComponent implements OnInit {
 
 
   IsSameDay(date1: Date, date2: Date) {
-    if (date1.getFullYear() == date2.getFullYear() && date1.getMonth() == date2.getMonth() && date1.getDate() == date2.getDate()) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    var date = new Date(date1)
+    var date3 = new Date(date2)
+    return date.getFullYear() == date3.getFullYear() && date.getMonth() == date3.getMonth() && date.getDate() == date3.getDate();
+ 
   }
 
 
@@ -200,10 +242,17 @@ export class PopUpComponent implements OnInit {
     var host = ServerModel.host;
     var port = ServerModel.port;
     //var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Reservation/getPendingReservation?id="+this.product.id;
+    var url = "http://" + host + ":" + port + "/api/Reservation/getPendingDatesByIdReservation?id="+this.product.id;
     return url;
   }
 
+  constructGetRoomDetails() {
+    var host = ServerModel.host;
+    var port = ServerModel.port;
+    //var token = JSON.parse(DataModel.account)[0].token.toString();
+    var url = "http://" + host + ":" + port + "/api/Reservation/getPendingReservation?id=" + this.product.id;
+    return url;
+  }
 
   showAvailableDates() {
     this.http.get<ReservationModel[]>(
