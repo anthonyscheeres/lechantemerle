@@ -2,6 +2,7 @@ import { ServerModel } from '../models/ServerModel';
 import { DataModel } from '../models/DataModel';
 import { fetchJsonPost } from './http';
 import { ProtocolR } from '../models/Protocol';
+import { ReservationModel } from '../models/ReservationModel';
 
 export function ConstructGetAvailableReservationUrl() {
   var host = ServerModel.host;
@@ -22,11 +23,53 @@ export function ConstructAddRoomUrl() {
 
   }
 
-
   var url = "http://" + host + ":" + port + "/api/Room/addRoom?token=" + token
   return url;
 }
 
+
+export async function sendPutToAddResrvationsAdmin(roomno: number, departure: Date, arrival: Date, price : number) {
+
+
+  var data = JSON.stringify({ "roomno": roomno, "price": price, "time_till": departure, "time_from": arrival, "everyMonth": this.marked })
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+  var token = JSON.parse(DataModel.account)[0].token.toString();
+  var url = "http://" + host + ":" + port + "/api/Reservation/addPendingReservation?token=" + token;
+
+
+  return fetchJsonPost(url, data, ProtocolR.PUT)
+}
+
+  export function constructDelteAllReservations() {
+    var host = ServerModel.host;
+    var port = ServerModel.port;
+    var token = ""
+    try {
+      token = JSON.parse(DataModel.account)[0].token.toString();
+    } catch (Error) {
+
+    }
+    var url = "http://" + host + ":" + port + "/api/Reservation/deleteAllReservations?token=" + token
+    return url;
+  }
+
+
+export function ConstructGetAvailableReservationUrl2(product: ReservationModel) {
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+  //var token = JSON.parse(DataModel.account)[0].token.toString();
+  var url = "http://" + host + ":" + port + "/api/Reservation/getPendingDatesByIdReservation?id=" + product.id;
+  return url;
+}
+
+export function constructGetRoomDetails(product: ReservationModel) {
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+  //var token = JSON.parse(DataModel.account)[0].token.toString();
+  var url = "http://" + host + ":" + port + "/api/Reservation/getPendingReservation?id=" + product.id;
+  return url;
+}
 export function ConstuctDeleteReservationById(id) {
 
   var host = ServerModel.host;
@@ -35,7 +78,14 @@ export function ConstuctDeleteReservationById(id) {
   var url = "http://" + host + ":" + port + "api/Reservation/deleteReservation?token=" + token;
   return url
 }
+export function addRoom2() {
+  var data = JSON.stringify({ "amountOfBeds": 0 })
 
+  var url = ConstructAddRoomUrl()
+
+
+  return fetchJsonPost(url, data, ProtocolR.POST);
+}
 
 
 

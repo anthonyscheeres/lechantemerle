@@ -17,6 +17,6 @@ export function convert(str: string) {
 
   return [date[3], mnths[date[1]], date[2]].join("-");
 }
-export function sleep(ms) {
+export function sleepForASetAmountOfTimeInMiliSeconds(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

@@ -9,7 +9,8 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
 import { fetchJsonPost } from '../services/http';
 import { ProtocolR } from '../models/Protocol';
 import { AddPendingReservationComponent } from '../add-pending-reservation/add-pending-reservation.component';
-import { ConstructAddRoomUrl, ConstuctUpdateAmountOfBeds, ConstructGetAvailableReservationUrl, constructDeleteRoom } from '../services/rooms';
+import { ConstructAddRoomUrl, ConstuctUpdateAmountOfBeds, ConstructGetAvailableReservationUrl, constructDeleteRoom, addRoom2 } from '../services/rooms';
+import { sleepForASetAmountOfTimeInMiliSeconds } from '../services/general';
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
@@ -46,7 +47,7 @@ export class RoomsComponent implements OnInit {
   }
 
  sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+   return sleepForASetAmountOfTimeInMiliSeconds(ms);
 }
 
 
@@ -70,12 +71,7 @@ export class RoomsComponent implements OnInit {
   }
 
   addRoom2() {
-    var data = JSON.stringify({ "amountOfBeds": 0 })
-
-    var url = ConstructAddRoomUrl()
-
-
-    return fetchJsonPost(url, data, ProtocolR.POST);
+    return addRoom2()
   }
 
   fileChange(event, product: ReservationModel) {
@@ -191,7 +187,7 @@ export class RoomsComponent implements OnInit {
     return fetchJsonPost(url, json, ProtocolR.POST);
   }
   clickPopUp() {
-    const modalRef = this.modalService.open(AddPendingReservationComponent, { windowClass: "myCustomModalClass" });
+     this.modalService.open(AddPendingReservationComponent, { windowClass: "myCustomModalClass" });
     
   }
 

@@ -24,11 +24,11 @@ import {
   Router
 } from '@angular/router';
 import {
-  reserveerDezeKamer
+  reserveerDezeKamer, ConstructGetAvailableReservationUrl, constructGetRoomDetails, ConstructGetAvailableReservationUrl2
 } from '../services/rooms';
 import {
   convert,
-  sleep
+  sleepForASetAmountOfTimeInMiliSeconds
 } from '../services/general';
 
 @Component({
@@ -84,7 +84,7 @@ export class PopUpComponent implements OnInit {
   ngOnInit() {
 
 
-    this.intialize()
+    this.intializeFields()
 
   }
   clearFilter() {
@@ -107,16 +107,16 @@ export class PopUpComponent implements OnInit {
 
   clearFilter2() {
     //this.intialize()
-    var a = convert(this.departure.toString())
+    var departureDateAsDate = convert(this.departure.toString())
     this.reservationDataFromServer.forEach(
-      r => {
-        var b = r.time_till.split("T")[0];
+      SingleResrvationWithArivalPriceId => {
+        var departureDateFromResrvation = SingleResrvationWithArivalPriceId.time_till.split("T")[0];
 
-        if (a == b) {
+        if (departureDateAsDate == departureDateFromResrvation) {
 
-          this.arrival = new Date(r.time_from);
-          this.price = r.price;
-          this.id = r.id
+          this.arrival = new Date(SingleResrvationWithArivalPriceId.time_from);
+          this.price = SingleResrvationWithArivalPriceId.price;
+          this.id = SingleResrvationWithArivalPriceId.id
         }
       })
 
@@ -125,23 +125,23 @@ export class PopUpComponent implements OnInit {
 
 
   getEnabledDates(resrvations: ReservationModel[]) {
-    var enabledDates = [];
+    var enabledDatesWhatDatesThatCanBeRserved = []; // default is an emty list
     if (resrvations == null) {
-      enabledDates = []
+      enabledDatesWhatDatesThatCanBeRserved = []//null response should be emty instead
     } else {
       resrvations.forEach(r => {
-        enabledDates.push(new Date(r.time_from))
+        enabledDatesWhatDatesThatCanBeRserved.push(new Date(r.time_from))
       });
     }
-    return enabledDates;
+    return enabledDatesWhatDatesThatCanBeRserved;
   }
 
-  getEnabledDates2(resrvations) {
+  getEnabledDates2(resrvationsDataAsJson: ReservationModel[]) {
     var enabledDates = [];
-    if (resrvations == null) {
+    if (resrvationsDataAsJson == null) {
       enabledDates = []
     } else {
-      resrvations.foreach(r => {
+      resrvationsDataAsJson.forEach(r => {
         enabledDates.push(new Date(r.time_till))
       });
     }
@@ -164,20 +164,20 @@ export class PopUpComponent implements OnInit {
 
     return loggedIn;
   }
-  intialize() {
+  intializeFields() {
 
     var isLoggedIn = false;
     isLoggedIn = this.checkIfUserIsLoggedIn();
     this.loggedIn = isLoggedIn;
 
-    this.showAvailableDates()
-    var resrvations = this.reservationDataFromServer
-    var enabledDates = []
-    enabledDates = this.getEnabledDates(resrvations)
-    console.log(enabledDates)
+    this.showAvailableDatesFromServer()
+    var resrvationsDataFromServerInJsonFormat = this.reservationDataFromServer
+    var enabledDates = [] //default is emty list
+    enabledDates = this.getEnabledDates(resrvationsDataFromServerInJsonFormat)
+ 
 
     this.GetDisabledDates(enabledDates)
-    var enabledDate = this.getEnabledDates2(resrvations)
+    var enabledDate = this.getEnabledDates2(resrvationsDataFromServerInJsonFormat)
     this.GetDisabledDates2(enabledDate)
   }
 
@@ -238,27 +238,20 @@ export class PopUpComponent implements OnInit {
 
 
 
-  ConstructGetAvailableReservationUrl() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    //var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Reservation/getPendingDatesByIdReservation?id=" + this.product.id;
-    return url;
+  ConstructGetAvailableReservationUrl(product: ReservationModel) {
+    return ConstructGetAvailableReservationUrl2(product);
   }
 
-  constructGetRoomDetails() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    //var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Reservation/getPendingReservation?id=" + this.product.id;
-    return url;
+  constructGetRoomDetails(product) {
+    return constructGetRoomDetails(product)
   }
 
-  showAvailableDates() {
+  showAvailableDatesFromServer() {
     this.http.get<ReservationModel[]>(
-      this.ConstructGetAvailableReservationUrl())
+      this.ConstructGetAvailableReservationUrl(this.product))
       .subscribe(
         responseData => {
+          
           this.reservationDataFromServer = responseData;
           this.defineIsDisbaled(responseData)
         }
@@ -272,12 +265,13 @@ export class PopUpComponent implements OnInit {
   async reserveer(event) {
 
 
-    var id
-    id = this.id
+    //get from fields
+    const id = this.id
     const arrival = this.arrival
     const depature = this.departure
 
-    await reserveerDezeKamer(arrival, depature, id).then(response => {
+
+    await reserveerDezeKamer(arrival, depature, id).then(response => { //await response from server
 
       if (response == '"success"') {
         this.sleepforAsetAmountOfTime(this.ms)
@@ -294,7 +288,7 @@ export class PopUpComponent implements OnInit {
 
 
   sleepforAsetAmountOfTime(ms) {
-    return sleep(ms)
+    return sleepForASetAmountOfTimeInMiliSeconds(ms)
   }
 
 

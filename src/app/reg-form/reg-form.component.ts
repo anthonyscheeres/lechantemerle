@@ -24,14 +24,18 @@ this1:string = ""
     const password = target.querySelector('#password').value
     const email = target.querySelector('#email').value
     await register(username, password, email).then(response => {
-     console.log(response);
-      if (response == '"success"') {
-        this._router.navigate(['/login']);
-
-      } else this.this1 = "Oops heb je een juist email adress gegeven, anders probeer een andere gebruikersnaam"
+ 
+      this.changeThis1(response)
     });
 
 
+  }
+
+  changeThis1(response:string) {
+    if (response == '"success"') {
+      this._router.navigate(['/login']);
+
+    } else this.this1 = "Oops heb je een juist email adress gegeven, anders probeer een andere gebruikersnaam"
   }
 
 }

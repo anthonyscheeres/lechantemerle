@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { acceptRResrvation, cinstructurlacceptresrvation } from '../services/rooms';
+import { constructDelteAllReservations, acceptRResrvation, cinstructurlacceptresrvation } from '../services/rooms';
 import { fetchJsonPost } from '../services/http';
 import { ProtocolR } from '../models/Protocol';
 import { HttpClient } from '@angular/common/http';
@@ -13,6 +13,8 @@ import { ReservationModel } from '../models/ReservationModel';
 export class AcceptReservationComponent implements OnInit {
   ms = 2 * 1000 // 2 * 1000ms = 2 seconden
   reservationDataFromServer
+  showConfig: boolean = false
+  saveUsername: boolean = false
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -20,7 +22,7 @@ export class AcceptReservationComponent implements OnInit {
   }
   acpt(value) {
     var url = acceptRResrvation() //url to server
-    var data = JSON.stringify({ "id": value.id })
+    const data = JSON.stringify({ "id": value.id })
 
     fetchJsonPost(url, data.toString(), ProtocolR.PUT)
     this.sleep(this.ms)
@@ -33,9 +35,32 @@ export class AcceptReservationComponent implements OnInit {
   intialize() {
     this.getResrvation()
   }
+
+  deleteAllReservations() {
+  
+    if (this.showConfig && this.saveUsername) {
+    this.http.delete(
+
+      constructDelteAllReservations())
+      .subscribe(
+        responseData => {
+          const response = responseData;
+
+          this.sleep(this.ms)
+
+
+          this.getResrvation()
+        }
+      );
+    }
+
+    this.showConfig = true
+   
+  }
+
+
   getResrvation() {
 
-  
       this.http.get<ReservationModel[]>(
 
         cinstructurlacceptresrvation())
@@ -45,6 +70,9 @@ export class AcceptReservationComponent implements OnInit {
 
           }
         );
+  
+
+
 
   }
 }

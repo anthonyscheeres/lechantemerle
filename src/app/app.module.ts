@@ -10,7 +10,6 @@ import { FotoComponent } from './foto/foto.component';
 import { VideoComponent } from './video/video.component';
 import { IndelingComponent } from './indeling/indeling.component';
 import { KenmerkenComponent } from './kenmerken/kenmerken.component';
-import { OmschrijvingComponent } from './omschrijving/omschrijving.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HuisComponent } from './huis/huis.component';
@@ -22,7 +21,6 @@ import { RegisterComponent } from './register/register.component';
 import { RegFormComponent } from './reg-form/reg-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { ReservationComponent } from './reservation/reservation.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from './pop-up/pop-up.component';
@@ -34,6 +32,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ContactSubComponent } from './contact-sub/contact-sub.component';
 import { AcceptReservationComponent } from './accept-reservation/accept-reservation.component';
+import { DescriptionChildComponent } from './description-child/description-child.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,6 @@ import { AcceptReservationComponent } from './accept-reservation/accept-reservat
     VideoComponent,
     IndelingComponent,
     KenmerkenComponent,
-    OmschrijvingComponent,
     HomeComponent,
     FooterComponent,
     HuisComponent,
@@ -54,7 +52,6 @@ import { AcceptReservationComponent } from './accept-reservation/accept-reservat
     LoginComponent,
     RegisterComponent,
     RegFormComponent,
-    ReservationComponent,
     RoomsComponent,
     PopUpComponent,
     AddPendingReservationComponent,
@@ -62,6 +59,7 @@ import { AcceptReservationComponent } from './accept-reservation/accept-reservat
     ReservationsComponent,
     ContactSubComponent,
     AcceptReservationComponent,
+    DescriptionChildComponent,
 
 
    
@@ -101,7 +99,7 @@ import { AcceptReservationComponent } from './accept-reservation/accept-reservat
         },
         {
           path: '',
-          component: HomeComponent
+          component: ReservationsComponent
         },
 
  
@@ -121,9 +119,6 @@ import { AcceptReservationComponent } from './accept-reservation/accept-reservat
         }, {
           path: 'kenmerken',
           component: KenmerkenComponent
-        }, {
-          path: 'omschrijving',
-          component: OmschrijvingComponent
         }, {
           path: 'home',
           component: HomeComponent

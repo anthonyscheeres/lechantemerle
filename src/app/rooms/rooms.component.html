@@ -52,12 +52,12 @@
                 <input type="file" (change)="fileChange($event, value)" placeholder="Verander afbeelding" accept=".jpg, .png, .gif, .webp, .svg, .ico, .cur, .bmp, .jpeg, .jfif, .pjpeg, .pjp">
 
               </td>
-              <td class="col-md-2"><button type="button" class="btn btn-success" (click)="openSubmit(value, $event)">Update room</button></td>
+              <td class="col-md-2"><button type="button" class="btn btn-success" (click)="openSubmit(value, $event)"><span class="glyphicon glyphicon-floppy-disk"></span>Update room</button></td>
 
-              <td class="col-md-2"><button type="button" class="btn btn-danger" (click)="open(value)">Remove room</button></td>
+              <td class="col-md-2"><button type="button" class="btn btn-danger" (click)="open(value)"><span class="glyphicon glyphicon-trash"></span>Remove room</button></td>
             </div>
 
-
+            
           </tr>
         </tbody>
       </table>

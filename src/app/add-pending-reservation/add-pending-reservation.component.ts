@@ -5,6 +5,8 @@ import { ProtocolR } from '../models/Protocol';
 import { fetchJsonPost } from '../services/http';
 import { HttpClient } from '@angular/common/http';
 import { ReservationModel } from '../models/ReservationModel';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-pending-reservation',
@@ -16,7 +18,9 @@ export class AddPendingReservationComponent implements OnInit {
   theCheckbox = false;
   marked =false
   arrival 
-  departure 
+  departure
+  this1 = ""
+  min=new Date()
 
   isDisabledFrom = [];
   isDisabledTill = [];
@@ -27,7 +31,7 @@ export class AddPendingReservationComponent implements OnInit {
   selected = new ReservationModel();
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _router : Router) { }
 
   ngOnInit(): void {
     this.showAvailableDates()
@@ -86,7 +90,7 @@ export class AddPendingReservationComponent implements OnInit {
   }
 
 
-  openSubmit(event) {
+  async openSubmit(event) {
     event.preventDefault()
 
     var target = event.target
@@ -95,7 +99,7 @@ export class AddPendingReservationComponent implements OnInit {
     var roomno: number;
 
     var roomNumber = this.selected.toString()
-    console.log(roomNumber)
+
     roomno = parseInt(roomNumber)
     
     var price: number;
@@ -104,19 +108,33 @@ export class AddPendingReservationComponent implements OnInit {
     
     var arrival = this.arrival
     var departure = this.departure
- 
 
-
-    var data = JSON.stringify({ "roomno": roomno, "price": price, "time_till": departure, "time_from":arrival, "everyMonth": this.marked })
+    var data = this.valiidateJsonAddresrvation(roomno, departure, arrival, price)
     var host = ServerModel.host;
     var port = ServerModel.port;
     var token = JSON.parse(DataModel.account)[0].token.toString();
     var url = "http://" + host + ":" + port + "/api/Reservation/addPendingReservation?token=" + token;
-   
 
-    return fetchJsonPost(url, data, ProtocolR.PUT);
+
+    await fetchJsonPost(url, data, ProtocolR.PUT).then(r => {
+      console.log(r)
+      this.changeThis1(r)
+    })
 
   }
+
+  changeThis1(r:string) {
+    if (r == '"success"') {
+      this._router.navigate(['/admin']);
+      this.this1 = "Gelukt!"
+    } else this.this1 = "Oops er ging iets fout"
+  }
+
+
+  valiidateJsonAddresrvation(roomno: number, departure: Date, arrival: Date, price: number) {
+    return JSON.stringify({ "roomno": roomno, "price": price, "time_till": departure, "time_from": arrival, "everyMonth": this.marked })
+  }
+
 
   toggleVisibility(e) {
     this.marked = e.target.checked;
