@@ -3,9 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\add-pending-reservation",
+    "\\src\\app\\login-form",
     "\\src\\app\\pop-up",
-    "\\src\\app\\services"
+    "\\src\\app\\reg-form",
+    "\\src\\app\\rooms",
+    "\\src\\app\\services",
+    "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\pop-up\\pop-up.component.ts",
+  "SelectedNode": "\\src\\app\\add-pending-reservation\\add-pending-reservation.component.html",
   "PreviewInSolutionExplorer": false
 }

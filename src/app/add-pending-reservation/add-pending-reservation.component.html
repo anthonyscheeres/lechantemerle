@@ -14,7 +14,7 @@
                 [datesDisabled]="isDisabledFrom"
                  class="input-mini dates"
                    (ngModelChange)="clearFilter()"
-               
+                [minDate]="min"
                  id="arrival" bsDatepicker>
 
 
@@ -35,6 +35,7 @@
        [(ngModel)]="departure"
                  class="input-mini dates"
                  [datesDisabled]=" isDisabledTill"
+                 [minDate]="min"
                  id="departure" bsDatepicker>
 
 
@@ -53,6 +54,7 @@
             <select [(ngModel)]="selected">
               <option *ngFor="let title of reservationDataFromServer"
                       [value]="title.id"
+                         
                       [attr.selected]="selected.id==title.id ? true : null">
                 {{title.id}}
               </option>

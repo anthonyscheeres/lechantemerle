@@ -14,21 +14,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-pending-reservation.component.css']
 })
 export class AddPendingReservationComponent implements OnInit {
-  current = new Date();
-  theCheckbox = false;
-  marked =false
-  arrival 
-  departure
-  this1 = ""
+  current: Date = new Date();
+  theCheckbox: boolean = false;
+  marked:boolean =false
+  arrival : Date
+  departure : Date
+  this1: string = ""
   min=new Date()
 
-  isDisabledFrom = [];
-  isDisabledTill = [];
+  isDisabledFrom: Date[] = [];
+  isDisabledTill: Date[] = [];
 
   reservationDataFromServer
   millisecondPerDay = 24 * 60 * 60 * 1000;
-  disabledDates = [];
-  selected = new ReservationModel();
+  disabledDates: Date[] = [] ;
+  selected: ReservationModel= new ReservationModel();
 
 
   constructor(private http: HttpClient, private _router : Router) { }
@@ -58,11 +58,11 @@ export class AddPendingReservationComponent implements OnInit {
     return enabledDates;
   }
 
-  getEnabledDates2(resrvations) {
+  getEnabledDates2(resrvations: ReservationModel[] ) {
     var enabledDates = [];
     if (resrvations == null) { enabledDates = [] }
     else {
-      resrvations.foreach(r => {
+      resrvations.forEach(r => {
         enabledDates.push(r.time_till)
       });
     }

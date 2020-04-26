@@ -26,10 +26,8 @@ import {
 import {
   reserveerDezeKamer, ConstructGetAvailableReservationUrl, constructGetRoomDetails, ConstructGetAvailableReservationUrl2
 } from '../services/rooms';
-import {
-  convert,
-  sleepForASetAmountOfTimeInMiliSeconds
-} from '../services/general';
+import { convertToYYYYMMDD, sleepForASetAmountOfTimeInMiliSeconds } from '../services/general';
+
 
 @Component({
   selector: 'app-pop-up',
@@ -40,26 +38,26 @@ export class PopUpComponent implements OnInit {
   closeResult: string;
   @Input() product: ReservationModel;
   current = new Date();
-  private ms = 5000
+  private ms : number= 5000
   this1 = "Reserveer hier!";
-  min = new Date();
-  max = new Date(new Date().setMonth(new Date().getMonth() + 3))
+  min:Date= new Date();
+  max : Date= new Date(new Date().setMonth(new Date().getMonth() + 3))
   arrival: Date
   departure: Date
-  price = "Onbekend aantal"
+  price : string= "Onbekend aantal"
   loggedIn = false
-  isDisabledFrom = [];
-  isDisabledTill = [];
-  isEnabledFrom = [];
-  isEnabledTill = [];
+  isDisabledFrom: Date[] = [];
+  isDisabledTill  : Date[] = [] 
+  isEnabledFrom: Date[] = [];
+  isEnabledTill: Date[] = [];
   reservationDataFromServer: ReservationModel[];
-  millisecondPerDay = 24 * 60 * 60 * 1000;
-  disabledDates = [];
-  id: number
+  millisecondPerDay = 24 * 60 * 60 * 1000; //time equals a whole day
+  disabledDates : Date[] = [];
+  id: number //id of current reservation
 
-  defineIsDisbaled(reservationDataFromServer) {
-    let constructisEnabledFrom2 = []
-    let constructisEnabledtill2 = []
+  defineIsDisbaled(reservationDataFromServer: ReservationModel[]) {
+    let constructisEnabledFrom2 : ReservationModel[] = []
+    let constructisEnabledtill2: ReservationModel[] = []
     reservationDataFromServer.forEach(r => {
       constructisEnabledFrom2.push(r.time_from);
       constructisEnabledtill2.push(r.time_till)
@@ -89,7 +87,7 @@ export class PopUpComponent implements OnInit {
   }
   clearFilter() {
 
-    var a = convert(this.arrival.toString())
+    const a: string = convertToYYYYMMDD(this.arrival.toString())
 
     // this.intialize()
     this.reservationDataFromServer.forEach(r => {
@@ -107,7 +105,7 @@ export class PopUpComponent implements OnInit {
 
   clearFilter2() {
     //this.intialize()
-    var departureDateAsDate = convert(this.departure.toString())
+    const departureDateAsDate = convertToYYYYMMDD(this.departure.toString())
     this.reservationDataFromServer.forEach(
       SingleResrvationWithArivalPriceId => {
         var departureDateFromResrvation = SingleResrvationWithArivalPriceId.time_till.split("T")[0];
@@ -137,21 +135,27 @@ export class PopUpComponent implements OnInit {
   }
 
   getEnabledDates2(resrvationsDataAsJson: ReservationModel[]) {
-    var enabledDates = [];
+    var response = []
     if (resrvationsDataAsJson == null) {
-      enabledDates = []
+      const enabledDates = []
+      var response = enabledDates
+      return response;
+
     } else {
       resrvationsDataAsJson.forEach(r => {
-        enabledDates.push(new Date(r.time_till))
+        var enabledDates2 = [];
+        enabledDates2.push(new Date(r.time_till))
+        response = enabledDates2
       });
     }
-    return enabledDates;
+    return response;
   }
 
   checkIfUserIsLoggedIn() {
     var loggedIn = false;
 
     try {
+
       var obj = JSON.parse(DataModel.account)[0];
 
 
@@ -166,13 +170,13 @@ export class PopUpComponent implements OnInit {
   }
   intializeFields() {
 
-    var isLoggedIn = false;
+    var isLoggedIn :boolean = false;
     isLoggedIn = this.checkIfUserIsLoggedIn();
     this.loggedIn = isLoggedIn;
 
     this.showAvailableDatesFromServer()
     var resrvationsDataFromServerInJsonFormat = this.reservationDataFromServer
-    var enabledDates = [] //default is emty list
+    var enabledDates : Date[]= [] //default is emty list
     enabledDates = this.getEnabledDates(resrvationsDataFromServerInJsonFormat)
  
 
@@ -183,7 +187,7 @@ export class PopUpComponent implements OnInit {
 
 
   GetDisabledDates(excludeDates: Array<Date>) {
-    var now = new Date();
+    var now : Date= new Date();
     var startDate: Date = new Date(now.setFullYear(now.getFullYear() - 1));
     var endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2)); //change as per your need
 
@@ -272,12 +276,21 @@ export class PopUpComponent implements OnInit {
 
 
     await reserveerDezeKamer(arrival, depature, id).then(response => { //await response from server
+      var successMessage: string = '"success"'
+      if (response == successMessage) {
 
-      if (response == '"success"') {
-        this.sleepforAsetAmountOfTime(this.ms)
-        this._router.navigate(['/reserveer']);
 
-      } else this.this1 = "Oops heb je wel een goed account, valideer je mail of log opnieuw in!"
+        var ms = this.ms;  //get amount you should sleep
+        this.sleepforAsetAmountOfTime(ms) //sleep for set amount
+
+
+        const pathToGoTo = '/reserveer';
+        this._router.navigate([pathToGoTo]);
+
+      } else {
+        var failedMessage = "Oops heb je wel een goed account, valideer je mail of log opnieuw in!";
+        this.this1 = failedMessage;
+      }
     });
 
 
@@ -287,8 +300,9 @@ export class PopUpComponent implements OnInit {
 
 
 
-  sleepforAsetAmountOfTime(ms) {
-    return sleepForASetAmountOfTimeInMiliSeconds(ms)
+  sleepforAsetAmountOfTime(ms: number) {
+    var promiseToSleep = sleepForASetAmountOfTimeInMiliSeconds(ms);
+    return promiseToSleep
   }
 
 

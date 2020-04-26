@@ -1,4 +1,4 @@
-export function convert(str: string) {
+export function convertToYYYYMMDD(str: string) {
   var mnths = {
     Jan: "01",
     Feb: "02",
