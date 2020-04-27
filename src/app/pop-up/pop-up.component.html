@@ -1,16 +1,12 @@
 
 
   <div class="container bg-faded py-3">
+
+
+
+
     <div>
       <h1 class="text-center">{{product.id}}</h1>
-      <hr>
-
-      <div class="row">
-        <div class="col-12">
-
-          <img class="mx-auto d-block" src="{{product.img}}">
-        </div>
-      </div>
       <hr>
 
 
@@ -57,12 +53,24 @@
 
 
       <hr>
+
+
+      <div class="row">
+        <div class="col-12">
+
+          <img class="mx-auto d-block" src="{{product.img}}">
+        </div>
+      </div>
+      <hr>
+
+
+
       <div *ngIf="loggedIn" class="inline-inputs">
 
         <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer($event)">Reserveer</button>
       </div>
-        <p>{{this1}} Prijs {{price}} Euro</p>
- 
+      <p>{{this1}} Prijs {{price}} Euro</p>
+
       <div *ngIf="loggedIn==false">
         <span class="txt1">
           Login om te reserveeren!
