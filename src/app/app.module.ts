@@ -99,7 +99,7 @@ import { DescriptionChildComponent } from './description-child/description-child
         },
         {
           path: '',
-          component: ReservationsComponent
+          component: RoomsComponent
         },
 
  
