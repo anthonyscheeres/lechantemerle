@@ -152,12 +152,9 @@ export class RoomsComponent implements OnInit {
     var target = event.target
 
 
-    var house = target.querySelector('roomno').value
-    var data = JSON.stringify({ "amountOfBeds": house, "id": value.id })
+    var amountOfBeds= target.querySelector('#amount').value
 
-    var url = ConstuctUpdateAmountOfBeds() 
-
-    fetchJsonPost(url, data, ProtocolR.PUT);
+    this.updateBeds(amountOfBeds, value.id)
 
     this.sleep(this.ms)
     this.showAvailableDates()
@@ -165,6 +162,15 @@ export class RoomsComponent implements OnInit {
 
   }
 
+  updateBeds(amountOfBeds:string, id:number) {
+
+    var data = JSON.stringify({ "amountOfBeds": parseFloat(amountOfBeds), "id": id})
+
+    var url = ConstuctUpdateAmountOfBeds()
+
+    fetchJsonPost(url, data, ProtocolR.PUT);
+
+  }
 
 
   static changeImg(img, id) {
