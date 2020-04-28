@@ -16,7 +16,6 @@
       <table class="table">
         <thead>
         <th class="col-4" scope="col">Afbeelding</th>
-        <th class="col-4" scope="col">Kamernummer</th>
         <th class="col-4" scope="col">Aantal bedden</th>
         </thead>
         <tbody>
@@ -28,9 +27,7 @@
               <img (click)="click(value)" src="{{value.img}}" />
             </td>
 
-            <td class="col-md-2" (click)="click(value)">
-              {{ value.id }}
-            </td>
+   
 
             <div *ngIf="showInputFields ==false">
 
