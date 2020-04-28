@@ -6,6 +6,7 @@ import { fetchJsonPost } from '../services/http';
 import { HttpClient } from '@angular/common/http';
 import { ReservationModel } from '../models/ReservationModel';
 import { Router } from '@angular/router';
+import { convertToYYYYMMDD } from '../services/general';
 
 
 @Component({
@@ -132,7 +133,7 @@ export class AddPendingReservationComponent implements OnInit {
 
 
   valiidateJsonAddresrvation(roomno: number, departure: Date, arrival: Date, price: number) {
-    return JSON.stringify({ "roomno": roomno, "price": price, "time_till": departure, "time_from": arrival, "everyMonth": this.marked })
+    return JSON.stringify({ "roomno": roomno, "price": price, "time_till": convertToYYYYMMDD(departure.toString()), "time_from": convertToYYYYMMDD(arrival.toString()), "everyMonth": this.marked })
   }
 
 
