@@ -20,7 +20,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterComponent } from './register/register.component';
 import { RegFormComponent } from './reg-form/reg-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { RoomsComponent } from './rooms/rooms.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopUpComponent } from './pop-up/pop-up.component';
@@ -137,9 +137,9 @@ import { DescriptionChildComponent } from './description-child/description-child
       ]
     ),
   ],
-  providers: [{
-    provide: LocationStrategy, useClass: HashLocationStrategy
-  }],
+  providers: [
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
+    ],
   bootstrap: [AppComponent],
   entryComponents: [PopUpComponent]
 })

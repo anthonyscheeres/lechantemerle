@@ -15,7 +15,7 @@
                  class="input-mini dates"
                    (ngModelChange)="clearFilter()"
                 [minDate]="min"
-                 id="arrival" bsDatepicker>
+                 id="arrival" bsDatepicker readonly>
 
 
         </div>
@@ -36,7 +36,7 @@
                  class="input-mini dates"
                  [datesDisabled]=" isDisabledTill"
                  [minDate]="min"
-                 id="departure" bsDatepicker>
+                 id="departure" bsDatepicker readonly>
 
 
         </div>
