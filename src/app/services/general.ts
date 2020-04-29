@@ -1,4 +1,8 @@
 export function convertToYYYYMMDD(str: string) {
+
+  if (str == null) throw Error();
+
+
   var mnths = {
     Jan: "01",
     Feb: "02",
@@ -17,6 +21,7 @@ export function convertToYYYYMMDD(str: string) {
 
   return [date[3], mnths[date[1]], date[2]].join("-");
 }
-export function sleepForASetAmountOfTimeInMiliSeconds(ms) {
+export function sleepForASetAmountOfTimeInMiliSeconds(ms: number) {
+  if (ms == null) throw Error();
   return new Promise(resolve => setTimeout(resolve, ms));
 }
