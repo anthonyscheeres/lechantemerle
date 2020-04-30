@@ -3,35 +3,42 @@
 
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark" role="navigation">
-    
-      <a href="img/logo.png">
+    <div class="d-none d-md-block">
+      <a href="../assets/img/logo.png">
+
+
+
+
         <img class="logo" src="../assets/img/logo.png" alt="logo" />
+
       </a>
-      <nav class="navbar">
-        <a class="glyphicon glyphicon-home" routerLink="/home"> Home</a>
-   
+    </div>
+    <nav class="navbar">
+      <a class="glyphicon glyphicon-home" routerLink="/home"> Home</a>
 
-        <a routerLink="/indeling">Indeling</a>
 
+      <a routerLink="/indeling">Indeling</a>
+      <div class="d-none d-md-block">
 
         <a routerLink="/foto">Foto's</a>
         <a routerLink="/video">Video's</a>
 
         <a routerLink="/maps"> Maps</a>
+      </div>
 
-        <a routerLink="/kamers">Reserveer</a>
+      <a routerLink="/kamers">Reserveer</a>
 
-        <a *ngIf="showInputFields"routerLink="/admin">Admin</a>
+      <a *ngIf="showInputFields" routerLink="/admin">Admin</a>
 
-        <div *ngIf="isLoggedIn">
+      <div *ngIf="isLoggedIn">
         <a *ngIf="showInputFields==false" routerLink="/reservations">Reserveringen</a>
-          </div>
-        <a *ngIf="isLoggedIn" routerLink="/profile">Profiel</a>
-        <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
-        <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-user" routerLink="/register"> Register</a>
-        <a style="float:right" routerLink="/contact">Contact</a>
-        <a *ngIf="isLoggedIn" (click)="logOut()"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
-      </nav>
+      </div>
+      <a *ngIf="isLoggedIn" routerLink="/profile">Profiel</a>
+      <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
+      <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-user" routerLink="/register"> Register</a>
+      <a style="float:right" routerLink="/contact">Contact</a>
+      <a *ngIf="isLoggedIn" (click)="logOut()"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
+    </nav>
 
   </nav>
 </div>

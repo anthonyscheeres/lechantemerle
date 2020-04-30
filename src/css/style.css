@@ -22,6 +22,8 @@ html {
 }
 
 
+
+
 /*slide show*/
 * {box-sizing:border-box}
 
@@ -506,16 +508,29 @@ padding-bottom: 60px;
 padding-left: 30px;
 margin-bottom: 5ex;
 }
-
+.ffff {
+  margin-left: 15%;
+}
 
 /*maak je site responsive*/
 @media (max-width:1300px){
+  
+img {
+    max-height: 40%;
+}
+
   .huis{
     display: none;
   }
+  .datepicker,
+  .table-condensed {
+    width: 220px;
+    height: 220px;
+    font-size: x-small;
+  }
 
-  .articleright{
-    display:none;
+  .articleright {
+    display: none;
   }
   main, body, article, .articleleft, .articlemiddle, footer {
 		-webkit-box-shadow: none;

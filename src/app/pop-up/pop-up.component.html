@@ -6,79 +6,83 @@
 
 
     <div>
-      <h1 class="text-center">Kamer {{product.id}}</h1>
-      <hr>
+    
 
+      <div class="ffff">
+        <div class="row">
 
-      <div class="row">
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="card card-body mb-2">
 
-        <div class="col-3 mx-auto">
-          <div class="card card-body mb-2">
-
-            <!-- 2. datepicker in the popup -->
-            <input type="text"
-                   placeholder="Aankomst"
-                   [(ngModel)]="arrival"
-                   class="input-mini dates"
-                   [datesDisabled]="isDisabledFrom"
-                   (ngModelChange)="clearFilter()"
-                   [minDate]="min"
-                   [maxDate]="max"
-                   id="arrival" bsDatepicker readonly>
-
-          </div>
-        </div>
-        <h1> tot</h1>
-        <div class="col-3 mx-auto">
-          <div class="card card-body mb-2">
-
-            <div class="input-group date" data-provide="datepicker">
-              <!-- 2. datepicker in the popup -->
-              <input type="text"
-                     placeholder="Vertrek"
-                     [(ngModel)]="departure"
-                     (ngModelChange)="clearFilter2()"
-                     class="input-mini dates"
-                     [minDate]="min"
-                     [maxDate]="max"
-                     [datesDisabled]=" isDisabledTill"
-                     id="departure" bsDatepicker readonly>
-
+              <div class="input-group date" data-provide="datepicker">
+                <!-- 2. datepicker in the popup -->
+                <input type="text"
+                       placeholder="Aankomst"
+                       [(ngModel)]="arrival"
+                       class="input-mini dates"
+                       [datesDisabled]="isDisabledFrom"
+                       (ngModelChange)="clearFilter()"
+                       [minDate]="min"
+                       [maxDate]="max"
+                       id="arrival" bsDatepicker readonly>
+              </div>
             </div>
           </div>
+          <div class="d-none d-md-block">
+            <h1> tot</h1>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5">
+            <div class="card card-body mb-2">
+
+              <div class="input-group date" data-provide="datepicker">
+                <!-- 2. datepicker in the popup -->
+                <input type="text"
+                       placeholder="Vertrek"
+                       [(ngModel)]="departure"
+                       (ngModelChange)="clearFilter2()"
+                       class="input-mini dates"
+                       [minDate]="min"
+                       [maxDate]="max"
+                       [datesDisabled]=" isDisabledTill"
+                       id="departure" bsDatepicker readonly>
+
+              </div>
+            </div>
+          </div>
+
+
         </div>
 
 
-      </div>
+        <div class="row">
+          <div class="d-none d-md-block">
+           
+
+              <img class="mx-auto d-block" src="{{product.img}}">
+        
+          </div>
 
 
-      <hr>
 
-
-      <div class="row">
-        <div class="col-12">
-
-          <img class="mx-auto d-block" src="{{product.img}}">
         </div>
-      </div>
-      <hr>
 
+  
 
+        <div *ngIf="loggedIn" class="inline-inputs">
 
-      <div *ngIf="loggedIn" class="inline-inputs">
+          <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer($event)">Reserveer</button>
+        </div>
+        <p> Kamer {{product.id}} {{this1}} Prijs {{price}} Euro</p>
+     
+          <div *ngIf="loggedIn==false">
+            <span class="txt1">
+              Login om te reserveeren!
+            </span>
+            <a routerLink="/login">
+              Login
+            </a>
+          </div>
 
-        <button type="submit" value="Reserveer" class="btn btn-lg btn-outline-primary" (click)="reserveer($event)">Reserveer</button>
-      </div>
-      <p>{{this1}} Prijs {{price}} Euro</p>
-
-      <div *ngIf="loggedIn==false">
-        <span class="txt1">
-          Login om te reserveeren!
-        </span>
-        <a routerLink="/login">
-          Login
-        </a>
-      </div>
-
+</div>
     </div>
     </div>

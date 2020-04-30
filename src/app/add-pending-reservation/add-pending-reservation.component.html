@@ -2,102 +2,107 @@
 
   <div class="container bg-faded py-3">
 
-    <div class="row">
-
-      <div class="col-3 mx-auto">
-        <div class="card card-body mb-2">
-
-          <!-- 2. datepicker in the popup -->
-          <input type="text"
-                 placeholder="Aankomst"
-                   [(ngModel)]="arrival"
-                [datesDisabled]="isDisabledFrom"
-                 class="input-mini dates"
-                   (ngModelChange)="clearFilter()"
-                [minDate]="min"
-                 id="arrival" bsDatepicker readonly>
-
-
-        </div>
-
-
-      </div>
-
-      <div class="col-3 mx-auto">
-        <div class="card card-body mb-2">
-
-
-
-          <!-- 2. datepicker in the popup -->
-          <input type="text"
-                 placeholder="Vertrek"
-                
-       [(ngModel)]="departure"
-                 class="input-mini dates"
-                 [datesDisabled]=" isDisabledTill"
-                 [minDate]="min"
-                 id="departure" bsDatepicker readonly>
-
-
-        </div>
-      </div>
-
-    </div>
-    <hr>
-
-    <div class="row">
-      <div class="col-3 mx-auto">
-        <div class="card card-body mb-2">
-
-          <p>
-            Kamer nummer :
-            <select [(ngModel)]="selected">
-              <option *ngFor="let title of reservationDataFromServer"
-                      [value]="title.id"
-                         
-                      [attr.selected]="selected.id==title.id ? true : null">
-                {{title.id}}
-              </option>
-            </select>
-
-          </p>
-
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="col-3 mx-auto">
-      <div class="card card-body mb-2">
-        <p>Elke maand :<input type="checkbox" [(ngModel)]="theCheckbox" data-md-icheck (change)="toggleVisibility($event)" /></p>
-      </div>
-    </div>
-
-    <div class="col-3 mx-auto">
-      <div class="card card-body mb-2">
-        <form (submit)="openSubmit($event)">
 
 
 
 
+    <div class="ffff">
+      <div class="row">
+
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="card card-body mb-2">
+
+            <div class="input-group date" data-provide="datepicker">
+              <!-- 2. datepicker in the popup -->
+              <input type="text"
+                     placeholder="Aankomst"
+                     [(ngModel)]="arrival"
+                     [datesDisabled]="isDisabledFrom"
+                     class="input-mini dates"
+                     (ngModelChange)="clearFilter()"
+                     [minDate]="min"
+                     id="arrival" bsDatepicker readonly>
 
 
-          <div class="form-group">
-            <input type="text" class="form-control" id="price" placeholder="Prijs">
+            </div>
           </div>
 
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="card card-body mb-2">
 
 
-          <input class="btn btn-lg btn-outline-primary" id='loginButton' type="submit" value="Opslaan"> <p>{{this1}}</p>
+            <div class="input-group date" data-provide="datepicker">
+
+              <!-- 2. datepicker in the popup -->
+              <input type="text"
+                     placeholder="Vertrek"
+                     [(ngModel)]="departure"
+                     class="input-mini dates"
+                     [datesDisabled]=" isDisabledTill"
+                     [minDate]="min"
+                     id="departure" bsDatepicker readonly>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="card card-body mb-2">
+
+            <p>
+              Kamer nummer :
+              <select [(ngModel)]="selected">
+                <option *ngFor="let title of reservationDataFromServer"
+                        [value]="title.id"
+                        [attr.selected]="selected.id==title.id ? true : null">
+                  {{title.id}}
+                </option>
+              </select>
+
+            </p>
+
+          </div>
+        </div>
+
+
+
+
+        <div class="col-md-6 col-lg-4 mb-5">
+          <div class="card card-body mb-2">
+            <p>Elke maand :<input type="checkbox" [(ngModel)]="theCheckbox" data-md-icheck (change)="toggleVisibility($event)" /></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card card-body mb-2">
+          <form (submit)="openSubmit($event)">
+
+      
+
+
+
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="price" placeholder="Prijs">
+        </div>
+
+
+
+        <input class="btn btn-lg btn-outline-primary" id='loginButton' type="submit" value="Opslaan"> <p>{{this1}}</p>
 
         </form>
 
 
 
       </div>
-    </div>
+      </div>
 
-  </div>
+    </div></div>
 
 

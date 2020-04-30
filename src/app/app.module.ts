@@ -99,7 +99,7 @@ import { DescriptionChildComponent } from './description-child/description-child
         },
         {
           path: '',
-          component: RoomsComponent
+          redirectTo: '/reservations', pathMatch: 'full'
         },
 
  
@@ -138,7 +138,7 @@ import { DescriptionChildComponent } from './description-child/description-child
     ),
   ],
   providers: [
-    { provide: LocationStrategy, useClass: PathLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
   bootstrap: [AppComponent],
   entryComponents: [PopUpComponent]
