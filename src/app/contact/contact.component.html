@@ -1,5 +1,15 @@
 <app-huis></app-huis>
 
+<div *ngIf="contactInfoDataFromServer.length == 0">
+  <br>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+</div>
 
 <div *ngFor="let value of contactInfoDataFromServer">
   <article class="articlemiddle">
@@ -32,30 +42,30 @@
 
     <form *ngIf="showInputFields" class="login100-form validate-form" (submit)="submitNewContactDetails($event)">
 
-      
 
 
-        <input class="form-group" type="text" value={{value.house_nickname}} id="houseNickname">
 
-        <input class="form-group" type="text" value={{value.place}} id="place">
+      <input class="form-group" type="text" value={{value.house_nickname}} id="houseNickname">
 
-        <input class="form-group" type="text" value={{value.address}} id="address">
+      <input class="form-group" type="text" value={{value.place}} id="place">
 
-
-        <input class="form-group" type="text" value={{value.postal_code}} id="postalCode">
-
-        <br>
-
-        <input class="form-group" type="text" value={{value.family_name}} id="familyName">
+      <input class="form-group" type="text" value={{value.address}} id="address">
 
 
-        <input class="form-group" type="text" value={{value.mail}} id="mail">
+      <input class="form-group" type="text" value={{value.postal_code}} id="postalCode">
+
+      <br>
+
+      <input class="form-group" type="text" value={{value.family_name}} id="familyName">
 
 
-        <input class="form-group" type="text" value={{value.telephone}} id="telephone">
-   
+      <input class="form-group" type="text" value={{value.mail}} id="mail">
 
-      <input class="btn btn-lg btn-outline-primary" id="button" type='submit' value="Update Contact Page">
+
+      <input class="form-group" type="text" value={{value.telephone}} id="telephone">
+
+
+      <input class="btn btn-lg btn-outline-primary" id="button" type='submit' value="Update Contact pagina">
 
     </form>
 

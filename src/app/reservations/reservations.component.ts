@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./reservations.component.css']
 })
 export class ReservationsComponent implements OnInit {
-  reservationDataFromServer
+  reservationDataFromServer: ReservationModel[]= []
   selected
   constructor(private http: HttpClient) { }
 

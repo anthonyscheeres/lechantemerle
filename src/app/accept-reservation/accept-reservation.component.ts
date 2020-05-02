@@ -12,7 +12,7 @@ import { ReservationModel } from '../models/ReservationModel';
 })
 export class AcceptReservationComponent implements OnInit {
   ms = 2 * 1000 // 2 * 1000ms = 2 seconden
-  reservationDataFromServer
+  reservationDataFromServer: ReservationModel[] =[]
   showConfig: boolean = false
   saveUsername: boolean = false
   constructor(private http: HttpClient) { }

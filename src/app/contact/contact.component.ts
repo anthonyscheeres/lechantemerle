@@ -13,7 +13,7 @@ import { ConstructGetContactInfoUrl, ConstructPostContactInfoUrl } from '../serv
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  contactInfoDataFromServer: any = DataModel.contact;
+  contactInfoDataFromServer: any = []
   showInputFields: boolean = false;
     mySubscription: any;
 
@@ -35,7 +35,7 @@ export class ContactComponent implements OnInit {
       .subscribe(
         responseData => {
           this.contactInfoDataFromServer = responseData;
-          DataModel.contact = responseData;
+          
         }
       );
   }

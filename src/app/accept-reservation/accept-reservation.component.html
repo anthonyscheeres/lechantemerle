@@ -61,6 +61,15 @@
             </td>
 
           </tr>
+
+
+          <div *ngIf="reservationDataFromServer.length == 0">
+            <p>Geen reserveringen</p>
+          </div>
+
+
+
+
         </tbody>
       </table>
     </div>

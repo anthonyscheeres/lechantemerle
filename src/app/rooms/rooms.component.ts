@@ -11,13 +11,14 @@ import { ProtocolR } from '../models/Protocol';
 import { AddPendingReservationComponent } from '../add-pending-reservation/add-pending-reservation.component';
 import { ConstructAddRoomUrl, ConstuctUpdateAmountOfBeds, ConstructGetAvailableReservationUrl, constructDeleteRoom, addRoom2 } from '../services/rooms';
 import { sleepForASetAmountOfTimeInMiliSeconds } from '../services/general';
+import { RoomModel } from '../models/RoomsModel';
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
-  reservationDataFromServer = DataModel.rooms.RoomReservationData
+  reservationDataFromServer: RoomModel[] = []
   selected: any = null;
   showInputFields = false
   ms = 2 * 1000 // 2 * 1000ms = 2 seconden
@@ -25,7 +26,7 @@ export class RoomsComponent implements OnInit {
   constructor(private http: HttpClient, private _router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-
+    
     this.showAvailableDates()
 
       this.doStuff()
@@ -36,7 +37,7 @@ export class RoomsComponent implements OnInit {
 
 
   showAvailableDates() {
-    this.http.get<ReservationModel[]>(
+    this.http.get<RoomModel[]>(
       ConstructGetAvailableReservationUrl())
       .subscribe(
         responseData => {
@@ -53,13 +54,24 @@ export class RoomsComponent implements OnInit {
 
 
   click(value) {
-   // console.log(value)
-    const modalRef = this.modalService.open(PopUpComponent, { windowClass: "myCustomModalClass" });
+/*    const modalRef = this.modalService.open(PopUpComponent, { windowClass: "myCustomModalClass" });
     modalRef.componentInstance.product = value;
-    
+    */
+
+    this._router.navigate(['/detail'], { queryParams: { id: value.id } });
+
+
+
   }
 
+  click2(value) {
+        const modalRef = this.modalService.open(PopUpComponent, { windowClass: "myCustomModalClass" });
+        modalRef.componentInstance.product = value;
+        
 
+
+
+  }
 
   addRoom() {
     this.addRoom2();

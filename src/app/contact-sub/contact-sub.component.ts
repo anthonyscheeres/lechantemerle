@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContactSubComponent implements OnInit {
 
-  contactInfoDataFromServer: any = DataModel.contact;
+  contactInfoDataFromServer: any = []
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class ContactSubComponent implements OnInit {
       .subscribe(
         responseData => {
           this.contactInfoDataFromServer = responseData;
-          DataModel.contact = responseData;
+        
         }
       );
   }

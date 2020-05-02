@@ -28,6 +28,32 @@ export function ConstructAddRoomUrl() {
 }
 
 
+export function ConstructUrlUpdatDescription() {
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+  var token = ""
+  try {
+    token = JSON.parse(DataModel.account)[0].token.toString();
+  } catch (Error) {
+
+  }
+
+  var url = "http://" + host + ":" + port + "/api/Room/updatDescription?token=" + token
+  return url;
+
+
+
+}
+
+
+export function constructGetDesribtion(id) {
+  var host = ServerModel.host;
+  var port = ServerModel.port;
+ 
+
+  var url = "http://" + host + ":" + port + "/api/Room/getRoomDescription?id=" + id
+  return url;
+}
 
 
   export function constructDelteAllReservations() {

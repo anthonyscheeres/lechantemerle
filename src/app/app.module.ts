@@ -33,6 +33,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { ContactSubComponent } from './contact-sub/contact-sub.component';
 import { AcceptReservationComponent } from './accept-reservation/accept-reservation.component';
 import { DescriptionChildComponent } from './description-child/description-child.component';
+import { DetailPageRoomsComponent } from './detail-page-rooms/detail-page-rooms.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { DescriptionChildComponent } from './description-child/description-child
     ContactSubComponent,
     AcceptReservationComponent,
     DescriptionChildComponent,
+    DetailPageRoomsComponent,
 
 
    
@@ -99,7 +101,7 @@ import { DescriptionChildComponent } from './description-child/description-child
         },
         {
           path: '',
-          redirectTo: '/reservations', pathMatch: 'full'
+          redirectTo: '/rooms', pathMatch: 'full'
         },
 
  
@@ -114,7 +116,7 @@ import { DescriptionChildComponent } from './description-child/description-child
           path: 'video',
           component: VideoComponent
         }, {
-          path: 'indeling',
+          path: 'layOut',
           component: IndelingComponent
         }, {
           path: 'kenmerken',
@@ -128,8 +130,12 @@ import { DescriptionChildComponent } from './description-child/description-child
           component: LoginComponent
         },
         {
-          path: 'kamers',
+          path: 'rooms',
           component: RoomsComponent
+        },
+        {
+          path: 'detail',
+          component: DetailPageRoomsComponent
         },
        
         // otherwise redirect to home

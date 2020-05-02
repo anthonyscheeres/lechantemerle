@@ -1,0 +1,65 @@
+<div *ngFor="let value of InfoDataFromServer">
+  <article class="articlemiddle">
+    <h3 (click)="click(value)">
+
+      <span class="glyphicon glyphicon-book"></span>
+      Kamer {{value.id}}
+    </h3>
+    <div class="row">
+
+      <div class="col-sm-8">
+        <a href="{{value.img}}">
+          <img class="img-fluid" src="{{value.img}}">
+        </a>
+      </div>
+
+
+      <div class="col-sm-3">
+
+        <button (click)="click(value)" type="button" class="btn btn-warning">
+          <span class="glyphicon glyphicon-book"></span> Reserveer
+        </button>
+      </div>
+
+    </div>
+    <br>
+
+
+
+    <div class="jumbotron vertical-center">
+
+      <div *ngIf="showInputFields==false">
+
+
+        <p>{{value.description}}</p>
+
+
+
+      </div>
+
+      <form *ngIf="showInputFields" (submit)="submitNewDetails($event)">
+        <input class="form-group" type="text" value={{value.description}} id="description">
+
+        <input class="btn btn-lg btn-outline-primary" id="button" type='submit' value="Update pagina">
+
+      </form>
+
+
+
+    </div>
+
+  </article>
+</div>
+
+<div *ngIf="InfoDataFromServer.length == 0">
+  <br>
+  <div class="d-flex justify-content-center" >
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+</div>
+
+
