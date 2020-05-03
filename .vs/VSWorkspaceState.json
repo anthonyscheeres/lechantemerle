@@ -3,12 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\accept-reservation",
-    "\\src\\app\\detail-page-rooms",
-    "\\src\\app\\models",
-    "\\src\\app\\reservations",
+    "\\src\\app\\contact",
+    "\\src\\app\\profile",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\reservations\\reservations.component.ts",
+  "SelectedNode": "\\src\\app\\profile\\profile.component.html",
   "PreviewInSolutionExplorer": false
 }
