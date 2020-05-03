@@ -130,6 +130,10 @@ import { DetailPageRoomsComponent } from './detail-page-rooms/detail-page-rooms.
           component: LoginComponent
         },
         {
+          path: 'reservationRoom',
+          component: PopUpComponent
+        },
+        {
           path: 'rooms',
           component: RoomsComponent
         },

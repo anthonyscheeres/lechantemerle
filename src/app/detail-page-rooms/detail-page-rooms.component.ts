@@ -17,7 +17,7 @@ import { fetchJsonPost } from '../services/http';
 export class DetailPageRoomsComponent implements OnInit {
   showInputFields = false
   InfoDataFromServer: RoomModel[] =[]
-  id:number= 0
+  id:number
 
 
   doStuff() {
@@ -26,8 +26,12 @@ export class DetailPageRoomsComponent implements OnInit {
 
   click(value) {
     // console.log(value)
-    const modalRef = this.modalService.open(PopUpComponent, { windowClass: "myCustomModalClass" });
-    modalRef.componentInstance.product = value;
+ /*   const modalRef = this.modalService.open(PopUpComponent, { windowClass: "myCustomModalClass" });
+    modalRef.componentInstance.product = value;*/
+
+
+    this._router.navigate(['/reservationRoom'], { queryParams: { id: this.id } });
+
 
   }
 

@@ -3,10 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\contact",
-    "\\src\\app\\profile",
+    "\\src\\app\\detail-page-rooms",
+    "\\src\\app\\header",
+    "\\src\\app\\pop-up",
+    "\\src\\app\\rooms",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\app\\profile\\profile.component.html",
+  "SelectedNode": "\\src\\app\\pop-up\\pop-up.component.html",
   "PreviewInSolutionExplorer": false
 }

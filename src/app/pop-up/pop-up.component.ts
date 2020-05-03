@@ -21,12 +21,13 @@ import {
   DataModel
 } from '../models/DataModel';
 import {
-  Router
+  Router, ActivatedRoute
 } from '@angular/router';
 import {
-  reserveerDezeKamer, ConstructGetAvailableReservationUrl, constructGetRoomDetails, ConstructGetAvailableReservationUrl2
+  reserveerDezeKamer, ConstructGetAvailableReservationUrl, constructGetRoomDetails, ConstructGetAvailableReservationUrl2, constructGetDesribtion
 } from '../services/rooms';
 import { convertToYYYYMMDD, sleepForASetAmountOfTimeInMiliSeconds } from '../services/general';
+import { RoomModel } from '../models/RoomsModel';
 
 
 @Component({
@@ -36,7 +37,7 @@ import { convertToYYYYMMDD, sleepForASetAmountOfTimeInMiliSeconds } from '../ser
 })
 export class PopUpComponent implements OnInit {
   closeResult: string;
-  @Input() product: ReservationModel;
+  @Input() product: RoomModel;
   current = new Date();
   private ms : number= 5000
   this1 = "Reserveer hier!";
@@ -67,6 +68,26 @@ export class PopUpComponent implements OnInit {
     this.setIsEnabledTill(constructisEnabledtill2)
     this.setisEnabledFrom(constructisEnabledFrom2)
   }
+
+
+
+
+  showInfo(id) {
+
+
+    var url = constructGetDesribtion(id)
+
+    this.http.get<RoomModel>(
+      url)
+      .subscribe(
+        responseData => {
+          this.product = responseData[0];
+
+        }
+      );
+  }
+
+
 
   setIsEnabledTill(constructisEnabledtill2) {
     this.isEnabledTill = constructisEnabledtill2
@@ -162,19 +183,55 @@ export class PopUpComponent implements OnInit {
       loggedIn = obj.token != null
       //  console.log(loggedIn);
 
+
+
+
     } catch {
 
     }
 
     return loggedIn;
   }
+
+
+
+
+
+
   intializeFields() {
 
     var isLoggedIn :boolean = false;
     isLoggedIn = this.checkIfUserIsLoggedIn();
     this.loggedIn = isLoggedIn;
 
-    this.showAvailableDatesFromServer()
+
+    var id: number = null
+    try {
+      id = this.product.id
+    }
+    catch (Error) {
+      var subscription = this.activatedRoute.queryParams.subscribe(params => {
+        id = params['id'];
+
+      });
+    }
+
+ 
+
+    if (id != null) {
+      this.showInfo(id)
+
+      this.showAvailableDatesFromServer(id)
+    }
+
+
+
+  
+
+
+
+
+
     var resrvationsDataFromServerInJsonFormat = this.reservationDataFromServer
     var enabledDates : Date[]= [] //default is emty list
     enabledDates = this.getEnabledDates(resrvationsDataFromServerInJsonFormat)
@@ -242,7 +299,7 @@ export class PopUpComponent implements OnInit {
 
 
 
-  ConstructGetAvailableReservationUrl(product: ReservationModel) {
+  ConstructGetAvailableReservationUrl(product: number) {
     return ConstructGetAvailableReservationUrl2(product);
   }
 
@@ -250,9 +307,14 @@ export class PopUpComponent implements OnInit {
     return constructGetRoomDetails(product)
   }
 
-  showAvailableDatesFromServer() {
+  showAvailableDatesFromServer(id : number) {
+
+
+
+
+
     this.http.get<ReservationModel[]>(
-      this.ConstructGetAvailableReservationUrl(this.product))
+      this.ConstructGetAvailableReservationUrl(id))
       .subscribe(
         responseData => {
           
@@ -263,7 +325,7 @@ export class PopUpComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient, private modalService: NgbModal, private _router: Router) { }
+  constructor(private http: HttpClient, private modalService: NgbModal, private _router: Router, private activatedRoute: ActivatedRoute) { }
 
 
   async reserveer(event) {

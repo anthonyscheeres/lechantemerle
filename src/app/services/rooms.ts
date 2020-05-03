@@ -70,11 +70,11 @@ export function constructGetDesribtion(id) {
   }
 
 
-export function ConstructGetAvailableReservationUrl2(product: ReservationModel) {
+export function ConstructGetAvailableReservationUrl2(product: number) {
   var host = ServerModel.host;
   var port = ServerModel.port;
   //var token = JSON.parse(DataModel.account)[0].token.toString();
-  var url = "http://" + host + ":" + port + "/api/Reservation/getPendingDatesByIdReservation?id=" + product.id;
+  var url = "http://" + host + ":" + port + "/api/Reservation/getPendingDatesByIdReservation?id=" + product;
   return url;
 }
 
