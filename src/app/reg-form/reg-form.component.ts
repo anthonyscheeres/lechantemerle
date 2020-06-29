@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./reg-form.component.css']
 })
 export class RegFormComponent implements OnInit {
-this1:string = ""
+this1 = ''
   constructor(private _router: Router) { }
   ngOnInit() {
   }
@@ -24,7 +24,7 @@ this1:string = ""
     const password = target.querySelector('#password').value
     const email = target.querySelector('#email').value
     await register(username, password, email).then(response => {
- 
+
       this.changeThis1(response)
     });
 
@@ -35,7 +35,7 @@ this1:string = ""
     if (response == '"success"') {
       this._router.navigate(['/login']);
 
-    } else this.this1 = "Oops heb je een juist email adress gegeven, anders probeer een andere gebruikersnaam"
+    } else this.this1 = 'Oops heb je een juist email adress gegeven, anders probeer een andere gebruikersnaam'
   }
 
 }

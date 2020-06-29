@@ -1,4 +1,5 @@
 export class UserModel {
+    static username: any;
   user_id: number;
   username: string;
   password: string;
@@ -7,5 +8,4 @@ export class UserModel {
   created_at: Date;
   is_email_verified: boolean;
   token: string;
-    static username: any;
 }

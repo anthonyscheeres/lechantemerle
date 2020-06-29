@@ -16,11 +16,11 @@ import { convertToYYYYMMDD } from '../services/general';
 })
 export class AddPendingReservationComponent implements OnInit {
   current: Date = new Date();
-  theCheckbox: boolean = false;
-  marked:boolean =false
+  theCheckbox = false;
+  marked =false
   arrival : Date
   departure : Date
-  this1: string = ""
+  this1 = ''
   min=new Date()
 
   isDisabledFrom: Date[] = [];
@@ -36,20 +36,20 @@ export class AddPendingReservationComponent implements OnInit {
 
   ngOnInit(): void {
     this.showAvailableDates()
-   var resrvations= this.reservationDataFromServer
+   const resrvations= this.reservationDataFromServer
     this.isDisabledFrom = this.getEnabledDates(resrvations)
     this.isDisabledTill=this.getEnabledDates2(resrvations)
   }
 
 
   clearFilter() {
-    var newDateDeparture = new Date(this.arrival)
+    const newDateDeparture = new Date(this.arrival)
     newDateDeparture.setDate(newDateDeparture.getDate() + 1)
     this.departure = newDateDeparture
   }
 
   getEnabledDates(resrvations) {
-    var enabledDates = [];
+    let enabledDates = [];
     if (resrvations == null) { enabledDates = [] }
     else {
       resrvations.foreach(r => {
@@ -60,7 +60,7 @@ export class AddPendingReservationComponent implements OnInit {
   }
 
   getEnabledDates2(resrvations: ReservationModel[] ) {
-    var enabledDates = [];
+    let enabledDates = [];
     if (resrvations == null) { enabledDates = [] }
     else {
       resrvations.forEach(r => {
@@ -76,17 +76,17 @@ export class AddPendingReservationComponent implements OnInit {
       .subscribe(
         responseData => {
           this.reservationDataFromServer = responseData;
-       
+
         }
       );
   }
 
 
   ConstructGetAvailableReservationUrl() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    //var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Room/listAvailableRooms";
+    const host = ServerModel.host;
+    const port = ServerModel.port;
+    // var token = JSON.parse(DataModel.account)[0].token.toString();
+    const url = 'http://' + host + ':' + port + '/api/Room/listAvailableRooms';
     return url;
   }
 
@@ -94,27 +94,27 @@ export class AddPendingReservationComponent implements OnInit {
   async openSubmit(event) {
     event.preventDefault()
 
-    var target = event.target
+    const target = event.target
 
 
-    var roomno: number;
+    let roomno: number;
 
-    var roomNumber = this.selected.toString()
+    const roomNumber = this.selected.toString()
 
     roomno = parseInt(roomNumber)
-    
-    var price: number;
+
+    let price: number;
 
     price = parseInt(target.querySelector('#price').value)
-    
-    var arrival = this.arrival
-    var departure = this.departure
 
-    var data = this.valiidateJsonAddresrvation(roomno, departure, arrival, price)
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Reservation/addPendingReservation?token=" + token;
+    const arrival = this.arrival
+    const departure = this.departure
+
+    const data = this.valiidateJsonAddresrvation(roomno, departure, arrival, price)
+    const host = ServerModel.host;
+    const port = ServerModel.port;
+    const token = JSON.parse(DataModel.account)[0].token.toString();
+    const url = 'http://' + host + ':' + port + '/api/Reservation/addPendingReservation?token=' + token;
 
 
     await fetchJsonPost(url, data, ProtocolR.PUT).then(r => {
@@ -127,13 +127,13 @@ export class AddPendingReservationComponent implements OnInit {
   changeThis1(r:string) {
     if (r == '"success"') {
       this._router.navigate(['/admin']);
-      this.this1 = "Gelukt!"
-    } else this.this1 = "Oops er ging iets fout"
+      this.this1 = 'Gelukt!'
+    } else this.this1 = 'Oops er ging iets fout'
   }
 
 
   valiidateJsonAddresrvation(roomno: number, departure: Date, arrival: Date, price: number) {
-    return JSON.stringify({ "roomno": roomno, "price": price, "time_till": convertToYYYYMMDD(departure.toString()), "time_from": convertToYYYYMMDD(arrival.toString()), "everyMonth": this.marked })
+    return JSON.stringify({ roomno, price, time_till: convertToYYYYMMDD(departure.toString()), time_from: convertToYYYYMMDD(arrival.toString()), everyMonth: this.marked })
   }
 
 

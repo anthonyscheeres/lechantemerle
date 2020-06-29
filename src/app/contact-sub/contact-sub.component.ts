@@ -24,7 +24,7 @@ export class ContactSubComponent implements OnInit {
       .subscribe(
         responseData => {
           this.contactInfoDataFromServer = responseData;
-        
+
         }
       );
   }

@@ -39,26 +39,26 @@ export class PopUpComponent implements OnInit {
   closeResult: string;
   @Input() product: RoomModel;
   current = new Date();
-  private ms : number= 5000
-  this1 = "Reserveer hier!";
+  private ms= 5000
+  this1 = 'Reserveer hier!';
   min:Date= new Date();
   max : Date= new Date(new Date().setMonth(new Date().getMonth() + 3))
   arrival: Date
   departure: Date
-  price : string= "Onbekend aantal"
+  price= 'Onbekend aantal'
   loggedIn = false
   isDisabledFrom: Date[] = [];
-  isDisabledTill  : Date[] = [] 
+  isDisabledTill  : Date[] = []
   isEnabledFrom: Date[] = [];
   isEnabledTill: Date[] = [];
   reservationDataFromServer: ReservationModel[];
-  millisecondPerDay = 24 * 60 * 60 * 1000; //time equals a whole day
+  millisecondPerDay = 24 * 60 * 60 * 1000; // time equals a whole day
   disabledDates : Date[] = [];
-  id: number //id of current reservation
+  id: number // id of current reservation
 
   defineIsDisbaled(reservationDataFromServer: ReservationModel[]) {
-    let constructisEnabledFrom2 : ReservationModel[] = []
-    let constructisEnabledtill2: ReservationModel[] = []
+    const constructisEnabledFrom2 : ReservationModel[] = []
+    const constructisEnabledtill2: ReservationModel[] = []
     reservationDataFromServer.forEach(r => {
       constructisEnabledFrom2.push(r.time_from);
       constructisEnabledtill2.push(r.time_till)
@@ -75,7 +75,7 @@ export class PopUpComponent implements OnInit {
   showInfo(id) {
 
 
-    var url = constructGetDesribtion(id)
+    const url = constructGetDesribtion(id)
 
     this.http.get<RoomModel>(
       url)
@@ -112,7 +112,7 @@ export class PopUpComponent implements OnInit {
 
     // this.intialize()
     this.reservationDataFromServer.forEach(r => {
-      var b = r.time_from.split("T")[0];
+      const b = r.time_from.split('T')[0];
       if (a == b) {
 
         this.departure = new Date(r.time_till);
@@ -125,11 +125,11 @@ export class PopUpComponent implements OnInit {
   }
 
   clearFilter2() {
-    //this.intialize()
+    // this.intialize()
     const departureDateAsDate = convertToYYYYMMDD(this.departure.toString())
     this.reservationDataFromServer.forEach(
       SingleResrvationWithArivalPriceId => {
-        var departureDateFromResrvation = SingleResrvationWithArivalPriceId.time_till.split("T")[0];
+        const departureDateFromResrvation = SingleResrvationWithArivalPriceId.time_till.split('T')[0];
 
         if (departureDateAsDate == departureDateFromResrvation) {
 
@@ -144,9 +144,9 @@ export class PopUpComponent implements OnInit {
 
 
   getEnabledDates(resrvations: ReservationModel[]) {
-    var enabledDatesWhatDatesThatCanBeRserved = []; // default is an emty list
+    let enabledDatesWhatDatesThatCanBeRserved = []; // default is an emty list
     if (resrvations == null) {
-      enabledDatesWhatDatesThatCanBeRserved = []//null response should be emty instead
+      enabledDatesWhatDatesThatCanBeRserved = []// null response should be emty instead
     } else {
       resrvations.forEach(r => {
         enabledDatesWhatDatesThatCanBeRserved.push(new Date(r.time_from))
@@ -156,15 +156,15 @@ export class PopUpComponent implements OnInit {
   }
 
   getEnabledDates2(resrvationsDataAsJson: ReservationModel[]) {
-    var response = []
+    let response = []
     if (resrvationsDataAsJson == null) {
       const enabledDates = []
-      var response = enabledDates
+      const response = enabledDates
       return response;
 
     } else {
       resrvationsDataAsJson.forEach(r => {
-        var enabledDates2 = [];
+        const enabledDates2 = [];
         enabledDates2.push(new Date(r.time_till))
         response = enabledDates2
       });
@@ -173,11 +173,11 @@ export class PopUpComponent implements OnInit {
   }
 
   checkIfUserIsLoggedIn() {
-    var loggedIn = false;
+    let loggedIn = false;
 
     try {
 
-      var obj = JSON.parse(DataModel.account)[0];
+      const obj = JSON.parse(DataModel.account)[0];
 
 
       loggedIn = obj.token != null
@@ -200,23 +200,23 @@ export class PopUpComponent implements OnInit {
 
   intializeFields() {
 
-    var isLoggedIn :boolean = false;
+    let isLoggedIn = false;
     isLoggedIn = this.checkIfUserIsLoggedIn();
     this.loggedIn = isLoggedIn;
 
 
-    var id: number = null
+    let id: number = null
     try {
       id = this.product.id
     }
     catch (Error) {
-      var subscription = this.activatedRoute.queryParams.subscribe(params => {
-        id = params['id'];
+      const subscription = this.activatedRoute.queryParams.subscribe(params => {
+        id = params.id;
 
       });
     }
 
- 
+
 
     if (id != null) {
       this.showInfo(id)
@@ -226,33 +226,33 @@ export class PopUpComponent implements OnInit {
 
 
 
-  
 
 
 
 
 
-    var resrvationsDataFromServerInJsonFormat = this.reservationDataFromServer
-    var enabledDates : Date[]= [] //default is emty list
+
+    const resrvationsDataFromServerInJsonFormat = this.reservationDataFromServer
+    let enabledDates : Date[]= [] // default is emty list
     enabledDates = this.getEnabledDates(resrvationsDataFromServerInJsonFormat)
- 
+
 
     this.GetDisabledDates(enabledDates)
-    var enabledDate = this.getEnabledDates2(resrvationsDataFromServerInJsonFormat)
+    const enabledDate = this.getEnabledDates2(resrvationsDataFromServerInJsonFormat)
     this.GetDisabledDates2(enabledDate)
   }
 
 
   GetDisabledDates(excludeDates: Array<Date>) {
-    var now : Date= new Date();
-    var startDate: Date = new Date(now.setFullYear(now.getFullYear() - 1));
-    var endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2)); //change as per your need
+    const now : Date= new Date();
+    let startDate: Date = new Date(now.setFullYear(now.getFullYear() - 1));
+    const endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2)); // change as per your need
 
     this.isDisabledFrom = [];
     do {
-      var found = false;
-      for (var i = 0; i < excludeDates.length; i++) {
-        var excludeDate: Date = excludeDates[i];
+      let found = false;
+      for (let i = 0; i < excludeDates.length; i++) {
+        const excludeDate: Date = excludeDates[i];
         if (this.IsSameDay(excludeDate, startDate)) {
           found = true;
         }
@@ -266,16 +266,16 @@ export class PopUpComponent implements OnInit {
   }
 
   GetDisabledDates2(excludeDates: Array<Date>) {
-    var now = new Date();
+    const now = new Date();
 
-    var startDate: Date = new Date(now.setFullYear(now.getFullYear() - 1));
-    var endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2)); //change as per your need
+    let startDate: Date = new Date(now.setFullYear(now.getFullYear() - 1));
+    const endDate: Date = new Date(now.setFullYear(now.getFullYear() + 2)); // change as per your need
 
     this.isDisabledTill = [];
     do {
-      var found = false;
-      for (var i = 0; i < excludeDates.length; i++) {
-        var excludeDate: Date = excludeDates[i];
+      let found = false;
+      for (let i = 0; i < excludeDates.length; i++) {
+        const excludeDate: Date = excludeDates[i];
         if (this.IsSameDay(excludeDate, startDate)) {
           found = true;
         }
@@ -291,8 +291,8 @@ export class PopUpComponent implements OnInit {
 
 
   IsSameDay(date1: Date, date2: Date) {
-    var date = new Date(date1)
-    var date3 = new Date(date2)
+    const date = new Date(date1)
+    const date3 = new Date(date2)
     return date.getFullYear() == date3.getFullYear() && date.getMonth() == date3.getMonth() && date.getDate() == date3.getDate();
 
   }
@@ -317,7 +317,7 @@ export class PopUpComponent implements OnInit {
       this.ConstructGetAvailableReservationUrl(id))
       .subscribe(
         responseData => {
-          
+
           this.reservationDataFromServer = responseData;
           this.defineIsDisbaled(responseData)
         }
@@ -331,26 +331,26 @@ export class PopUpComponent implements OnInit {
   async reserveer(event) {
 
 
-    //get from fields
+    // get from fields
     const id = this.id
     const arrival = this.arrival
     const depature = this.departure
 
 
-    await reserveerDezeKamer(arrival, depature, id).then(response => { //await response from server
-      var successMessage: string = '"success"'
+    await reserveerDezeKamer(arrival, depature, id).then(response => { // await response from server
+      const successMessage = '"success"'
       if (response == successMessage) {
 
 
-        var ms = this.ms;  //get amount you should sleep
-        this.sleepforAsetAmountOfTime(ms) //sleep for set amount
+        const ms = this.ms;  // get amount you should sleep
+        this.sleepforAsetAmountOfTime(ms) // sleep for set amount
 
 
         const pathToGoTo = '/reserveer';
         this._router.navigate([pathToGoTo]);
 
       } else {
-        var failedMessage = "Oops heb je wel een goed account, valideer je mail of log opnieuw in!";
+        const failedMessage = 'Oops heb je wel een goed account, valideer je mail of log opnieuw in!';
         this.this1 = failedMessage;
       }
     });
@@ -363,7 +363,7 @@ export class PopUpComponent implements OnInit {
 
 
   sleepforAsetAmountOfTime(ms: number) {
-    var promiseToSleep = sleepForASetAmountOfTimeInMiliSeconds(ms);
+    const promiseToSleep = sleepForASetAmountOfTimeInMiliSeconds(ms);
     return promiseToSleep
   }
 

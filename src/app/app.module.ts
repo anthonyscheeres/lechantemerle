@@ -64,7 +64,7 @@ import { DetailPageRoomsComponent } from './detail-page-rooms/detail-page-rooms.
     DetailPageRoomsComponent,
 
 
-   
+
 
   ],
   imports: [
@@ -77,7 +77,7 @@ import { DetailPageRoomsComponent } from './detail-page-rooms/detail-page-rooms.
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(
       [
-        
+
             {
           path: 'admin',
           component: AcceptReservationComponent
@@ -104,7 +104,7 @@ import { DetailPageRoomsComponent } from './detail-page-rooms/detail-page-rooms.
           redirectTo: '/rooms', pathMatch: 'full'
         },
 
- 
+
         {
           path: 'contact',
           component: ContactComponent
@@ -141,7 +141,7 @@ import { DetailPageRoomsComponent } from './detail-page-rooms/detail-page-rooms.
           path: 'detail',
           component: DetailPageRoomsComponent
         },
-       
+
         // otherwise redirect to home
         { path: '**', redirectTo: '' }
       ]

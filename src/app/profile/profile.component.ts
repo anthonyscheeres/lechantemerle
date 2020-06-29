@@ -29,28 +29,28 @@ export class ProfileComponent implements OnInit {
           responseData => {
             this.reservationDataFromServer = responseData;
 
-          }      
+          }
         );
-    
+
   }
   ConstructGetAvailableProfileUrl() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/User/validateGetProfile?token="+token;
+    const host = ServerModel.host;
+    const port = ServerModel.port;
+    const token = JSON.parse(DataModel.account)[0].token.toString();
+    const url = 'http://' + host + ':' + port + '/api/User/validateGetProfile?token='+token;
     return url;
   }
   ConstructUrl() {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/User/validateMail?token="+token;
+    const host = ServerModel.host;
+    const port = ServerModel.port;
+    const token = JSON.parse(DataModel.account)[0].token.toString();
+    const url = 'http://' + host + ':' + port + '/api/User/validateMail?token='+token;
     return url;
   }
 
   sendMail() {
-    var url = this.ConstructUrl();
-    var data = ""
+    const url = this.ConstructUrl();
+    const data = ''
     fetchJsonPost(url,data, ProtocolR.POST)
 
   }

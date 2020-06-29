@@ -13,16 +13,16 @@ import { ReservationModel } from '../models/ReservationModel';
 export class AcceptReservationComponent implements OnInit {
   ms = 2 * 1000 // 2 * 1000ms = 2 seconden
   reservationDataFromServer: ReservationModel[] =[]
-  showConfig: boolean = false
-  saveUsername: boolean = false
+  showConfig = false
+  saveUsername = false
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.intialize()
   }
   acpt(value) {
-    var url = acceptRResrvation() //url to server
-    const data = JSON.stringify({ "id": value.id })
+    const url = acceptRResrvation() // url to server
+    const data = JSON.stringify({ id: value.id })
 
     fetchJsonPost(url, data.toString(), ProtocolR.PUT)
     this.sleep(this.ms)
@@ -37,7 +37,7 @@ export class AcceptReservationComponent implements OnInit {
   }
 
   deleteAllReservations() {
-  
+
     if (this.showConfig && this.saveUsername) {
     this.http.delete(
 
@@ -55,7 +55,7 @@ export class AcceptReservationComponent implements OnInit {
     }
 
     this.showConfig = true
-   
+
   }
 
 
@@ -70,7 +70,7 @@ export class AcceptReservationComponent implements OnInit {
 
           }
         );
-  
+
 
 
 

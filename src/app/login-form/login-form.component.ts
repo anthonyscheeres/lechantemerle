@@ -12,12 +12,12 @@ import { PermissionModel } from '../models/PermissionModel';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginFormComponent implements OnInit {
- 
+
 
 
   constructor(private _router: Router) { }
 
-  this1 = "";
+  this1 = '';
   ngOnInit() {
   }
 
@@ -40,8 +40,8 @@ export class LoginFormComponent implements OnInit {
     try {
       await login(username, password).then(response => {
         DataModel.account;
-        var jsonObject = JSON.parse(response);
-        localStorage.setItem("token", jsonObject)
+        const jsonObject = JSON.parse(response);
+        localStorage.setItem('token', jsonObject)
 
         DataModel.account = jsonObject;
 
@@ -52,7 +52,7 @@ export class LoginFormComponent implements OnInit {
         ;
     }
     catch (Error) {
-      this.this1 = "Oops denk dat je de verkeerde gegvens heb ingevuld! Heb je, je email al gevalideert?!"
+      this.this1 = 'Oops denk dat je de verkeerde gegvens heb ingevuld! Heb je, je email al gevalideert?!'
     }
 
 

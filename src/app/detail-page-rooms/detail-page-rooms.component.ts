@@ -36,9 +36,9 @@ export class DetailPageRoomsComponent implements OnInit {
   }
 
   checkIfSuperUser() {
-    var isSuper= false
+    let isSuper= false
     try {
-      var obj = JSON.parse(DataModel.account);
+      const obj = JSON.parse(DataModel.account);
       //  console.log(obj[0].is_super_user);
       isSuper = obj[0].is_super_user;
     }
@@ -55,11 +55,11 @@ export class DetailPageRoomsComponent implements OnInit {
   ngOnInit(): void {
     this.doStuff()
 
-    var id: number =0
+    let id =0
 
-    var subscription = this.activatedRoute.queryParams.subscribe(params => {
-      id = params['id'];
- 
+    const subscription = this.activatedRoute.queryParams.subscribe(params => {
+      id = params.id;
+
     });
     this.id = id;
     this.showInfo(id);
@@ -74,16 +74,16 @@ export class DetailPageRoomsComponent implements OnInit {
   async submitNewDetails(event) {
     event.preventDefault()
 
-    var target = event.target
+    const target = event.target
 
-    var description = target.querySelector('#description').value
+    const description = target.querySelector('#description').value
 
-    var url = ConstructUrlUpdatDescription();
+    const url = ConstructUrlUpdatDescription();
 
-    var floatId = parseFloat(this.id.toString())
+    const floatId = parseFloat(this.id.toString())
 
 
-    var data = JSON.stringify({ "id": floatId , "description": description })
+    const data = JSON.stringify({ id: floatId , description })
 
 
 
@@ -112,14 +112,14 @@ export class DetailPageRoomsComponent implements OnInit {
   showInfo(id) {
 
 
-    var url = constructGetDesribtion(id)
+    const url = constructGetDesribtion(id)
 
     this.http.get<RoomModel[]>(
       url)
       .subscribe(
         responseData => {
           this.InfoDataFromServer = responseData;
-     
+
         }
       );
   }

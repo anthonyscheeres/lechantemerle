@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FotoComponent implements OnInit {
 
        slideIndex = 1;
-//showSlides(slideIndex);
+// showSlides(slideIndex);
 
  plusSlides(n) {
   this.showSlides(this.slideIndex += n);
@@ -22,8 +22,8 @@ currentSlide(n) {
 
 
 showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides") as HTMLCollectionOf<HTMLElement>;
+  let i;
+  const slides = document.getElementsByClassName('mySlides') as HTMLCollectionOf<HTMLElement>;
 
   if (n > slides.length) {
     this.slideIndex = 1
@@ -32,10 +32,10 @@ showSlides(n) {
     this.slideIndex = slides.length
   }
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+    slides[i].style.display = 'none';
   }
 
-  slides[this.slideIndex - 1].style.display = "block";
+  slides[this.slideIndex - 1].style.display = 'block';
 }
 
 

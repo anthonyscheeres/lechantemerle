@@ -18,15 +18,36 @@ import { RoomModel } from '../models/RoomsModel';
   styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
+
+  constructor(private http: HttpClient, private _router: Router, private modalService: NgbModal) { }
   reservationDataFromServer: RoomModel[] = []
   selected: any = null;
   showInputFields = false
   ms = 2 * 1000 // 2 * 1000ms = 2 seconden
 
-  constructor(private http: HttpClient, private _router: Router, private modalService: NgbModal) { }
+
+  static changeImg(img, id) {
+    const host = ServerModel.host;
+    const port = ServerModel.port;
+    const token = JSON.parse(DataModel.account)[0].token.toString();
+    const url = 'http://' + host + ':' + port + '/api/Room/updateImgRoom?token=' + token;
+
+
+    const json = JSON.stringify({
+      id,
+      img
+    });
+
+
+
+
+
+
+    return fetchJsonPost(url, json, ProtocolR.POST);
+  }
 
   ngOnInit(): void {
-    
+
     this.showAvailableDates()
 
       this.doStuff()
@@ -65,9 +86,9 @@ export class RoomsComponent implements OnInit {
   }
 
   click2(value) {
-        const modalRef = this.modalService.open(PopUpComponent, { windowClass: "myCustomModalClass" });
+        const modalRef = this.modalService.open(PopUpComponent, { windowClass: 'myCustomModalClass' });
         modalRef.componentInstance.product = value;
-        
+
 
 
 
@@ -79,7 +100,7 @@ export class RoomsComponent implements OnInit {
     this.sleep(this.ms)
     this.showAvailableDates()
 
- 
+
   }
 
   addRoom2() {
@@ -97,11 +118,11 @@ export class RoomsComponent implements OnInit {
 
 
   fileChange2(event, product: ReservationModel) {
-    var target = event.target
-    let fileList: FileList = target.files;
+    const target = event.target
+    const fileList: FileList = target.files;
     console.log(fileList)
     if (fileList.length > 0) {
-      let file: File = fileList[0];
+      const file: File = fileList[0];
       this.getBase64(file, product)
       this.sleep(this.ms)
       this.showAvailableDates()
@@ -117,13 +138,13 @@ export class RoomsComponent implements OnInit {
       this.showInputFields = this.checkIfSuperUser();
     }
     catch (Error) { this.showInputFields = false}
-   
+
   }
 
   checkIfSuperUser() {
-    var obj = JSON.parse(DataModel.account);
+    const obj = JSON.parse(DataModel.account);
     //  console.log(obj[0].is_super_user);
-    var isSuper = obj[0].is_super_user;
+    const isSuper = obj[0].is_super_user;
 
 
     return isSuper == true;
@@ -131,7 +152,7 @@ export class RoomsComponent implements OnInit {
 
 
   getBase64(file, product) {
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
       RoomsComponent.changeImg(reader.result, product.id);
@@ -148,9 +169,9 @@ export class RoomsComponent implements OnInit {
   }
 
   deleteRoom(value) {
-    var data = JSON.stringify({  "id": value.id })
+    const data = JSON.stringify({  id: value.id })
 
-    var url = constructDeleteRoom()
+    const url = constructDeleteRoom()
 
     return fetchJsonPost(url, data, ProtocolR.DELETE);
   }
@@ -161,10 +182,10 @@ export class RoomsComponent implements OnInit {
   openSubmit(value, event) {
     event.preventDefault()
 
-    var target = event.target
+    const target = event.target
 
 
-    var amountOfBeds= target.querySelector('#amount').value
+    const amountOfBeds= target.querySelector('#amount').value
 
     this.updateBeds(amountOfBeds, value.id)
 
@@ -176,37 +197,16 @@ export class RoomsComponent implements OnInit {
 
   updateBeds(amountOfBeds:string, id:number) {
 
-    var data = JSON.stringify({ "amountOfBeds": parseFloat(amountOfBeds), "id": id})
+    const data = JSON.stringify({ amountOfBeds: parseFloat(amountOfBeds), id})
 
-    var url = ConstuctUpdateAmountOfBeds()
+    const url = ConstuctUpdateAmountOfBeds()
 
     fetchJsonPost(url, data, ProtocolR.PUT);
 
   }
-
-
-  static changeImg(img, id) {
-    var host = ServerModel.host;
-    var port = ServerModel.port;
-    var token = JSON.parse(DataModel.account)[0].token.toString();
-    var url = "http://" + host + ":" + port + "/api/Room/updateImgRoom?token=" + token;
- 
-
-    var json = JSON.stringify({
-      "id": id,
-      "img": img
-    });
-
-   
-
-
-
-
-    return fetchJsonPost(url, json, ProtocolR.POST);
-  }
   clickPopUp() {
-     this.modalService.open(AddPendingReservationComponent, { windowClass: "myCustomModalClass" });
-    
+     this.modalService.open(AddPendingReservationComponent, { windowClass: 'myCustomModalClass' });
+
   }
 
 }

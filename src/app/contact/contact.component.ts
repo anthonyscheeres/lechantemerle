@@ -14,12 +14,12 @@ import { ConstructGetContactInfoUrl, ConstructPostContactInfoUrl } from '../serv
 })
 export class ContactComponent implements OnInit {
   contactInfoDataFromServer: any = []
-  showInputFields: boolean = false;
+  showInputFields = false;
     mySubscription: any;
 
   constructor(private http: HttpClient) {
 
- 
+
   }
 
 
@@ -35,7 +35,7 @@ export class ContactComponent implements OnInit {
       .subscribe(
         responseData => {
           this.contactInfoDataFromServer = responseData;
-          
+
         }
       );
   }
@@ -47,11 +47,11 @@ export class ContactComponent implements OnInit {
   }
 
   checkIfSuperUser() {
-    var obj = JSON.parse(DataModel.account);
+    const obj = JSON.parse(DataModel.account);
   //  console.log(obj[0].is_super_user);
-    var isSuper = obj[0].is_super_user;
+    const isSuper = obj[0].is_super_user;
 
-  
+
     return isSuper==true;
   }
 
@@ -60,19 +60,19 @@ export class ContactComponent implements OnInit {
   async submitNewContactDetails(event) {
     event.preventDefault()
 
-    var target = event.target
+    const target = event.target
 
 
-    var house = target.querySelector('#houseNickname').value
-    var place = target.querySelector('#place').value
-    var address = target.querySelector('#address').value
-    var postalCode = target.querySelector('#postalCode').value
-    var familyName = target.querySelector('#familyName').value
-    var mail = target.querySelector('#mail').value
-    var telephone = target.querySelector('#telephone').value
-    var url = ConstructPostContactInfoUrl();
-    var data = JSON.stringify({ "house_nickname": house, "place": place, "address": address, "postal_code": postalCode, "family_name": familyName, "telephone": telephone, "mail": mail })
- 
+    const house = target.querySelector('#houseNickname').value
+    const place = target.querySelector('#place').value
+    const address = target.querySelector('#address').value
+    const postalCode = target.querySelector('#postalCode').value
+    const familyName = target.querySelector('#familyName').value
+    const mail = target.querySelector('#mail').value
+    const telephone = target.querySelector('#telephone').value
+    const url = ConstructPostContactInfoUrl();
+    const data = JSON.stringify({ house_nickname: house, place, address, postal_code: postalCode, family_name: familyName, telephone, mail })
+
     fetchJsonPost(url, data.toString(), ProtocolR.PUT);
 
     this.sleep(3000)

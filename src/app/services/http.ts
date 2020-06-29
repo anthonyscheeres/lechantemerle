@@ -11,12 +11,12 @@ import { ProtocolR } from '../models/Protocol';
 *
 */
 export async function fetchJsonGet(url) {
-  var content: string = null;
+  let content: string = null;
   const rawResponse = await fetch(url, {
     method: ProtocolR.GET,
   });
   content = await rawResponse.text();
-  //content)
+  // content)
   return content;
 }
 
@@ -28,12 +28,12 @@ export async function fetchJsonGet(url) {
 *
 */
 export async function fetchPost(url) {
-  var content: string = null;
+  let content: string = null;
   const rawResponse = await fetch(url, {
     method: ProtocolR.POST,
   });
   content = await rawResponse.text();
-  //content)
+  // content)
   return content;
 }
 
@@ -45,17 +45,17 @@ export async function fetchPost(url) {
 *
 */
 export async function fetchJsonPost(url: string, data: string, methode: string) {
-  var content: string = null;
+  let content: string = null;
   const rawResponse = await fetch(url, {
     method: methode,
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json'
     },
     body: data
   });
   content = await rawResponse.text();
-  //content)
+  // content)
   return content;
 }
 
