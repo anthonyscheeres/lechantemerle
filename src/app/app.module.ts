@@ -101,7 +101,7 @@ import { DetailPageRoomsComponent } from './detail-page-rooms/detail-page-rooms.
         },
         {
           path: '',
-          redirectTo: '/rooms', pathMatch: 'full'
+          redirectTo: '/home', pathMatch: 'full'
         },
 
 

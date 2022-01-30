@@ -26,18 +26,7 @@
         <a routerLink="/maps"> Maps</a>
       </div>
 
-      <a routerLink="/rooms">Reserveer</a>
 
-      <a *ngIf="showInputFields" routerLink="/admin">Admin</a>
-
-      <div *ngIf="isLoggedIn">
-        <a *ngIf="showInputFields==false" routerLink="/reservations">Reserveringen</a>
-      </div>
-      <a *ngIf="isLoggedIn" routerLink="/profile">Profiel</a>
-      <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-log-in" routerLink="/login"> Login</a>
-      <a *ngIf="isLoggedIn==false" class="glyphicon glyphicon-user" routerLink="/register"> Register</a>
-      <a style="float:right" routerLink="/contact">Contact</a>
-      <a *ngIf="isLoggedIn" (click)="logOut()"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
     </nav>
 
   </nav>
